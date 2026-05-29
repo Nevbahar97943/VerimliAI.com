@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VerimliAI Takim Arkadaslari - Selim (Satis), Zeynep (Icerik), Can (Destek), Ada (Otomasyon). AI asistanlarinizi taniyin.">
+<title>AI Takiminiz - VerimliAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.team-hero{padding-top:calc(var(--header-height)+var(--space-12));padding-bottom:var(--space-8);text-align:center}
+.persona-full{max-width:800px;margin-inline:auto;margin-bottom:var(--space-12)}
+.persona-full__header{display:flex;align-items:center;gap:var(--space-6);margin-bottom:var(--space-8)}
+.persona-full__avatar{width:100px;height:100px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:48px;flex-shrink:0}
+.persona-full__avatar--selim{background:linear-gradient(135deg,rgba(108,92,231,.3),rgba(108,92,231,.1))}
+.persona-full__avatar--zeynep{background:linear-gradient(135deg,rgba(0,210,211,.3),rgba(0,210,211,.1))}
+.persona-full__avatar--can{background:linear-gradient(135deg,rgba(16,185,129,.3),rgba(16,185,129,.1))}
+.persona-full__avatar--ada{background:linear-gradient(135deg,rgba(245,158,11,.3),rgba(245,158,11,.1))}
+.persona-full__name{font-size:var(--fs-800);font-weight:var(--fw-extrabold);color:var(--clr-neutral-50)}
+.persona-full__role{font-size:var(--fs-450);color:var(--clr-accent-400);font-weight:var(--fw-semibold)}
+.persona-full__metrics{display:flex;gap:var(--space-6);flex-wrap:wrap;margin-bottom:var(--space-6)}
+.persona-full__metric{text-align:center}
+.persona-full__metric-val{font-size:var(--fs-700);font-weight:var(--fw-extrabold);background:var(--gradient-primary);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.persona-full__metric-lbl{font-size:var(--fs-300);color:var(--clr-neutral-500)}
+.persona-full__section{margin-bottom:var(--space-6)}
+.persona-full__section h3{font-size:var(--fs-500);color:var(--clr-neutral-50);margin-bottom:var(--space-4)}
+.persona-full__section p,.persona-full__section li{color:var(--clr-neutral-300);font-size:var(--fs-350);line-height:var(--lh-relaxed);margin-bottom:var(--space-3)}
+.persona-full__section ul{padding-left:var(--space-6)}
+.capability-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3)}
+.capability-item{background:var(--clr-neutral-850);border:1px solid var(--clr-neutral-700);border-radius:var(--radius-lg);padding:var(--space-4);font-size:var(--fs-350);color:var(--clr-neutral-300)}
+.capability-item strong{color:var(--clr-neutral-50)}
+.tag-group{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:var(--space-6)}
+.tag-group span{padding:4px 12px;border-radius:var(--radius-full);font-size:var(--fs-300);font-weight:var(--fw-bold)}
+@media(max-width:768px){.persona-full__header{flex-direction:column;text-align:center}.capability-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="header" id="header"><div class="header__inner">
+<a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a>
+<nav class="header__nav"><a href="index.html" class="header__nav-link">Ana Sayfa</a><a href="sektorler.html" class="header__nav-link">Sektorler</a><a href="magaza.html" class="header__nav-link">Magaza</a><a href="blog.html" class="header__nav-link">Blog</a></nav>
+<a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+<button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></header>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-menu__link">Ana Sayfa</a><a href="randevu.html" class="mobile-menu__link">Randevu</a></div>
+
+<main>
+<section class="team-hero"><div class="container">
+<span class="badge badge-accent">Calisan Degil, Takim Arkadasi</span>
+<h1 class="heading-1" style="margin-top:16px;">AI <span class="text-gradient">Takiminiz</span> Hazir</h1>
+<p class="section-header__desc" style="margin-top:12px;">4 AI takim arkadasinizi taniyin. Her biri isletmenizin farkli bir ihtiyaci icin ozel olarak egitilmistir. Tipki bir calisan gibi ismini bilir, markanizi tanir ve 7/24 calisir.</p>
+</div></section>
+
+<section style="padding-bottom:80px;"><div class="container">
+
+<!-- SELIM -->
+<div class="persona-full glass-card" style="padding:var(--space-8);">
+<div class="persona-full__header">
+<div class="persona-full__avatar persona-full__avatar--selim">&#x1F4B0;</div>
+<div><div class="persona-full__name">Selim</div><div class="persona-full__role">AI Satis Asistani</div></div>
+</div>
+<div class="tag-group"><span style="background:rgba(108,92,231,.15);color:var(--clr-primary-300);">8sn Yanit Suresi</span><span style="background:rgba(16,185,129,.12);color:var(--clr-success);">%94 Musteri Memnuniyeti</span><span style="background:rgba(0,210,211,.1);color:var(--clr-accent-400);">+%42 Satis Artisi</span><span style="background:rgba(108,92,231,.1);color:var(--clr-primary-300);">7/24 Aktif</span></div>
+<div class="persona-full__metrics"><div class="persona-full__metric"><div class="persona-full__metric-val">8sn</div><div class="persona-full__metric-lbl">Yanit Suresi</div></div><div class="persona-full__metric"><div class="persona-full__metric-val">%94</div><div class="persona-full__metric-lbl">Memnuniyet</div></div><div class="persona-full__metric"><div class="persona-full__metric-val">+%42</div><div class="persona-full__metric-lbl">Satis Artisi</div></div></div>
+<div class="persona-full__section"><h3>Kimdir?</h3><p>Selim, isletmenizin en iyi saticisidir. Instagram DM'lerinizde, WhatsApp hatlarinizda ve web sitenizde 7/24 aktiftir. Musterilerinizi isimleriyle karsilar, ihtiyaclarini anlar, urun onerir ve satisi kapatir. Gece 03:00'te, haftasonu, bayramda — fark etmez. Selim her zaman oradadir. Selim bir bot degildir; o sizin dijital satis mudurunuzdur. Markanizin sesini bilir, urunlerinizi ezbere sayar ve hicbir satis firsatini kacirmaz.</p></div>
+<div class="persona-full__section"><h3>Yetenekleri</h3><div class="capability-grid">
+<div class="capability-item"><strong>Instagram DM Satis:</strong> Gelen mesajlari saniyeler icinde yanitlar, urun bilgisi verir, beden/renk/stok kontrol eder.</div>
+<div class="capability-item"><strong>Odeme Linki Yonlendirme:</strong> Musteri hazir oldugunda dogrudan Shopier odeme linki gonderir ve satisi tamamlar.</div>
+<div class="capability-item"><strong>Cross-Sell Onerileri:</strong> "Bu urunu aldiniz, bununla kombinleyebileceginiz su urune de bakin" diyerek sepet ortalamasini artirir.</div>
+<div class="capability-item"><strong>Kargo Takip:</strong> Musteri siparis numarasini yazdiginda aninda kargo durumunu sorgular ve bilgi verir.</div>
+<div class="capability-item"><strong>Stok Yonetimi:</strong> Musteriye "su an stokta yok ama 3 gun sonra gelecek, ister misiniz?" diyerek on siparis alir.</div>
+<div class="capability-item"><strong>Iade ve Degisim:</strong> Iade kosullarini aktarir, sureci baslatir ve musteriyi bilgilendirir.</div>
+</div></div>
+</div>
+
+<!-- ZEYNEP -->
+<div class="persona-full glass-card" style="padding:var(--space-8);">
+<div class="persona-full__header">
+<div class="persona-full__avatar persona-full__avatar--zeynep">&#x270D;</div>
+<div><div class="persona-full__name">Zeynep</div><div class="persona-full__role">AI Icerik Asistani</div></div>
+</div>
+<div class="tag-group"><span style="background:rgba(0,210,211,.12);color:var(--clr-accent-400);">30 Icerik/Ay</span><span style="background:rgba(16,185,129,.12);color:var(--clr-success);">+%70 Etkilesim</span><span style="background:rgba(108,92,231,.15);color:var(--clr-primary-300);">5 Dakikada Plan</span></div>
+<div class="persona-full__section"><h3>Kimdir?</h3><p>Zeynep, isletmenizin kreatif direktoru ve sosyal medya stratejistidir. Aylik icerik takviminizi hazirlar, Reels ve TikTok senaryolarini yazar, reklam metinlerinizi olusturur ve trend analizi yapar. Markanizin sesini bilir, hedef kitlenizi tanir ve her platforma ozel icerik uretir. Zeynep sayesinde artik "bugun ne paylassam?" diye dusunmek zorunda degilsiniz. O sizin icin dusunur, planlar ve uretir. Siz sadece onaylar ve paylasirsiniz.</p></div>
+<div class="persona-full__section"><h3>Yetenekleri</h3><div class="capability-grid">
+<div class="capability-item"><strong>Aylik Icerik Takvimi:</strong> 30 gunluk detayli icerik plani; her gunun konusu, formati ve hashtag onerisiyle.</div>
+<div class="capability-item"><strong>Reels/TikTok Senaryolari:</strong> Viral hook fikirleri, sahne sahne cekim plani ve muzik onerileriyle hazir senaryolar.</div>
+<div class="capability-item"><strong>Reklam Metni Uretimi:</strong> Facebook, Instagram ve Google Ads icin A/B test varyasyonlu yuksek donusumlu reklam copy'leri.</div>
+<div class="capability-item"><strong>Trend Analizi:</strong> Sektorunuzdeki trend sesleri, hashtag'leri ve icerik formatlarini takip eder, size uyarlar.</div>
+<div class="capability-item"><strong>Caption Yazimi:</strong> Her gonderiye ozel, marka sesinize uygun, etkilesim odakli caption metinleri.</div>
+<div class="capability-item"><strong>Rakip Analizi:</strong> Rakiplerinizin en cok etkilesim alan iceriklerini analiz eder, size stratejik oneriler sunar.</div>
+</div></div>
+</div>
+
+<!-- CAN -->
+<div class="persona-full glass-card" style="padding:var(--space-8);">
+<div class="persona-full__header">
+<div class="persona-full__avatar persona-full__avatar--can">&#x1F4AC;</div>
+<div><div class="persona-full__name">Can</div><div class="persona-full__role">AI Destek Asistani</div></div>
+</div>
+<div class="tag-group"><span style="background:rgba(16,185,129,.12);color:var(--clr-success);">%80 Soru Cozumu</span><span style="background:rgba(108,92,231,.15);color:var(--clr-primary-300);">7/24 Aktif</span><span style="background:rgba(0,210,211,.1);color:var(--clr-accent-400);">3 Dakikada Cozum</span></div>
+<div class="persona-full__section"><h3>Kimdir?</h3><p>Can, isletmenizin musteri deneyimi uzmanidir. Musterilerinizin kargo sorgulamalarindan iade taleplerine, fatura sorularindan genel bilgi taleplerine kadar tum destek ihtiyaclarini aninda karsilar. Can'in en buyuk ozelligi, sorunlari daha buyumeden cozmesidir. Musteri sikayetini algilar, empatiyle karsilar, cozumu sunar ve gerekirse insan operatore yonlendirir. Can sayesinde her musteri kendini ozel hisseder; cunku Can her soruya aninda, hatasiz ve guleryuzle yanit verir.</p></div>
+<div class="persona-full__section"><h3>Yetenekleri</h3><div class="capability-grid">
+<div class="capability-item"><strong>Kargo Takip:</strong> Siparis numarasiyla aninda kargo durumu sorgulama ve takip linki gonderme.</div>
+<div class="capability-item"><strong>Iade Sureci:</strong> Iade kosullarini aktarma, iade kodu olusturma ve sureci adim adim yonetme.</div>
+<div class="capability-item"><strong>SSS Yanitlama:</strong> En sik sorulan 100+ soruya aninda, guncel ve dogru yanit verme.</div>
+<div class="capability-item"><strong>Sikayet Yonetimi:</strong> Musteri memnuniyetsizligini erken tespit etme, empatik karsilama ve cozum sunma.</div>
+<div class="capability-item"><strong>Fatura ve Siparis:</strong> Gecmis siparisleri sorgulama, fatura ozeti gonderme, odeme durumu kontrol etme.</div>
+<div class="capability-item"><strong>Insan Operatore Yonlendirme:</strong> Karmasik sorunlari dogru departmana, dogru oncelikle aktarma.</div>
+</div></div>
+</div>
+
+<!-- ADA -->
+<div class="persona-full glass-card" style="padding:var(--space-8);">
+<div class="persona-full__header">
+<div class="persona-full__avatar persona-full__avatar--ada">&#x2699;</div>
+<div><div class="persona-full__name">Ada</div><div class="persona-full__role">AI Otomasyon Muhendisi</div></div>
+</div>
+<div class="tag-group"><span style="background:rgba(245,158,11,.12);color:var(--clr-warning);">2.000+ Entegrasyon</span><span style="background:rgba(16,185,129,.12);color:var(--clr-success);">%99.9 Uptime</span><span style="background:rgba(108,92,231,.15);color:var(--clr-primary-300);">40 Saat/Ay Tasarruf</span></div>
+<div class="persona-full__section"><h3>Kimdir?</h3><p>Ada, isletmenizin gorunmez kahramanidir. Siz farkinda bile olmadan arkada calisir; siparisi alir, faturayi keser, kargoyu bildirir, Google Sheets'e kaydeder, Slack'e mesaj atar ve raporu hazirlar. Ada bir otomasyon muhendisidir — 2.000'den fazla platform ve uygulama arasinda veri akisi kurar, surecleri birlestirir ve isletmenizin operasyonel beyni olarak calisir. Ada sayesinde hicbir manuel veri girisi yapmak zorunda kalmazsiniz. O sizin dijital operasyon mudurunuzdur.</p></div>
+<div class="persona-full__section"><h3>Yetenekleri</h3><div class="capability-grid">
+<div class="capability-item"><strong>Siparis → Fatura Zinciri:</strong> Gelen siparisi aninda algilar, faturayi keser, kargoya iletir, musteriye bildirim gonderir.</div>
+<div class="capability-item"><strong>Otomatik Raporlama:</strong> Gunluk, haftalik ve aylik satis/musteri/performans raporlarini otomatik olusturur.</div>
+<div class="capability-item"><strong>Platform Entegrasyonu:</strong> Shopier, Trendyol, Shopify, Instagram, WhatsApp ve 2.000+ platform arasinda kopru kurar.</div>
+<div class="capability-item"><strong>Stok Optimizasyonu:</strong> Gecmis veriye dayanarak talep tahmini yapar, kritik stok uyarilari gonderir.</div>
+<div class="capability-item"><strong>Bildirim Yonetimi:</strong> Slack, Teams, Telegram, e-posta uzerinden anlik bildirimler ve uyarilar gonderir.</div>
+<div class="capability-item"><strong>Veri Senkronizasyonu:</strong> Tum platformlar arasinda urun, stok, siparis ve musteri verisini gercek zamanli senkronize eder.</div>
+</div></div>
+</div>
+
+<div style="text-align:center;margin-top:var(--space-10);"><h3 style="font-size:var(--fs-600);color:var(--clr-neutral-50);margin-bottom:12px;">AI Takiminiza Katilmak Ister misiniz?</h3><a href="randevu.html" class="btn btn-primary btn-lg">Ucretsiz Tanisma Randevusu Alin</a></div>
+
+</div></section></main>
+
+<footer class="footer"><div class="container"><div class="footer__bottom"><p class="footer__copyright">&copy; 2026 VerimliAI. Calisan degil, takim arkadasi.</p></div></div></footer>
+<script src="js/main.js"></script><script src="js/chatbot.js"></script>
+</body>
+</html>
