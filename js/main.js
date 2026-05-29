@@ -441,4 +441,4 @@
     document.addEventListener('click', function (e) { if (term.classList.contains('active') && !term.contains(e.target) && e.target !== trig) close(); });
   }
 
-})();
+)();
