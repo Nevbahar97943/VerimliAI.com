@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VerimliAI Raporlar ve Yayinlar - E-Ticaret ve Perakende Sektorunde Yapay Zeka Raporlari. Ucretsiz PDF indirin.">
+  <title>Raporlar ve Yayinlar - VerimliAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a>
+    <nav class="header__nav">
+      <a href="index.html" class="header__nav-link">Ana Sayfa</a>
+      <a href="index.html#hizmetler" class="header__nav-link">Hizmetler</a>
+      <a href="index.html#paketler" class="header__nav-link">Paketler</a>
+      <a href="magaza.html" class="header__nav-link">Magaza</a>
+      <a href="blog.html" class="header__nav-link">Blog</a>
+      <a href="iletisim.html" class="header__nav-link">Iletisim</a>
+    </nav>
+    <a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+    <button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="mobile-menu__link">Ana Sayfa</a>
+  <a href="magaza.html" class="mobile-menu__link">Magaza</a>
+  <a href="blog.html" class="mobile-menu__link">Blog</a>
+  <a href="iletisim.html" class="mobile-menu__link">Iletisim</a>
+  <a href="randevu.html" class="mobile-menu__link">Randevu Al</a>
+</div>
+
+<main>
+  <section class="demo-hero">
+    <div class="container">
+      <span class="badge badge-primary">Premium Icerik</span>
+      <h1 class="heading-1" style="margin-top:16px;">Raporlar ve <span class="text-gradient">Yayinlar</span></h1>
+      <p class="section-header__desc" style="margin-top:12px;">Yapay zeka ve otomasyon dunyasindaki en guncel arastirmalar, sektor raporlari ve White Paper'lar. Bilgilerinizi birakin, ucretsiz indirin.</p>
+    </div>
+  </section>
+
+  <section style="padding-bottom:40px;">
+    <div class="container" style="max-width:750px;">
+
+      <!-- Report 1 -->
+      <div class="report-card glass-card reveal">
+        <div class="report-card__cover">&#x1F4CA;</div>
+        <div class="report-card__body">
+          <h3 class="report-card__title">2026 E-Ticaret ve Perakende Sektorunde Yapay Zeka ve Otomasyonun Donusum Gucu</h3>
+          <p class="report-card__desc">Turkiye e-ticaret pazarinda AI kullanan ve kullanmayan isletmelerin performans karsilastirmasi. 45 sayfalik kapsamli sektor raporu.</p>
+          <div class="report-card__date">Mayis 2026 · 45 sayfa · PDF</div>
+          <button class="btn btn-primary btn-sm" style="margin-top:12px;" onclick="openDownload('rapor1')">Ucretsiz Indir</button>
+        </div>
+      </div>
+
+      <!-- Report 2 -->
+      <div class="report-card glass-card reveal">
+        <div class="report-card__cover">&#x1F916;</div>
+        <div class="report-card__body">
+          <h3 class="report-card__title">KOBI'ler Icin Yapay Zeka Adaptasyon Kilavuzu: Nereden Baslamali, Nasil Olceklendirmeli?</h3>
+          <p class="report-card__desc">Kucuk ve orta olcekli isletmelerin AI donusumune baslamasi icin adim adim uygulamali rehber. Ornek vaka calismalari ve ROI hesaplamalari.</p>
+          <div class="report-card__date">Nisan 2026 · 32 sayfa · PDF</div>
+          <button class="btn btn-primary btn-sm" style="margin-top:12px;" onclick="openDownload('rapor2')">Ucretsiz Indir</button>
+        </div>
+      </div>
+
+      <!-- Report 3 -->
+      <div class="report-card glass-card reveal">
+        <div class="report-card__cover">&#x1F4AC;</div>
+        <div class="report-card__body">
+          <h3 class="report-card__title">Musteri Hizmetlerinde AI Chatbot ROI Analizi: 100+ Isletmeden Gercek Veriler</h3>
+          <p class="report-card__desc">AI chatbot kullanan 100+ isletmenin musteri memnuniyeti, maliyet tasarrufu ve satis artisi verileriyle detayli ROI analizi.</p>
+          <div class="report-card__date">Mart 2026 · 28 sayfa · PDF</div>
+          <button class="btn btn-primary btn-sm" style="margin-top:12px;" onclick="openDownload('rapor3')">Ucretsiz Indir</button>
+        </div>
+      </div>
+
+      <!-- Report 4 -->
+      <div class="report-card glass-card reveal">
+        <div class="report-card__cover">&#x1F310;</div>
+        <div class="report-card__body">
+          <h3 class="report-card__title">Sosyal Ticaret (Social Commerce) ve AI: Instagram ve TikTok'ta Satislari Otomatize Etme</h3>
+          <p class="report-card__desc">Instagram ve TikTok uzerinden satis yapan markalar icin AI destekli sosyal ticaret stratejileri. DM otomasyonundan icerik uretimine.</p>
+          <div class="report-card__date">Subat 2026 · 38 sayfa · PDF</div>
+          <button class="btn btn-primary btn-sm" style="margin-top:12px;" onclick="openDownload('rapor4')">Ucretsiz Indir</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Download Modal -->
+  <div class="report-download-modal" id="downloadModal">
+    <div class="report-download-modal__content">
+      <h3 style="font-size:var(--fs-500);font-weight:var(--fw-bold);color:var(--clr-neutral-50);margin-bottom:8px;">Raporu Indirmek Icin</h3>
+      <p style="color:var(--clr-neutral-400);font-size:var(--fs-350);margin-bottom:24px;">Asagidaki bilgileri doldurun, rapor linki e-posta adresinize gonderilsin.</p>
+      <form id="downloadForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="VerimliAI - Rapor Indirme Talebi">
+        <input type="hidden" name="from_name" value="VerimliAI Rapor Sistemi">
+        <input type="hidden" name="redirect" value="false">
+        <input type="checkbox" name="botcheck" class="sr-only" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="report_id" id="reportIdInput">
+
+        <div class="form-group">
+          <label class="form-label" for="dl_name">Ad Soyad</label>
+          <input type="text" id="dl_name" name="name" class="form-input" placeholder="Adiniz ve soyadiniz" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="dl_email">E-Posta</label>
+          <input type="email" id="dl_email" name="email" class="form-input" placeholder="ornek@firma.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="dl_company">Sirket Unvani</label>
+          <input type="text" id="dl_company" name="company" class="form-input" placeholder="Firmanizin adi">
+        </div>
+        <button type="submit" class="btn btn-primary btn-full btn-lg">Raporu Gonder</button>
+      </form>
+      <button class="btn btn-ghost btn-full" style="margin-top:8px;" onclick="closeDownload()">Vazgec</button>
+      <div class="form-success" id="dlSuccess" style="margin-top:16px;">Rapor linki e-posta adresinize gonderildi! Lutfen gelen kutunuzu kontrol edin.</div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div><a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a><p class="footer__brand-desc">Isletmelerin tum dijital sureclerini yapay zeka ile otomatize eden yeni nesil hizmet ajansi.</p></div>
+      <div><h4 class="footer__col-title">Hizmetler</h4><div class="footer__links"><a href="#" class="footer__link">AI Satis Asistani</a><a href="#" class="footer__link">AI Icerik Asistani</a><a href="magaza.html" class="footer__link">Dijital Magaza</a><a href="raporlar.html" class="footer__link">Raporlar</a></div></div>
+      <div><h4 class="footer__col-title">Kurumsal</h4><div class="footer__links"><a href="randevu.html" class="footer__link">Randevu Al</a><a href="iletisim.html" class="footer__link">Iletisim</a><a href="blog.html" class="footer__link">Blog</a><a href="ai-sozluk.html" class="footer__link">AI Sozlugu</a></div></div>
+      <div><h4 class="footer__col-title">Yasal & Guvenlik</h4><div class="footer__links"><a href="gizlilik-politikasi.html" class="footer__link">Gizlilik Politikasi</a><a href="kullanim-kosullari.html" class="footer__link">Kullanim Kosullari</a><a href="kvkk.html" class="footer__link">KVKK Aydinlatma</a><a href="veri-guvenligi.html" class="footer__link">Veri Guvenligi</a></div></div>
+    </div>
+    <div class="footer__bottom"><p class="footer__copyright">&copy; 2026 VerimliAI. Tum haklari saklidir.</p><div class="footer__social"><a href="#" class="footer__social-link">IG</a><a href="#" class="footer__social-link">TT</a><a href="#" class="footer__social-link">LI</a><a href="#" class="footer__social-link">WA</a></div></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/chatbot.js"></script>
+<script>
+(function(){
+  window.openDownload = function(reportId) {
+    document.getElementById('reportIdInput').value = reportId;
+    document.getElementById('downloadModal').classList.add('active');
+  };
+  window.closeDownload = function() {
+    document.getElementById('downloadModal').classList.remove('active');
+    document.getElementById('downloadForm').style.display = 'block';
+    document.getElementById('dlSuccess').classList.remove('active');
+  };
+
+  var form = document.getElementById('downloadForm');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name = document.getElementById('dl_name').value.trim();
+    var email = document.getElementById('dl_email').value.trim();
+    if (!name || !email) return;
+
+    var btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Gonderiliyor...';
+    btn.disabled = true;
+
+    var formData = new FormData(form);
+    fetch(form.action, { method: 'POST', body: formData })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        form.style.display = 'none';
+        document.getElementById('dlSuccess').classList.add('active');
+      })
+      .catch(function() {
+        form.style.display = 'none';
+        document.getElementById('dlSuccess').classList.add('active');
+      });
+  });
+})();
+</script>
+</body>
+</html>

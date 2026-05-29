@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VerimliAI Iletisim - Ucretsiz danismanlik randevusu olusturun. Isletmenize ozel yapay zeka cozumleri icin bizimle iletisime gecin.">
+  <title>Iletisim - VerimliAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo">
+        <div class="header__logo-icon">V</div>
+        <div class="header__logo-text">Verimli<span>AI</span></div>
+      </a>
+      <nav class="header__nav">
+        <a href="index.html" class="header__nav-link">Ana Sayfa</a>
+        <a href="index.html#hizmetler" class="header__nav-link">Hizmetler</a>
+        <a href="index.html#paketler" class="header__nav-link">Paketler</a>
+        <a href="magaza.html" class="header__nav-link">Dijital Magaza</a>
+        <a href="blog.html" class="header__nav-link">Blog</a>
+        <a href="iletisim.html" class="header__nav-link active">Iletisim</a>
+      </nav>
+      <a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+      <button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========== MOBILE MENU ========== -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="mobile-menu__link">Ana Sayfa</a>
+    <a href="index.html#hizmetler" class="mobile-menu__link">Hizmetler</a>
+    <a href="index.html#paketler" class="mobile-menu__link">Paketler</a>
+    <a href="magaza.html" class="mobile-menu__link">Dijital Magaza</a>
+    <a href="blog.html" class="mobile-menu__link">Blog</a>
+    <a href="iletisim.html" class="mobile-menu__link">Iletisim</a>
+    <a href="randevu.html" class="btn btn-primary btn-full" style="margin-top: 8px;">Randevu Al</a>
+  </div>
+
+  <main>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+      <div class="container">
+        <span class="badge badge-primary">Iletisim</span>
+        <h1 class="heading-1" style="margin-top: 16px;">Bizimle <span class="text-gradient">Iletisime</span> Gecin</h1>
+        <p class="section-header__desc" style="margin-top: 12px;">
+          Isletmenize ozel yapay zeka cozumleri icin ucretsiz danismanlik randevusu olusturun. 24 saat icinde size donus yapalim.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Grid -->
+    <section style="padding-bottom: 80px;">
+      <div class="container">
+        <div class="contact__grid">
+
+          <!-- Info -->
+          <div class="contact__info">
+            <div class="contact__info-card">
+              <div class="contact__info-icon">&#x2709;</div>
+              <div>
+                <div class="contact__info-title">E-Posta</div>
+                <div class="contact__info-text">info@verimliai.com</div>
+              </div>
+            </div>
+            <div class="contact__info-card">
+              <div class="contact__info-icon">&#x1F4DE;</div>
+              <div>
+                <div class="contact__info-title">Telefon</div>
+                <div class="contact__info-text">+90 (XXX) XXX XX XX</div>
+              </div>
+            </div>
+            <div class="contact__info-card">
+              <div class="contact__info-icon">&#x1F4CD;</div>
+              <div>
+                <div class="contact__info-title">Konum</div>
+                <div class="contact__info-text">Istanbul, Turkiye</div>
+              </div>
+            </div>
+            <div class="contact__info-card">
+              <div class="contact__info-icon">&#x23F0;</div>
+              <div>
+                <div class="contact__info-title">Calisma Saatleri</div>
+                <div class="contact__info-text">Pazartesi - Cuma: 09:00 - 18:00<br>Cumartesi: 10:00 - 14:00</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="contact__form" id="form">
+            <h3 class="heading-3" style="margin-bottom: 8px;">Ucretsiz Danismanlik Formu</h3>
+            <p style="color: var(--clr-neutral-400); font-size: var(--fs-350); margin-bottom: 32px;">
+              Asagidaki formu doldurun, size en kisa surede donus yapalim.
+            </p>
+            <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+              <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+              <input type="hidden" name="subject" value="VerimliAI - Yeni Iletisim Formu Mesaji">
+              <input type="hidden" name="from_name" value="VerimliAI Iletisim Formu">
+              <input type="hidden" name="redirect" value="false">
+              <input type="checkbox" name="botcheck" class="sr-only" tabindex="-1" autocomplete="off">
+              <div class="form-group">
+                <label class="form-label" for="name">Ad Soyad</label>
+                <input type="text" id="name" class="form-input" placeholder="Adiniz ve soyadiniz" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">E-Posta</label>
+                <input type="email" id="email" class="form-input" placeholder="ornek@firma.com" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Telefon</label>
+                <input type="tel" id="phone" class="form-input" placeholder="05XX XXX XX XX">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="business">Isletme / Firma Adi</label>
+                <input type="text" id="business" class="form-input" placeholder="Firmanizin adi">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="interest">Ilgilendiginiz Hizmet</label>
+                <select id="interest" class="form-input" required>
+                  <option value="">Seciniz...</option>
+                  <option value="satis">AI Satis Asistani</option>
+                  <option value="icerik">AI Icerik Asistani</option>
+                  <option value="her-ikisi">Her Ikisi</option>
+                  <option value="dijital-magaza">Dijital Magaza Urunleri</option>
+                  <option value="diger">Diger / Danismanlik</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="message">Mesajiniz</label>
+                <textarea id="message" class="form-input" placeholder="Isletmeniz ve ihtiyaclariniz hakkinda kisaca bahsedin..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full btn-lg">Gonder</button>
+            </form>
+            <div class="form-success" id="formSuccess">
+              Mesajiniz basariyla gonderildi! En kisa surede size donus yapacagiz.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" class="header__logo">
+            <div class="header__logo-icon">V</div>
+            <div class="header__logo-text">Verimli<span>AI</span></div>
+          </a>
+          <p class="footer__brand-desc">
+            Isletmelerin tum dijital sureclerini yapay zeka ile otomatize eden yeni nesil hizmet ajansi.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Hizmetler</h4>
+          <div class="footer__links">
+            <a href="#" class="footer__link">AI Satis Asistani</a>
+            <a href="#" class="footer__link">AI Icerik Asistani</a>
+            <a href="magaza.html" class="footer__link">Dijital Magaza</a>
+            <a href="#" class="footer__link">Kurumsal Cozumler</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Kurumsal</h4>
+          <div class="footer__links">
+            <a href="randevu.html" class="footer__link">Randevu Al</a>
+            <a href="iletisim.html" class="footer__link">Iletisim</a>
+            <a href="blog.html" class="footer__link">Blog</a>
+            <a href="basari-hikayeleri.html" class="footer__link">Basari Hikayeleri</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Yasal</h4>
+          <div class="footer__links">
+            <a href="gizlilik-politikasi.html" class="footer__link">Gizlilik Politikasi</a>
+            <a href="kullanim-kosullari.html" class="footer__link">Kullanim Kosullari</a>
+            <a href="kvkk.html" class="footer__link">KVKK Aydinlatma</a>
+            <a href="veri-guvenligi.html" class="footer__link">Veri Guvenligi</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Yasal</h4>
+          <div class="footer__links">
+            <a href="#" class="footer__link">Gizlilik Politikasi</a>
+            <a href="#" class="footer__link">Kullanim Sartlari</a>
+            <a href="#" class="footer__link">KVKK Aydinlatma</a>
+            <a href="#" class="footer__link">Mesafeli Satis Sozlesmesi</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 VerimliAI. Tum haklari saklidir.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="Instagram">IG</a>
+          <a href="#" class="footer__social-link" aria-label="TikTok">TT</a>
+          <a href="#" class="footer__social-link" aria-label="LinkedIn">LI</a>
+          <a href="#" class="footer__social-link" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

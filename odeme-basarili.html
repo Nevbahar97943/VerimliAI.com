@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Odemeniz basariyla alindi. Dijital urununuz e-posta adresinize gonderilmistir.">
+  <title>Odeme Basarili - VerimliAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .success-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--space-8);
+    }
+    .success-card {
+      background: var(--clr-neutral-850);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-12) var(--space-8);
+      max-width: 520px;
+      width: 100%;
+    }
+    .success-card__icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(16, 185, 129, 0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin-inline: auto;
+      margin-bottom: var(--space-6);
+    }
+    .success-card__title {
+      font-size: var(--fs-800);
+      font-weight: var(--fw-extrabold);
+      color: var(--clr-success);
+      margin-bottom: var(--space-4);
+    }
+    .success-card__desc {
+      font-size: var(--fs-400);
+      color: var(--clr-neutral-400);
+      line-height: var(--lh-relaxed);
+      margin-bottom: var(--space-8);
+    }
+    .success-card__steps {
+      text-align: left;
+      background: var(--clr-neutral-800);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      margin-bottom: var(--space-8);
+    }
+    .success-card__step {
+      display: flex;
+      gap: var(--space-3);
+      font-size: var(--fs-350);
+      color: var(--clr-neutral-300);
+      padding: var(--space-2) 0;
+    }
+    .success-card__step-num {
+      color: var(--clr-success);
+      font-weight: var(--fw-bold);
+      flex-shrink: 0;
+    }
+    .success-card__alert {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      font-size: var(--fs-350);
+      color: var(--clr-warning);
+      margin-bottom: var(--space-6);
+    }
+  </style>
+</head>
+<body>
+
+  <main class="success-page">
+    <div class="success-card">
+      <div class="success-card__icon">&#x2705;</div>
+      <h1 class="success-card__title">Odeme Basarili!</h1>
+      <p class="success-card__desc">
+        Satin aldiginiz dijital urun <strong>e-posta adresinize</strong> gonderilmistir.
+        Lutfen e-posta kutunuzu (spam/onemsiz dahil) kontrol edin.
+      </p>
+
+      <div class="success-card__steps">
+        <div class="success-card__step">
+          <span class="success-card__step-num">1.</span>
+          <span>E-posta kutunuzu kontrol edin (spam/onemsiz klasorune de bakin)</span>
+        </div>
+        <div class="success-card__step">
+          <span class="success-card__step-num">2.</span>
+          <span>Gelen e-postadaki indirme linkine tiklayin</span>
+        </div>
+        <div class="success-card__step">
+          <span class="success-card__step-num">3.</span>
+          <span>PDF dosyanizi indirin ve hemen kullanmaya baslayin!</span>
+        </div>
+      </div>
+
+      <div class="success-card__alert">
+        E-posta 5 dakika icinde gelmezse lutfen <strong>info@verimliai.com</strong> adresine odeme dekontunuz ile birlikte e-posta gonderin.
+      </div>
+
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <a href="magaza.html" class="btn btn-secondary">Magazaya Don</a>
+        <a href="index.html" class="btn btn-primary">Ana Sayfaya Don</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yapay Zeka Sozlugu - Prompt, LLM, RAG, NLP ve 50+ AI teriminin Turkce, esnaf dilinde aciklamasi. VerimliAI AI Sozlugu.">
+  <title>AI Sozlugu - VerimliAI | Yapay Zeka Terimleri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a>
+    <nav class="header__nav">
+      <a href="index.html" class="header__nav-link">Ana Sayfa</a>
+      <a href="index.html#hizmetler" class="header__nav-link">Hizmetler</a>
+      <a href="index.html#paketler" class="header__nav-link">Paketler</a>
+      <a href="magaza.html" class="header__nav-link">Magaza</a>
+      <a href="blog.html" class="header__nav-link">Blog</a>
+      <a href="iletisim.html" class="header__nav-link">Iletisim</a>
+    </nav>
+    <a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+    <button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="mobile-menu__link">Ana Sayfa</a>
+  <a href="magaza.html" class="mobile-menu__link">Magaza</a>
+  <a href="blog.html" class="mobile-menu__link">Blog</a>
+  <a href="iletisim.html" class="mobile-menu__link">Iletisim</a>
+  <a href="randevu.html" class="mobile-menu__link">Randevu Al</a>
+</div>
+
+<main>
+  <section class="demo-hero">
+    <div class="container">
+      <span class="badge badge-primary">Bilgi Bankasi</span>
+      <h1 class="heading-1" style="margin-top:16px;">Yapay Zeka <span class="text-gradient">Sozlugu</span></h1>
+      <p class="section-header__desc" style="margin-top:12px;">En karmasik AI terimlerini, en basit esnaf diliyle acikliyoruz. "Prompt nedir?", "LLM ne ise yarar?" gibi tum sorularinizin cevabi burada.</p>
+    </div>
+  </section>
+
+  <section style="padding-bottom:20px;">
+    <div class="container">
+      <div class="glossary-search">
+        <input type="text" id="glossarySearch" class="form-input" placeholder="Terim ara... (ornegin: prompt, API, otomasyon)">
+      </div>
+      <div class="glossary-alpha" id="glossaryAlpha"></div>
+      <div class="glossary-grid" id="glossaryGrid"></div>
+    </div>
+  </section>
+
+  <section style="padding-bottom:80px;">
+    <div class="container">
+      <div class="cta__inner">
+        <h2 class="heading-2 cta__title">Daha Fazlasini <span class="text-gradient">Uygulamali</span> Ogrenmek Ister misiniz?</h2>
+        <p class="cta__desc">AI terimlerini teoride degil, isletmenizde bizzat calisirken gormek icin ucretsiz demo randevusu alin.</p>
+        <a href="randevu.html" class="btn btn-primary btn-lg">Ucretsiz Demo Randevusu</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div><a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a><p class="footer__brand-desc">Isletmelerin tum dijital sureclerini yapay zeka ile otomatize eden yeni nesil hizmet ajansi.</p></div>
+      <div><h4 class="footer__col-title">Hizmetler</h4><div class="footer__links"><a href="#" class="footer__link">AI Satis Asistani</a><a href="#" class="footer__link">AI Icerik Asistani</a><a href="magaza.html" class="footer__link">Dijital Magaza</a><a href="demolar.html" class="footer__link">Sistem Demolari</a></div></div>
+      <div><h4 class="footer__col-title">Kurumsal</h4><div class="footer__links"><a href="randevu.html" class="footer__link">Randevu Al</a><a href="iletisim.html" class="footer__link">Iletisim</a><a href="blog.html" class="footer__link">Blog</a><a href="ai-sozluk.html" class="footer__link">AI Sozlugu</a></div></div>
+      <div><h4 class="footer__col-title">Yasal & Guvenlik</h4><div class="footer__links"><a href="gizlilik-politikasi.html" class="footer__link">Gizlilik Politikasi</a><a href="kullanim-kosullari.html" class="footer__link">Kullanim Kosullari</a><a href="kvkk.html" class="footer__link">KVKK Aydinlatma</a><a href="veri-guvenligi.html" class="footer__link">Veri Guvenligi</a></div></div>
+    </div>
+    <div class="footer__bottom"><p class="footer__copyright">&copy; 2026 VerimliAI. Tum haklari saklidir.</p><div class="footer__social"><a href="#" class="footer__social-link">IG</a><a href="#" class="footer__social-link">TT</a><a href="#" class="footer__social-link">LI</a><a href="#" class="footer__social-link">WA</a></div></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/chatbot.js"></script>
+<script>
+(function(){
+  var terms = [
+    { word: 'Prompt', cat: 'Temel', def: 'Yapay zekaya verdiginiz komut veya soru. "Su urunun aciklamasini yaz" bir prompttur.', example: 'Esnaf dili: Tastaki siparis fisini tezgaha birakmak gibi. Ne istersen AI onu yapar.' },
+    { word: 'LLM (Buyuk Dil Modeli)', cat: 'Temel', def: 'ChatGPT, Claude gibi yapay zekalarin arkasindaki dev metin anlama ve uretme motoru. Milyarlarca kitap ve web sayfasi okuyarak egitilmistir.', example: 'Esnaf dili: 10.000 kitap okumus bir tezgahtar gibi. Her seye cevap verebilir.' },
+    { word: 'RAG (Dokumanli AI)', cat: 'Ileri', def: 'AI\'in sizin kendi belgelerinizi okuyarak cevap vermesi. Chatbot\'unuza kullanim kilavuzu yuklersiniz, sorulari o kilavuzdan cevaplar.', example: 'Esnaf dili: AI\'a "su urun katalogunu ezberle, sadece ordan cevap ver" demek.' },
+    { word: 'API', cat: 'Teknik', def: 'Iki yazilimin birbiriyle konusmasini saglayan kopru. Instagram\'in API\'si sayesinde botunuz DM\'lere ulasir.', example: 'Esnaf dili: Iki dukkan arasindaki telefon hatti. Bot Instagram\'i bu hattan arar, cevap alir.' },
+    { word: 'Chatbot / AI Asistan', cat: 'Urun', def: 'Insan gibi sohbet edebilen, sorulari yanitlayan, islem yapabilen yazilim. Metin veya sesli olabilir.', example: 'Esnaf dili: Dukkaniniza koydugunuz, 7/24 calisan, hic yorulmayan bir tezgahtar.' },
+    { word: 'Token', cat: 'Teknik', def: 'AI\'in metni parcaladigi en kucuk birim. "Merhaba" 1 token, "Merhaba nasilsin" 3 token. Fiyatlandirma token uzerinden yapilir.', example: 'Esnaf dili: Kelime gibi ama tam degil. AI\'a her "token" basina para odersiniz. 1000 token ~750 kelime.' },
+    { word: 'Fine-tuning (Ince Ayar)', cat: 'Ileri', def: 'Hazir bir AI modelini kendi verilerinizle ozellestirme. Sizin sektorunuze, marka dilinize ozel konusmayi ogrenir.', example: 'Esnaf dili: Hazir alinan bir tezgahtara sizin dukkanin urunlerini ve fiyatlarini ogretmek.' },
+    { word: 'NLP (Dogal Dil Isleme)', cat: 'Teknik', def: 'Bilgisayarlarin insan dilini anlamasini saglayan teknoloji. Turkceyi, Ingilizceyi, argoyu, espriyi anlamak.', example: 'Esnaf dili: AI\'in "musait misin" ile "musait misiniz" arasindaki farki anlayabilmesi.' },
+    { word: 'Otomasyon', cat: 'Urun', def: 'Tekrar eden isleri otomatige baglama. "Musteri siparis verince fatura kes, kargoya bildir, musteriye mesaj at" zinciri.', example: 'Esnaf dili: Dukkani kapattiktan sonra kendi kendine calismaya devam eden sistem.' },
+    { word: 'Makine Ogrenmesi', cat: 'Temel', def: 'Bilgisayarlarin veriden ogrenmesi. Ne kadar cok veri gorurse o kadar akillanir. Programlama degil, egitimdir.', example: 'Esnaf dili: Ciraga "bunu boyle yap" demek yerine, 1000 kere izletip kendisinin ogrenmesini beklemek.' },
+    { word: 'Deep Learning (Derin Ogrenme)', cat: 'Ileri', def: 'Makine ogrenmesinin beyin hucrelerini taklit eden ileri versiyonu. Goruntu tanima, ses tanima gibi karmasik isleri yapar.', example: 'Esnaf dili: 100 katli bir apartmanda her katta farkli bir sey ogrenen cirak ordusu.' },
+    { word: 'GPT (Generative Pre-trained Transformer)', cat: 'Teknik', def: 'OpenAI\'in gelistirdigi, dunyanin en populer AI model ailesi. ChatGPT\'nin arkasindaki teknoloji.', example: 'Esnaf dili: Dunyanin en cok kitap okumus, en bilgili "personeli". Sordugunuz her seye cevap uretebilir.' },
+    { word: 'Vector Database (Vektor Veritabani)', cat: 'Ileri', def: 'AI\'in bilgileri anlamina gore siraladigi ozel veritabani. "Elma" ve "armut" birbirine yakin durur.', example: 'Esnaf dili: Urunleri "fiyatina gore" degil, "neye benzedigine gore" rafa dizen depo.' },
+    { word: 'Hallucination (Halusinasyon)', cat: 'Temel', def: 'AI\'in gercek olmayan bilgileri kendinden emin sekilde soylemesi. En buyuk AI risklerinden biridir.', example: 'Esnaf dili: Hic gitmedigi bir sehri "ben orayi iyi bilirim" diye anlatan musteri gibi.' },
+    { word: 'Embedding', cat: 'Teknik', def: 'Kelimeleri, cumleleri matematiksel sayilara cevirme islemi. AI boylece "benzer" seyleri bulabilir.', example: 'Esnaf dili: Her urune bir barkod basmak gibi. AI urunleri bu barkodlarla eslestirir.' },
+    { word: 'JSON / Structured Output', cat: 'Teknik', def: 'AI\'in verdigi cevabin bilgisayar tarafindan okunabilir, duzgun formatta olmasi. Tablo, liste seklinde cikti.', example: 'Esnaf dili: AI\'a "bana duzensiz anlatma, tablo halinde ver" demek.' },
+    { word: 'ManyChat', cat: 'Arac', def: 'Instagram DM ve WhatsApp icin populer chatbot platformu. Surukle-birak mantigiyla bot yapilir.', example: 'Esnaf dili: Instagram mesajlarinizi otomatige baglamak icin kullanilan bir arac.' },
+    { word: 'Make.com (Integromat)', cat: 'Arac', def: '2000+ uygulamayi birbirine baglayan gorsel otomasyon platformu. Kod yazmadan is akisi olusturulur.', example: 'Esnaf dili: "Instagram\'da siparis gelince Shopier\'e fatura kes, kargoya bildir" zincirini fareyle cizerek kurmak.' },
+    { word: 'Webhook', cat: 'Teknik', def: 'Bir sistemde olay oldugunda diger sisteme otomatik bildirim gonderme. "Siparis geldi" sinyali gibi.', example: 'Esnaf dili: Dukkanin kapisina takilan zil. Musteri gelince zil calar, siz kosarsiniz.' },
+    { word: 'Shopier', cat: 'Arac', def: 'Turkiye\'nin en yaygin dijital odeme platformu. Fiziksel ve dijital urunler icin odeme linki olusturur.', example: 'Esnaf dili: Dukkanin kasasi ve pos cihazi. Musteri tiklar, odeme yapar, para hesabiniza gecer.' },
+    { word: 'Slack', cat: 'Arac', def: 'Ekiplerin yazismasi icin kullanilan profesyonel mesajlasma platformu. AI botlari Slack\'e entegre olabilir.', example: 'Esnaf dili: WhatsApp\'in takim elbiseli hali. Tum ekibin konustugu, botlarin da katilabildigi ofis.' },
+    { word: 'CRM', cat: 'Is', def: 'Musteri Iliskileri Yonetimi. Musterilerinizi, siparislerini, iletisim gecmisini tek yerde toplar.', example: 'Esnaf dili: "Kim ne zaman ne aldi, en son ne dedi" defterinin dijital hali.' },
+    { word: 'CI/CD (Surekli Entegrasyon)', cat: 'Ileri', def: 'Yazilim guncellemelerini otomatik test edip canliya alan sistem. AI botunuzun kesintisiz calismasini saglar.', example: 'Esnaf dili: Dukkan tadilatini gece herkes uyurken yapip sabaha hazir etmek.' },
+    { word: 'GDPR', cat: 'Yasal', def: 'Avrupa Birligi Genel Veri Koruma Tuzugu. Kisisel verilerin korunmasi icin en sert yasa. Avrupa\'daki musteriler icin zorunlu.', example: 'Esnaf dili: AB\'nin "musterinin bilgilerini corbacilik yapma, yoksa ceza keserim" kanunu.' },
+    { word: 'KVKK', cat: 'Yasal', def: 'Kisisel Verileri Koruma Kanunu. Turkiye\'nin veri koruma yasasi. Musteri bilgilerini nasil toplayip saklayacaginizi duzenler.', example: 'Esnaf dili: "Musterinin adresini, telefonunu baskasina verme, saklama kosullarina uy" kanunu.' },
+    { word: 'OpenAI API', cat: 'Arac', def: 'ChatGPT\'nin arkasindaki teknolojiye yazilim uzerinden erisim. Aylik kullandigin kadar ode, sabit ucret yok.', example: 'Esnaf dili: Dunyanin en iyi tezgahtarini saatlik veya is basina kiralamak gibi.' },
+    { word: 'Midjourney / DALL-E', cat: 'Arac', def: 'Yazidan gorsel ureten AI araclari. "Mavi elbiseli bir manken" yazarsiniz, fotografini yapar.', example: 'Esnaf dili: "Fotografciya gidip cekim yaptirmak yerine, bilgisayara tarif edip resim cizdirmek."' },
+    { word: 'Sentiment Analysis (Duygu Analizi)', cat: 'Ileri', def: 'Bir metnin duygusal tonunu olcme. Musteri mesajinin "sinirli mi, mutlu mu, notr mu" oldugunu anlar.', example: 'Esnaf dili: Musterinin yuzune bakmadan "bu adam kizgin mi, memnun mu" anlamak.' },
+    { word: 'Context Window (Baglam Penceresi)', cat: 'Teknik', def: 'AI\'in bir seferde "hatirlayabildigi" konusma miktari. Ne kadar genisse o kadar uzun ve tutarli konusur.', example: 'Esnaf dili: Tezgahtarin bir seferde aklinin aldigi konusma uzunlugu. 10 dakikalik siparisi unutmadan alabilir mi?' },
+    { word: 'Zapier', cat: 'Arac', def: 'Make.com benzeri, uygulamalar arasi otomasyon platformu. 5000+ entegrasyon destekler.', example: 'Esnaf dili: Make.com\'un Amerikali kardesi. Ayni isi yapar, biraz daha pahalidir.' }
+  ];
+
+  var alpha = 'ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ';
+  var glossaryGrid = document.getElementById('glossaryGrid');
+  var alphaEl = document.getElementById('glossaryAlpha');
+  var searchInput = document.getElementById('glossarySearch');
+
+  function renderGlossary(filter) {
+    var filtered = filter
+      ? terms.filter(function(t) {
+          return t.word.toLocaleLowerCase('tr').indexOf(filter.toLocaleLowerCase('tr')) !== -1
+            || t.def.toLocaleLowerCase('tr').indexOf(filter.toLocaleLowerCase('tr')) !== -1
+            || t.cat.toLocaleLowerCase('tr').indexOf(filter.toLocaleLowerCase('tr')) !== -1;
+        })
+      : terms;
+
+    glossaryGrid.innerHTML = filtered.map(function(t) {
+      return '<div class="glossary-term reveal" id="term-' + t.word.charAt(0).toLocaleLowerCase('tr') + '">' +
+        '<div class="glossary-term__word">' + t.word + '</div>' +
+        '<div class="glossary-term__category">' + t.cat + '</div>' +
+        '<div class="glossary-term__def">' + t.def + '</div>' +
+        '<div class="glossary-term__example">' + t.example + '</div>' +
+        '</div>';
+    }).join('');
+
+    initScrollReveal();
+  }
+
+  function buildAlpha() {
+    var usedLetters = {};
+    terms.forEach(function(t) { usedLetters[t.word.charAt(0).toLocaleLowerCase('tr')] = true; });
+
+    var html = '';
+    for (var i = 0; i < alpha.length; i++) {
+      var letter = alpha[i].toLocaleLowerCase('tr');
+      if (usedLetters[letter]) {
+        html += '<a href="#term-' + letter + '" data-letter="' + letter + '">' + alpha[i] + '</a>';
+      }
+    }
+    alphaEl.innerHTML = html;
+  }
+
+  searchInput.addEventListener('input', function() {
+    renderGlossary(this.value);
+  });
+
+  buildAlpha();
+  renderGlossary();
+})();
+</script>
+</body>
+</html>

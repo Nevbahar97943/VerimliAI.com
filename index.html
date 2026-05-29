@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VerimliAI - Isletmenizin tum dijital sureclerini yapay zeka ile otomatize eden yeni nesil hizmet ajansi. Satis asistani, icerik asistani ve dijital magaza.">
+  <meta name="theme-color" content="#6c5ce7">
+  <meta property="og:title" content="VerimliAI - Yapay Zeka Asistan & Otomasyon Ajansi">
+  <meta property="og:description" content="KOBIniz icin 7/24 calisan AI cozumleri. Satisi, icerigi ve musteri iliskilerini otomatize edin.">
+  <meta property="og:type" content="website">
+  <title>VerimliAI - Yapay Zeka Asistan & Otomasyon Ajansi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Yapay zeka botu yanlis bir bilgi verir mi?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hayir, VerimliAI botu sadece sizin yuklediginiz urun katalogu, fiyat listesi, SSS ve politika bilgilerine dayanarak yanit verir. Sistem disi bir bilgi uretmez. Tum yanitlar sizin kontrolunuzdedir ve istediginiz zaman guncellenebilir."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Sistem kurulumu ne kadar suruyor?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Baslangic paketimiz 2-3 is gununde, Profesyonel ve Kurumsal paketlerimiz 3-7 is gununde canliya alinir. Kurulum sonrasi ekibinize 1 saatlik ucretsiz egitim verilir."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Mevcut sistemlerimize (Shopier, Trendyol vb.) entegre olabiliyor mu?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Evet, VerimliAI cozumleri Shopier, Trendyol, Shopify, WooCommerce ve bircok e-ticaret altyapisiyla tam entegrasyon saglar. Ayrica Make.com ve Zapier gibi otomasyon araclariyla 2000'den fazla uygulamaya baglanabilir."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "VerimliAI hangi platformlarda calisir?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI Satis Asistanimiz Instagram DM, WhatsApp Business, web sitesi canli destek ve e-posta kanallarina entegre olur. Secilen pakete gore entegrasyon sayisi artar. Tum platformlarda ayni AI modeli tutarli bir musteri deneyimi sunar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Abonelik iptali durumunda ne olur?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aylik aboneligi dilediginiz zaman iptal edebilirsiniz. Iptal durumunda AI asistan sistemleri durdurulur ancak gecmis verileriniz 30 gun sureyle saklanir. Taahhut veya cayma bedeli yoktur."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Musteri verilerim guvende mi?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Kesinlikle. KVKK uyumlu calisiyor, musteri verilerini sifreli sakliyoruz. OpenAI API uzerinden yapilan islemlerde verileriniz OpenAI tarafindan egitim amaciyla kullanilmaz. Detayli bilgi icin Veri Guvenligi Garantisi sayfamizi ziyaret edebilirsiniz."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo">
+        <div class="header__logo-icon">V</div>
+        <div class="header__logo-text">Verimli<span>AI</span></div>
+      </a>
+      <nav class="header__nav">
+        <a href="index.html" class="header__nav-link active">Ana Sayfa</a>
+        <a href="#hizmetler" class="header__nav-link">Hizmetler</a>
+        <a href="#paketler" class="header__nav-link">Paketler</a>
+        <a href="magaza.html" class="header__nav-link">Magaza</a>
+        <a href="blog.html" class="header__nav-link">Blog</a>
+        <a href="iletisim.html" class="header__nav-link">Iletisim</a>
+      </nav>
+      <a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+      <button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========== MOBILE MENU ========== -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="mobile-menu__link">Ana Sayfa</a>
+    <a href="#hizmetler" class="mobile-menu__link">Hizmetler</a>
+    <a href="#paketler" class="mobile-menu__link">Paketler</a>
+    <a href="magaza.html" class="mobile-menu__link">Dijital Magaza</a>
+    <a href="blog.html" class="mobile-menu__link">Blog</a>
+    <a href="iletisim.html" class="mobile-menu__link">Iletisim</a>
+    <a href="randevu.html" class="btn btn-primary btn-full" style="margin-top: 8px;">Randevu Al</a>
+  </div>
+
+  <main>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="hero">
+      <div class="hero__orb hero__orb--1"></div>
+      <div class="hero__orb hero__orb--2"></div>
+      <div class="container">
+        <div class="hero__grid">
+          <div class="hero__content">
+            <div class="hero__badge">
+              <span class="badge badge-primary">Yapay Zeka Odakli Buyume</span>
+            </div>
+            <h1 class="hero__title">
+              Isletmeniz Icin<br>
+              <span class="text-gradient">7/24 Calisan</span><br>
+              Yapay Zeka
+            </h1>
+            <p class="hero__desc">
+              Musteri iliskilerinden satisa, icerik uretiminden siparis takibine kadar tum dijital sureclerinizi yapay zeka ile otomatize ediyoruz. Siz isinize odaklanin, gerisini VerimliAI halletsin.
+            </p>
+            <div class="hero__actions">
+              <a href="randevu.html" class="btn btn-primary btn-lg">Ucretsiz Danismanlik Al</a>
+              <a href="#hizmetler" class="btn btn-secondary btn-lg">Hizmetleri Kesfet</a>
+            </div>
+            <div class="hero__stats">
+              <div>
+                <div class="hero__stat-value">%80</div>
+                <div class="hero__stat-label">Zaman Tasarrufu</div>
+              </div>
+              <div>
+                <div class="hero__stat-value">3x</div>
+                <div class="hero__stat-label">Daha Fazla Satis</div>
+              </div>
+              <div>
+                <div class="hero__stat-value">24/7</div>
+                <div class="hero__stat-label">Kesintisiz Hizmet</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero__visual">
+            <div class="hero__visual-card">
+              <div class="hero__visual-icon">&#x1F4AC;</div>
+              <h3 class="hero__visual-title">AI Satis Asistani Aktif</h3>
+              <p class="hero__visual-desc">
+                "Merhaba! Beden olcusu hakkinda yardimci olabilir miyim? Hemen stoktaki urunlerimizi gostereyim."
+              </p>
+              <div class="hero__visual-stats">
+                <div class="hero__visual-stat">
+                  <div class="hero__visual-stat-val">%94</div>
+                  <div class="hero__visual-stat-lbl">Musteri Memnuniyeti</div>
+                </div>
+                <div class="hero__visual-stat">
+                  <div class="hero__visual-stat-val">12sn</div>
+                  <div class="hero__visual-stat-lbl">Ort. Yanit Suresi</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section class="section" id="hizmetler">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="badge badge-accent section-header__badge">Hizmetlerimiz</span>
+          <h2 class="heading-2 section-header__title">Isletmenizi Bir Ust Seviyeye<br>Tasiyacak <span class="text-gradient">AI Cozumleri</span></h2>
+          <p class="section-header__desc">
+            KOBInizin ihtiyaclarina ozel gelistirdigimiz uc temel hizmet paketi ile dijital donusumunuzu bugun baslatin.
+          </p>
+        </div>
+        <div class="services__grid">
+          <!-- Service 1 -->
+          <div class="service-card reveal">
+            <div class="service-card__icon">&#x1F4B0;</div>
+            <h3 class="service-card__title">AI Satis Asistani</h3>
+            <p class="service-card__desc">
+              Instagram DM, WhatsApp ve web sitenize entegre olan; 7/24 musterileri karsilayan, sorulari yanitlayan, kargo takibi veren ve dogrudan odeme linkine yonlendirip satis kapatan akilli bot.
+            </p>
+            <div class="service-card__features">
+              <span class="service-card__feature">7/24 otomatik musteri karsilama</span>
+              <span class="service-card__feature">Anlik kargo takip bilgisi</span>
+              <span class="service-card__feature">Otomatik odeme linki yonlendirme</span>
+              <span class="service-card__feature">Instagram DM & WhatsApp entegrasyonu</span>
+              <span class="service-card__feature">Coklu platform destegi</span>
+            </div>
+          </div>
+          <!-- Service 2 -->
+          <div class="service-card reveal">
+            <div class="service-card__icon">&#x270D;&#xFE0F;</div>
+            <h3 class="service-card__title">AI Icerik Asistani</h3>
+            <p class="service-card__desc">
+              E-ticaret ve hizmet markalari icin aylik sosyal medya icerik planini, Reels/TikTok senaryolarini, hook metinlerini ve reklam copy'lerini otomatik ureten AI sistemleri.
+            </p>
+            <div class="service-card__features">
+              <span class="service-card__feature">Aylik otomatik icerik takvimi</span>
+              <span class="service-card__feature">Reels & TikTok senaryolari</span>
+              <span class="service-card__feature">Reklam metni ve hook uretimi</span>
+              <span class="service-card__feature">Trend analizi ve adaptasyon</span>
+              <span class="service-card__feature">Marka sesine uygun tonlama</span>
+            </div>
+          </div>
+          <!-- Service 3 -->
+          <div class="service-card reveal">
+            <div class="service-card__icon">&#x1F6CD;&#xFE0F;</div>
+            <h3 class="service-card__title">Dijital Magaza</h3>
+            <p class="service-card__desc">
+              Isletmelerin ve bireylerin hayatini kolaylastiracak hazir yapay zeka prompt paketleri ve AI destekli is sablonlari. Web sitesi uzerinden dogrudan dijital urun olarak satin alinabilir.
+            </p>
+            <div class="service-card__features">
+              <span class="service-card__feature">Hazir AI prompt paketleri</span>
+              <span class="service-card__feature">Is sablonlari ve checklistler</span>
+              <span class="service-card__feature">Aninda dijital teslimat</span>
+              <span class="service-card__feature">Duzenli guncellenen icerik</span>
+              <span class="service-card__feature">Her sektore ozel paketler</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== REVENUE MODEL ========== -->
+    <section class="section revenue" id="gelir-modeli">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="badge badge-success section-header__badge">Gelir Modeli</span>
+          <h2 class="heading-2 section-header__title">Cift Yonlu <span class="text-gradient">Kazanc Yapisi</span></h2>
+          <p class="section-header__desc">
+            Isletmelere sundugumuz cozumlerde hem kurulum hem de aylik abonelik modeliyle surdurulebilir gelir elde ediyoruz.
+          </p>
+        </div>
+        <div class="revenue__grid">
+          <div class="revenue-card reveal">
+            <div class="revenue-card__header">
+              <div class="revenue-card__icon revenue-card__icon--setup">&#x1F4E6;</div>
+              <div>
+                <div class="revenue-card__title">Tek Seferlik Kurulum</div>
+                <div class="revenue-card__subtitle">Baslangic paketi</div>
+              </div>
+            </div>
+            <div class="revenue-card__price">7.500 <span>TL - 20.000 TL</span></div>
+            <p class="revenue-card__desc">
+              Isletmeye ozel sistemin ilk kurulumu, entegrasyonlari ve egitimi icin alinan pesin odeme. Paket kapsamina gore degiskenlik gosterir.
+            </p>
+          </div>
+          <div class="revenue-card reveal">
+            <div class="revenue-card__header">
+              <div class="revenue-card__icon revenue-card__icon--monthly">&#x1F504;</div>
+              <div>
+                <div class="revenue-card__title">Aylik Abonelik</div>
+                <div class="revenue-card__subtitle">Surekli gelir</div>
+              </div>
+            </div>
+            <div class="revenue-card__price">1.500 <span>TL - 3.500 TL</span></div>
+            <p class="revenue-card__desc">
+              Sistemlerin acik kalmasi, optimize edilmesi ve AI sunucu masraflari icin her ay duzenli abonelik ucreti. Pasif ve surdurulebilir gelir modeli.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ROI CALCULATOR ========== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="badge badge-accent section-header__badge">Kazanc Hesapla</span>
+          <h2 class="heading-2 section-header__title">AI ile Ne Kadar <span class="text-gradient">Kazanabilirsiniz?</span></h2>
+          <p class="section-header__desc">
+            Asagidaki degerleri isletmenize gore ayarlayin, aylik tahmini ek kazancinizi ve zaman tasarrufunuzu gorun.
+          </p>
+        </div>
+        <div class="roi-calculator reveal" id="roiCalculator">
+          <div class="roi-calculator__inputs">
+            <div class="roi-calc-group">
+              <label>Aylik Gelen DM / Musteri Mesaji <span id="msgCountDisplay">150</span></label>
+              <input type="range" class="roi-calc-slider" id="msgSlider" min="30" max="1000" value="150" step="10">
+              <div class="roi-calc-labels"><span>30</span><span>1.000</span></div>
+            </div>
+            <div class="roi-calc-group">
+              <label>Ortalama Urun / Sepet Fiyati <span id="priceDisplay">350 TL</span></label>
+              <input type="range" class="roi-calc-slider" id="priceSlider" min="50" max="2000" value="350" step="10">
+              <div class="roi-calc-labels"><span>50 TL</span><span>2.000 TL</span></div>
+            </div>
+          </div>
+          <div class="roi-calculator__results">
+            <div class="roi-result-card">
+              <div class="roi-result-card__value" id="roiRevenue">15.750 TL</div>
+              <div class="roi-result-card__label">Aylik Tahmini Ek Kazanc</div>
+              <div class="roi-result-card__sub">Kaçan satislarin %30'u kurtarilir</div>
+            </div>
+            <div class="roi-result-card">
+              <div class="roi-result-card__value" id="roiTime">42 Saat</div>
+              <div class="roi-result-card__label">Aylik Kazanilan Zaman</div>
+              <div class="roi-result-card__sub">Mesaj basina ~2 dk tasarruf</div>
+            </div>
+          </div>
+          <p class="roi-note">Bu hesaplama, benzer isletmelerdeki ortalama verilere dayanmaktadir. Size ozel kesin rakamlar icin <a href="randevu.html" style="color: var(--clr-accent-400); text-decoration: underline;">ucretsiz danismanlik</a> alin.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PACKAGES ========== -->
+    <section class="section" id="paketler">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="badge badge-primary section-header__badge">Paketler</span>
+          <h2 class="heading-2 section-header__title">Isletmenize Ozel <span class="text-gradient">Cozum Paketleri</span></h2>
+          <p class="section-header__desc">
+            Her olcekteki isletme icin uygun fiyatli ve esnek paket secenekleri.
+          </p>
+        </div>
+        <div class="pricing__grid">
+          <!-- Basic -->
+          <div class="pricing-card reveal">
+            <h3 class="pricing-card__name">Baslangic</h3>
+            <p class="pricing-card__desc">Kucuk isletmeler ve yeni baslayanlar icin idealdir.</p>
+            <div class="pricing-card__price">
+              <span class="pricing-card__price-amount">7.500 TL</span>
+              <span class="pricing-card__price-period"> + 1.500 TL/ay</span>
+            </div>
+            <div class="pricing-card__divider"></div>
+            <div class="pricing-card__features">
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> Tek platform entegrasyonu</div>
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> Temel AI Satis Asistani</div>
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> 50 urun tanimlamasi</div>
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> Aylik performans raporu</div>
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> E-posta destek</div>
+            </div>
+            <a href="randevu.html" class="btn btn-secondary btn-full">Paketi Sec</a>
+          </div>
+          <!-- Pro -->
+          <div class="pricing-card pricing-card--featured reveal">
+            <h3 class="pricing-card__name">Profesyonel</h3>
+            <p class="pricing-card__desc">Buyuyen isletmeler icin en cok tercih edilen paket.</p>
+            <div class="pricing-card__price">
+              <span class="pricing-card__price-amount">12.500 TL</span>
+              <span class="pricing-card__price-period"> + 2.500 TL/ay</span>
+            </div>
+            <div class="pricing-card__divider"></div>
+            <div class="pricing-card__features">
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> Tum platform entegrasyonlari</div>
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> Gelismis AI Satis Asistani</div>
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> AI Icerik Asistani dahil</div>
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> 200 urun tanimlamasi</div>
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> Haftalik performans raporu</div>
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> Oncelikli destek</div>
+            </div>
+            <a href="randevu.html" class="btn btn-primary btn-full">Paketi Sec</a>
+          </div>
+          <!-- Enterprise -->
+          <div class="pricing-card reveal">
+            <h3 class="pricing-card__name">Kurumsal</h3>
+            <p class="pricing-card__desc">Yuksek hacimli isletmeler icin ozellestirilmis cozum.</p>
+            <div class="pricing-card__price">
+              <span class="pricing-card__price-amount">20.000 TL</span>
+              <span class="pricing-card__price-period"> + 3.500 TL/ay</span>
+            </div>
+            <div class="pricing-card__divider"></div>
+            <div class="pricing-card__features">
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> Sinirsiz platform entegrasyonu</div>
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> Premium AI ikilisi</div>
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> Sinirsiz urun tanimlamasi</div>
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> Ozellestirilmis AI modeli</div>
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> Gunluk performans raporu</div>
+              <div class="pricing-card__feature"><span class="pricing-card__feature-check">&#x2714;</span> 7/24 Ozel destek</div>
+            </div>
+            <a href="randevu.html" class="btn btn-secondary btn-full">Paketi Sec</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== MARKETING STRATEGY ========== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="badge badge-accent section-header__badge">Buyume Stratejisi</span>
+          <h2 class="heading-2 section-header__title">Nasil <span class="text-gradient">Buyuyecegiz?</span></h2>
+          <p class="section-header__desc">
+            Icerik pazarlamasi ve dogrudan satis kanallariyla hedef kitlemize ulasiyoruz.
+          </p>
+        </div>
+        <div class="marketing__grid">
+          <div class="marketing-card reveal">
+            <div class="marketing-card__icon">&#x1F4F1;</div>
+            <div>
+              <h3 class="marketing-card__title">Icerik Pazarlamasi</h3>
+              <p class="marketing-card__desc">
+                TikTok ve Instagram'da VerimliAI hesaplari uzerinden, AI'nin isletmelere nasil zaman ve para kazandirdigini gosteren dikey videolar ureterek organik kitleyi web sitesine cekiyoruz.
+              </p>
+            </div>
+          </div>
+          <div class="marketing-card reveal">
+            <div class="marketing-card__icon">&#x1F91D;</div>
+            <div>
+              <h3 class="marketing-card__title">Network & Dogrudan Satis</h3>
+              <p class="marketing-card__desc">
+                E-ticaret yapan butiklerden ve lokal isletmelerden baslayarak sistemin basarisini canli olarak kanitliyoruz. Gece 03:00'te satis kapatan botu goren isletme bu sistemden vazgecemiyor.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="badge badge-primary section-header__badge">SSS</span>
+          <h2 class="heading-2 section-header__title">Sikca Sorulan <span class="text-gradient">Sorular</span></h2>
+        </div>
+        <div class="faq__list">
+          <div class="faq__item reveal">
+            <button class="faq__question">
+              VerimliAI hangi platformlarda calisir?
+              <span class="faq__question-icon">+</span>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                VerimliAI Satis Asistani; Instagram DM, WhatsApp Business, web sitesi canli destek ve e-posta kanallarina entegre olabilir. Secilen pakete gore entegrasyon sayisi artar. Tum platformlarda ayni AI modeli tutarli bir musteri deneyimi sunar.
+              </div>
+            </div>
+          </div>
+          <div class="faq__item reveal">
+            <button class="faq__question">
+              Kurulum ne kadar surer?
+              <span class="faq__question-icon">+</span>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                Baslangic paketi kurulumu ortalama 2-3 is gunu icerisinde tamamlanir. Profesyonel ve Kurumsal paketlerde entegrasyon sayisina bagli olarak 3-7 is gunu arasinda degisir. Kurulum sonrasi ekibinize 1 saatlik ucretsiz egitim verilir.
+              </div>
+            </div>
+          </div>
+          <div class="faq__item reveal">
+            <button class="faq__question">
+              AI asistan kendi kendine ogrenir mi?
+              <span class="faq__question-icon">+</span>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                Evet, VerimliAI asistani gecen her konusmadan ogrenir ve kendini surekli gelistirir. Musterilerinizin sik sordugu sorulari zamanla daha iyi yanitlar, yeni urunleri otomatik tanir ve satis dilini markanizin tonuna gore adapte eder. Aylik abonelik paketiniz bu surekli optimizasyonu kapsar.
+              </div>
+            </div>
+          </div>
+          <div class="faq__item reveal">
+            <button class="faq__question">
+              Dijital magazadan aldigim urunu nasil teslim alirim?
+              <span class="faq__question-icon">+</span>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                Dijital magazadan satin aldiginiz tum urunler (prompt paketleri, is sablonlari vb.) odeme onayi sonrasi aninda e-posta adresinize ve magaza hesabiniza dijital olarak teslim edilir. PDF, Notion sablonu veya Google Sheets formati secenekleri mevcuttur.
+              </div>
+            </div>
+          </div>
+          <div class="faq__item reveal">
+            <button class="faq__question">
+              Abonelik iptali durumunda ne olur?
+              <span class="faq__question-icon">+</span>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                Aylik aboneliginizi dilediginiz zaman iptal edebilirsiniz. Iptal durumunda AI asistan sistemleri durdurulur ancak gecmis verileriniz 30 gun sureyle saklanir. Bu sure icinde tekrar aktif ederseniz kaldiginiz yerden devam edersiniz. Taahhut veya cayma bedeli yoktur.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section class="section">
+      <div class="container">
+        <div class="cta__inner reveal">
+          <h2 class="heading-2 cta__title">
+            Isletmenizin <span class="text-gradient">Yapay Zeka</span> ile Tanismaya Hazir misiniz?
+          </h2>
+          <p class="cta__desc">
+            Hemen ucretsiz danismanlik randevusu olusturun. Isletmenize ozel AI cozumlerini birlikte planlayalim.
+          </p>
+          <div class="cta__actions">
+            <a href="randevu.html" class="btn btn-primary btn-lg">Ucretsiz Danismanlik Al</a>
+            <a href="magaza.html" class="btn btn-secondary btn-lg">Dijital Magazayi Kesfet</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" class="header__logo">
+            <div class="header__logo-icon">V</div>
+            <div class="header__logo-text">Verimli<span>AI</span></div>
+          </a>
+          <p class="footer__brand-desc">
+            Isletmelerin tum dijital sureclerini yapay zeka ile otomatize eden yeni nesil hizmet ajansi.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Hizmetler</h4>
+          <div class="footer__links">
+            <a href="#" class="footer__link">AI Satis Asistani</a>
+            <a href="#" class="footer__link">AI Icerik Asistani</a>
+            <a href="magaza.html" class="footer__link">Dijital Magaza</a>
+            <a href="#" class="footer__link">Kurumsal Cozumler</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Kurumsal</h4>
+          <div class="footer__links">
+            <a href="randevu.html" class="footer__link">Randevu Al</a>
+            <a href="iletisim.html" class="footer__link">Iletisim</a>
+            <a href="blog.html" class="footer__link">Blog</a>
+            <a href="basari-hikayeleri.html" class="footer__link">Basari Hikayeleri</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Yasal</h4>
+          <div class="footer__links">
+            <a href="gizlilik-politikasi.html" class="footer__link">Gizlilik Politikasi</a>
+            <a href="kullanim-kosullari.html" class="footer__link">Kullanim Kosullari</a>
+            <a href="kvkk.html" class="footer__link">KVKK Aydinlatma</a>
+            <a href="veri-guvenligi.html" class="footer__link">Veri Guvenligi</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 VerimliAI. Tum haklari saklidir.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="Instagram">IG</a>
+          <a href="#" class="footer__social-link" aria-label="TikTok">TT</a>
+          <a href="#" class="footer__social-link" aria-label="LinkedIn">LI</a>
+          <a href="#" class="footer__social-link" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

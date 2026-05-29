@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VerimliAI Yardim Merkezi - Kurulum, entegrasyon, guvenlik ve faturalandirma rehberleri. AI asistaniniz hakkinda tum sorularin cevabi.">
+<title>Yardim Merkezi - VerimliAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="header" id="header"><div class="header__inner">
+<a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a>
+<nav class="header__nav"><a href="index.html" class="header__nav-link">Ana Sayfa</a><a href="magaza.html" class="header__nav-link">Magaza</a><a href="blog.html" class="header__nav-link">Blog</a></nav>
+<a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+<button class="header__mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button></div></header>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-menu__link">Ana Sayfa</a><a href="randevu.html" class="mobile-menu__link">Randevu</a></div>
+
+<main>
+<section class="demo-hero"><div class="container">
+<span class="badge badge-primary">Destek</span>
+<h1 class="heading-1" style="margin-top:16px;">Yardim <span class="text-gradient">Merkezi</span></h1>
+<p class="section-header__desc" style="margin-top:12px;">AI asistaninizin kurulumu, entegrasyonu, guvenligi ve faturalandirmasi hakkinda tum rehberler.</p>
+</div></section>
+
+<section style="padding-bottom:80px;"><div class="container">
+<div class="help-categories">
+  <div class="help-category" onclick="document.getElementById('cat1').scrollIntoView({behavior:'smooth'})"><div class="help-category__icon">&#x1F527;</div><div class="help-category__title">Kurulum ve Entegrasyon</div><div class="help-category__count">6 rehber</div></div>
+  <div class="help-category" onclick="document.getElementById('cat2').scrollIntoView({behavior:'smooth'})"><div class="help-category__icon">&#x1F512;</div><div class="help-category__title">Veri ve Guvenlik</div><div class="help-category__count">4 rehber</div></div>
+  <div class="help-category" onclick="document.getElementById('cat3').scrollIntoView({behavior:'smooth'})"><div class="help-category__icon">&#x1F4B3;</div><div class="help-category__title">Faturalandirma ve Paketler</div><div class="help-category__count">5 rehber</div></div>
+</div>
+
+<div class="help-articles">
+<h2 id="cat1" style="font-size:var(--fs-600);color:var(--clr-neutral-50);margin-bottom:var(--space-6);">Kurulum ve Entegrasyon</h2>
+<div class="help-article" onclick="this.classList.toggle('open')"><div class="help-article__q">AI asistan Instagram hesabima nasil baglanir?</div><div class="help-article__a">AI asistaniniz, Instagram Business hesabiniz uzerinden Meta Graph API ile baglanir. Kurulum sirasinda sizin adiniza gerekli izinleri alir, Instagram hesabiniza sifre veya kullanici bilgisi girilmesi gerekmez. Baglanti 256-bit SSL ile sifrelenir. Kurulum suresi: 2-3 is gunu.</div></div>
+<div class="help-article" onclick="this.classList.toggle('open')"><div class="help-article__q">Shopier ve Trendyol entegrasyonu nasil yapilir?</div><div class="help-article__a">Her iki platform da resmi API uzerinden entegre edilir. Shopier icin magaza API anahtarinizi, Trendyol icin satici panelinizden alacaginiz entegrasyon bilgilerini kullaniyoruz. Kurulum sonrasi tum siparisler otomatik olarak AI akisina dahil olur. Entegrasyon 1 is gunu icinde tamamlanir.</div></div>
+<div class="help-article" onclick="this.classList.toggle('open')"><div class="help-article__q">Birden fazla Instagram hesabi ekleyebilir miyim?</div><div class="help-article__a">Evet. Profesyonel ve Kurumsal paketlerde sinirsiz Instagram hesabi ekleyebilirsiniz. Her hesap kendi urun katalogu ve yanit politikasiyla ayri yapilandirilir. AI, hangi hesaptan mesaj geldigini otomatik olarak algilar.</div></div>
+
+<h2 id="cat2" style="font-size:var(--fs-600);color:var(--clr-neutral-50);margin:var(--space-10)0 var(--space-6);">Veri ve Guvenlik</h2>
+<div class="help-article" onclick="this.classList.toggle('open')"><div class="help-article__q">Musteri verilerim nasil sifrelenir ve korunur?</div><div class="help-article__a">Tum veri iletimi 256-bit SSL/TLS sifreleme ile korunur. Veritabaninda saklanan veriler AES-256 sifreleme ile sifrelenir. API anahtarlari hicbir zaman kaynak kodda veya loglarda gorunmez. Tum sistem erisimleri 2FA (iki faktorlu kimlik dogrulama) ile korunur.</div></div>
+<div class="help-article" onclick="this.classList.toggle('open')"><div class="help-article__q">OpenAI verilerimi AI egitmek icin kullanir mi?</div><div class="help-article__a">Hayir. OpenAI API kullanim sozlesmesi geregi, API uzerinden gonderilen veriler OpenAI tarafindan modelleri egitmek icin KULLANILMAZ. Bu, ChatGPT'nin ucretsiz surumunden farkli olarak API kullanicilarina ozel bir guvencedir. Verileriniz 30 gun sonra API loglarindan otomatik silinir.</div></div>
+<div class="help-article" onclick="this.classList.toggle('open')"><div class="help-article__q">Sozlesme bitince verilerime ne olur?</div><div class="help-article__a">Sozlesme sonlandiginda tum verileriniz (musteri diyaloglari, urun katalogu, raporlar) 30 gun icinde tum sistemlerimizden kalici olarak silinir. Dilerseniz bu verileri sozlesme bitiminden once disa aktarabilirsiniz. Verilerin sahibi her zaman sizsiniz.</div></div>
+
+<h2 id="cat3" style="font-size:var(--fs-600);color:var(--clr-neutral-50);margin:var(--space-10)0 var(--space-6);">Faturalandirma ve Paketler</h2>
+<div class="help-article" onclick="this.classList.toggle('open')"><div class="help-article__q">Abonelik iptali ve cayma bedeli var mi?</div><div class="help-article__a">Hayir. Aylik aboneliklerde taahhut veya cayma bedeli yoktur. Dilediginiz zaman aboneligi iptal edebilirsiniz. Iptal durumunda AI asistan durdurulur, verileriniz 30 gun saklanir. Bu sure icinde tekrar aktif ederseniz kaldiginiz yerden devam edersiniz.</div></div>
+<div class="help-article" onclick="this.classList.toggle('open')"><div class="help-article__q">Global odeme yontemleri nelerdir?</div><div class="help-article__a">Turkiye'den Shopier (kredi karti, havale/EFT), globalden Stripe (Visa, Mastercard, Amex) ile odeme kabul ediyoruz. Faturalandirma TL, USD, EUR veya AED para birimlerinde yapilabilir. Kurumsal musteriler icin banka havalesi ile yillik faturalandirma secenegi de mevcuttur.</div></div>
+<div class="help-article" onclick="this.classList.toggle('open')"><div class="help-article__q">Paket yukseltme veya dusurme mumkun mu?</div><div class="help-article__a">Evet, paketinizi dilediginiz zaman yukseltebilir veya dusurebilirsiniz. Yuksek pakete gectiginizde ek ucret farklandirilir. Dusuk pakete gectiginizde yeni donemden itibaren yeni fiyat uzerinden faturalandirilirsiniz. Tum gecisler 1 is gunu icinde tamamlanir.</div></div>
+</div>
+
+<div style="text-align:center;margin-top:var(--space-12);"><a href="randevu.html" class="btn btn-primary btn-lg">Daha Fazla Sorunuz mu Var? — Ucretsiz Danismanlik Alin</a></div>
+</div></section></main>
+
+<footer class="footer"><div class="container"><div class="footer__bottom"><p class="footer__copyright">&copy; 2026 VerimliAI. Tum haklari saklidir.</p></div></div></footer>
+<script src="js/main.js"></script><script src="js/chatbot.js"></script>
+</body>
+</html>

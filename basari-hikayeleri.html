@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VerimliAI Basari Hikayeleri - AI Satis Asistani ve otomasyon cozumlerimizle isletmelerin elde ettigi gercek sonuclar.">
+  <title>Basari Hikayeleri - VerimliAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .success-hero {
+      padding-top: calc(var(--header-height) + var(--space-12));
+      padding-bottom: var(--space-8);
+      text-align: center;
+    }
+
+    .case-study {
+      background: var(--clr-neutral-850);
+      border: var(--border-card);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      margin-bottom: var(--space-8);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .case-study__visual {
+      background: var(--clr-neutral-800);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-8);
+      position: relative;
+      overflow: hidden;
+      min-height: 300px;
+    }
+
+    .case-study__visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-primary);
+      opacity: 0.04;
+    }
+
+    .case-study__mockup {
+      position: relative;
+      z-index: 1;
+    }
+
+    .chat-mockup {
+      background: var(--clr-neutral-900);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5);
+      width: 280px;
+      border: 1px solid var(--clr-neutral-700);
+    }
+
+    .chat-mockup__header {
+      font-size: var(--fs-300);
+      color: var(--clr-neutral-500);
+      text-align: center;
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--clr-neutral-800);
+    }
+
+    .chat-mockup__msg {
+      margin-bottom: var(--space-3);
+      display: flex;
+    }
+
+    .chat-mockup__msg--customer {
+      justify-content: flex-start;
+    }
+
+    .chat-mockup__msg--bot {
+      justify-content: flex-end;
+    }
+
+    .chat-mockup__bubble {
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-lg);
+      font-size: var(--fs-300);
+      max-width: 85%;
+    }
+
+    .chat-mockup__bubble--customer {
+      background: var(--clr-neutral-800);
+      color: var(--clr-neutral-200);
+    }
+
+    .chat-mockup__bubble--bot {
+      background: var(--gradient-primary);
+      color: #fff;
+    }
+
+    .chat-mockup__time {
+      font-size: 10px;
+      color: var(--clr-success);
+      text-align: right;
+      margin-top: var(--space-4);
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--clr-neutral-800);
+    }
+
+    .case-study__content {
+      padding: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .case-study__label {
+      font-size: var(--fs-300);
+      color: var(--clr-accent-500);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: var(--fw-semibold);
+      margin-bottom: var(--space-2);
+    }
+
+    .case-study__title {
+      font-size: var(--fs-600);
+      font-weight: var(--fw-bold);
+      color: var(--clr-neutral-50);
+      margin-bottom: var(--space-3);
+    }
+
+    .case-study__desc {
+      font-size: var(--fs-350);
+      color: var(--clr-neutral-400);
+      line-height: var(--lh-relaxed);
+      margin-bottom: var(--space-5);
+    }
+
+    .case-study__metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+
+    .case-study__metric {
+      text-align: center;
+      background: var(--clr-neutral-800);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+    }
+
+    .case-study__metric-val {
+      font-size: var(--fs-600);
+      font-weight: var(--fw-extrabold);
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .case-study__metric-lbl {
+      font-size: var(--fs-300);
+      color: var(--clr-neutral-500);
+      margin-top: var(--space-1);
+    }
+
+    .case-study--reverse .case-study__visual {
+      order: 2;
+    }
+
+    .case-study--reverse .case-study__content {
+      order: 1;
+    }
+
+    .stat-banner {
+      background: var(--clr-neutral-850);
+      border: 1px solid rgba(108, 92, 231, 0.2);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-10);
+      text-align: center;
+      margin-bottom: var(--space-16);
+    }
+
+    .stat-banner__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-8);
+    }
+
+    .stat-banner__item-val {
+      font-size: var(--fs-1000);
+      font-weight: var(--fw-extrabold);
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-banner__item-lbl {
+      font-size: var(--fs-350);
+      color: var(--clr-neutral-400);
+      margin-top: var(--space-2);
+    }
+
+    .simulation-badge {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--clr-warning);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-size: var(--fs-300);
+      font-weight: var(--fw-medium);
+      margin-top: var(--space-3);
+    }
+
+    @media (max-width: 768px) {
+      .case-study {
+        grid-template-columns: 1fr;
+      }
+      .case-study--reverse .case-study__visual {
+        order: -1;
+      }
+      .case-study--reverse .case-study__content {
+        order: 0;
+      }
+      .case-study__metrics {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-2);
+      }
+      .stat-banner__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo">
+        <div class="header__logo-icon">V</div>
+        <div class="header__logo-text">Verimli<span>AI</span></div>
+      </a>
+      <nav class="header__nav">
+        <a href="index.html" class="header__nav-link">Ana Sayfa</a>
+        <a href="index.html#hizmetler" class="header__nav-link">Hizmetler</a>
+        <a href="index.html#paketler" class="header__nav-link">Paketler</a>
+        <a href="magaza.html" class="header__nav-link">Magaza</a>
+        <a href="blog.html" class="header__nav-link">Blog</a>
+        <a href="iletisim.html" class="header__nav-link">Iletisim</a>
+      </nav>
+      <a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+      <button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="mobile-menu__link">Ana Sayfa</a>
+    <a href="index.html#hizmetler" class="mobile-menu__link">Hizmetler</a>
+    <a href="index.html#paketler" class="mobile-menu__link">Paketler</a>
+    <a href="magaza.html" class="mobile-menu__link">Dijital Magaza</a>
+    <a href="blog.html" class="mobile-menu__link">Blog</a>
+    <a href="iletisim.html" class="mobile-menu__link">Iletisim</a>
+    <a href="randevu.html" class="mobile-menu__link">Randevu Al</a>
+  </div>
+
+  <main>
+
+    <section class="success-hero">
+      <div class="container">
+        <span class="badge badge-success">Neler Yapiyoruz</span>
+        <h1 class="heading-1" style="margin-top: 16px;">Basari <span class="text-gradient">Hikayeleri</span></h1>
+        <p class="section-header__desc" style="margin-top: 12px;">
+          Yapay zeka otomasyonlariyla isletmelerin elde ettigi gercek sonuclar.
+          <br>Asagidaki ornekler, tipik bir VerimliAI entegrasyonunun beklenen sonuclarini gostermektedir.
+        </p>
+      </div>
+    </section>
+
+    <!-- Top Stats Banner -->
+    <section style="padding-bottom: 40px;">
+      <div class="container">
+        <div class="stat-banner">
+          <h2 class="heading-2">VerimliAI <span class="text-gradient">Rakamlarla</span></h2>
+          <p style="color: var(--clr-neutral-400); font-size: var(--fs-350);">Simulasyon verilerine dayali ortalama projeksiyonlar</p>
+          <div class="stat-banner__grid">
+            <div class="stat-banner__item">
+              <div class="stat-banner__item-val">%94</div>
+              <div class="stat-banner__item-lbl">Musteri Memnuniyeti</div>
+            </div>
+            <div class="stat-banner__item">
+              <div class="stat-banner__item-val">12sn</div>
+              <div class="stat-banner__item-lbl">Ort. Yanit Suresi</div>
+            </div>
+            <div class="stat-banner__item">
+              <div class="stat-banner__item-val">%40</div>
+              <div class="stat-banner__item-lbl">Satis Artisi (Ort.)</div>
+            </div>
+            <div class="stat-banner__item">
+              <div class="stat-banner__item-val">%80</div>
+              <div class="stat-banner__item-lbl">Zaman Tasarrufu</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Study 1 -->
+    <section style="padding-bottom: 40px;">
+      <div class="container">
+        <div class="case-study reveal">
+          <div class="case-study__visual">
+            <div class="chat-mockup">
+              <div class="chat-mockup__header">Instagram DM · Online</div>
+              <div class="chat-mockup__msg chat-mockup__msg--customer">
+                <div class="chat-mockup__bubble chat-mockup__bubble--customer">Merhaba, siyah elbisenin 38 bedeni var mi?</div>
+              </div>
+              <div class="chat-mockup__msg chat-mockup__msg--bot">
+                <div class="chat-mockup__bubble chat-mockup__bubble--bot">Merhaba! Evet, siyah 38 beden stokta mevcut. Isterseniz hemen odeme linki gonderebilirim. Kargo yarin teslim.</div>
+              </div>
+              <div class="chat-mockup__msg chat-mockup__msg--customer">
+                <div class="chat-mockup__bubble chat-mockup__bubble--customer">Tamamdir, link gonderebilir misiniz?</div>
+              </div>
+              <div class="chat-mockup__msg chat-mockup__msg--bot">
+                <div class="chat-mockup__bubble chat-mockup__bubble--bot">Hemen gonderiyorum: shopier.com/xyz 👈 Tiklayip siparisinizi olusturabilirsiniz. Tesekkurler!</div>
+              </div>
+              <div class="chat-mockup__time">✓ Satis tamamlandi · 03:24</div>
+            </div>
+          </div>
+          <div class="case-study__content">
+            <div class="case-study__label">E-Ticaret · Kadin Giyim</div>
+            <h3 class="case-study__title">"Luna Butik" — Gece Gelen Satislari Yakaladik</h3>
+            <p class="case-study__desc">
+              Instagram'da gunluk 40+ DM alan Luna Butik, mesai disinda gelen mesajlari kaciriyordu. AI Satis Asistani entegrasyonu sonrasi gece 03:00'te bile satis yapmaya basladilar. DM yanit suresi 4 saatten 8 saniyeye dustu.
+            </p>
+            <div class="case-study__metrics">
+              <div class="case-study__metric">
+                <div class="case-study__metric-val">+%42</div>
+                <div class="case-study__metric-lbl">DM Satis Artisi</div>
+              </div>
+              <div class="case-study__metric">
+                <div class="case-study__metric-val">8sn</div>
+                <div class="case-study__metric-lbl">Yanit Suresi</div>
+              </div>
+              <div class="case-study__metric">
+                <div class="case-study__metric-val">+12.500</div>
+                <div class="case-study__metric-lbl">TL / Ay Ek Gelir</div>
+              </div>
+            </div>
+            <span class="simulation-badge">Simulasyon Ornegi</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Study 2 -->
+    <section style="padding-bottom: 40px;">
+      <div class="container">
+        <div class="case-study case-study--reverse reveal">
+          <div class="case-study__visual">
+            <div class="chat-mockup">
+              <div class="chat-mockup__header">WhatsApp Business · Online</div>
+              <div class="chat-mockup__msg chat-mockup__msg--customer">
+                <div class="chat-mockup__bubble chat-mockup__bubble--customer">Siparisim ne zaman gelir? #12345</div>
+              </div>
+              <div class="chat-mockup__msg chat-mockup__msg--bot">
+                <div class="chat-mockup__bubble chat-mockup__bubble--bot">Siparisiniz #12345 kargoya verildi. Tahmini teslimat: 2 Haziran. Takip linki: kargo.com.tr/xyz</div>
+              </div>
+              <div class="chat-mockup__msg chat-mockup__msg--customer">
+                <div class="chat-mockup__bubble chat-mockup__bubble--customer">Tesekkur ederim!</div>
+              </div>
+              <div class="chat-mockup__msg chat-mockup__msg--bot">
+                <div class="chat-mockup__bubble chat-mockup__bubble--bot">Rica ederim! Baska bir sorunuz olursa her zaman buradayim. Iyi gunler!</div>
+              </div>
+              <div class="chat-mockup__time">✓ Cozuldu · 3 dk icinde</div>
+            </div>
+          </div>
+          <div class="case-study__content">
+            <div class="case-study__label">Klinik · Saglik Sektoru</div>
+            <h3 class="case-study__title">"DentArt Klinik" — Hasta Iletisimi Tamamen Otomatize</h3>
+            <p class="case-study__desc">
+              Gunluk 60+ WhatsApp mesaji alan klinik, randevu teyidi ve hatirlatmasi icin saatler harcamaktan kurtuldu. AI bot randevulari otomatik planliyor, hatirlatiyor ve hasta sorularini aninda yanitliyor.
+            </p>
+            <div class="case-study__metrics">
+              <div class="case-study__metric">
+                <div class="case-study__metric-val">%65</div>
+                <div class="case-study__metric-lbl">Daha Az Cevapsiz Randevu</div>
+              </div>
+              <div class="case-study__metric">
+                <div class="case-study__metric-val">15sn</div>
+                <div class="case-study__metric-lbl">Yanit Suresi</div>
+              </div>
+              <div class="case-study__metric">
+                <div class="case-study__metric-val">+25</div>
+                <div class="case-study__metric-lbl">Hasta / Ay Artisi</div>
+              </div>
+            </div>
+            <span class="simulation-badge">Simulasyon Ornegi</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Study 3 -->
+    <section style="padding-bottom: 40px;">
+      <div class="container">
+        <div class="case-study reveal">
+          <div class="case-study__visual">
+            <div style="text-align: center; color: var(--clr-neutral-50);">
+              <div style="font-size: 64px; margin-bottom: 16px;">&#x1F4CA;</div>
+              <div style="font-size: var(--fs-450); font-weight: var(--fw-bold); margin-bottom: 8px;">Aylik Icerik Performansi</div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 250px; margin-inline: auto;">
+                <div style="background: var(--clr-neutral-800); border-radius: var(--radius-lg); padding: 12px;">
+                  <div style="font-size: var(--fs-600); font-weight: var(--fw-extrabold); color: var(--clr-accent-400);">+%70</div>
+                  <div style="font-size: var(--fs-300); color: var(--clr-neutral-500);">Etkilesim</div>
+                </div>
+                <div style="background: var(--clr-neutral-800); border-radius: var(--radius-lg); padding: 12px;">
+                  <div style="font-size: var(--fs-600); font-weight: var(--fw-extrabold); color: var(--clr-accent-400);">+%45</div>
+                  <div style="font-size: var(--fs-300); color: var(--clr-neutral-500);">Takipci</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="case-study__content">
+            <div class="case-study__label">E-Ticaret · Kozmetik</div>
+            <h3 class="case-study__title">"GlowBox" — Yapay Zeka ile Ic Erik Patlamasi</h3>
+            <p class="case-study__desc">
+              Ayda sadece 4-5 gonderi paylasan GlowBox, AI Icerik Asistani ile haftada 4 duzenli icerik uretmeye basladi. Reels senaryolari, caption metinleri ve hashtag stratejisi tamamen otomatik. Sonuc: 3 ayda takipci sayisi 2 katina cikti.
+            </p>
+            <div class="case-study__metrics">
+              <div class="case-study__metric">
+                <div class="case-study__metric-val">2x</div>
+                <div class="case-study__metric-lbl">Takipci Artisi</div>
+              </div>
+              <div class="case-study__metric">
+                <div class="case-study__metric-val">%70</div>
+                <div class="case-study__metric-lbl">Etkilesim Artisi</div>
+              </div>
+              <div class="case-study__metric">
+                <div class="case-study__metric-val">8saat</div>
+                <div class="case-study__metric-lbl">Haftalik Tasarruf</div>
+              </div>
+            </div>
+            <span class="simulation-badge">Simulasyon Ornegi</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding-bottom: 80px;">
+      <div class="container">
+        <div class="cta__inner">
+          <h2 class="heading-2 cta__title">Sizin Isletmenizin <span class="text-gradient">Basari Hikayesi</span> Olmaya Hazir misiniz?</h2>
+          <p class="cta__desc">Bir sonraki basari hikayesinde sizin adiniz yer alsin.</p>
+          <a href="randevu.html" class="btn btn-primary btn-lg">Ucretsiz Danismanlik Al</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" class="header__logo">
+            <div class="header__logo-icon">V</div>
+            <div class="header__logo-text">Verimli<span>AI</span></div>
+          </a>
+          <p class="footer__brand-desc">Isletmelerin tum dijital sureclerini yapay zeka ile otomatize eden yeni nesil hizmet ajansi.</p>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Hizmetler</h4>
+          <div class="footer__links">
+            <a href="#" class="footer__link">AI Satis Asistani</a>
+            <a href="#" class="footer__link">AI Icerik Asistani</a>
+            <a href="magaza.html" class="footer__link">Dijital Magaza</a>
+            <a href="altyapi.html" class="footer__link">Teknik Altyapi</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Kurumsal</h4>
+          <div class="footer__links">
+            <a href="randevu.html" class="footer__link">Randevu Al</a>
+            <a href="iletisim.html" class="footer__link">Iletisim</a>
+            <a href="blog.html" class="footer__link">Blog</a>
+            <a href="basari-hikayeleri.html" class="footer__link">Basari Hikayeleri</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Yasal</h4>
+          <div class="footer__links">
+            <a href="gizlilik-politikasi.html" class="footer__link">Gizlilik Politikasi</a>
+            <a href="kullanim-kosullari.html" class="footer__link">Kullanim Kosullari</a>
+            <a href="kvkk.html" class="footer__link">KVKK Aydinlatma</a>
+            <a href="veri-guvenligi.html" class="footer__link">Veri Guvenligi</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 VerimliAI. Tum haklari saklidir.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link">IG</a>
+          <a href="#" class="footer__social-link">TT</a>
+          <a href="#" class="footer__social-link">LI</a>
+          <a href="#" class="footer__social-link">WA</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

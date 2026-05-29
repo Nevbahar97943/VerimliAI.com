@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VerimliAI - Kullandigimiz AI ve otomasyon platformlarinin karsilastirmasi. ManyChat, Make.com, OpenAI, Chatbase fiyat ve ozellik tablosu.">
+  <title>Altyapi Karsilastirma - VerimliAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* --- Platform Comparison Page Extensions --- */
+    .platform-hero {
+      padding-top: calc(var(--header-height) + var(--space-16));
+      padding-bottom: var(--space-12);
+      text-align: center;
+    }
+
+    .comparison-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: var(--space-12);
+    }
+
+    .comparison-table {
+      width: 100%;
+      min-width: 800px;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-size: var(--fs-350);
+    }
+
+    .comparison-table thead th {
+      background: var(--clr-neutral-850);
+      padding: var(--space-4) var(--space-5);
+      text-align: left;
+      font-size: var(--fs-300);
+      font-weight: var(--fw-bold);
+      color: var(--clr-neutral-400);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--clr-neutral-700);
+      position: sticky;
+      top: 0;
+      white-space: nowrap;
+    }
+
+    .comparison-table thead th:first-child {
+      border-radius: var(--radius-xl) 0 0 0;
+    }
+
+    .comparison-table thead th:last-child {
+      border-radius: 0 var(--radius-xl) 0 0;
+    }
+
+    .comparison-table tbody td {
+      padding: var(--space-4) var(--space-5);
+      border-bottom: 1px solid var(--clr-neutral-800);
+      color: var(--clr-neutral-300);
+      vertical-align: top;
+    }
+
+    .comparison-table tbody tr:last-child td:first-child {
+      border-radius: 0 0 0 var(--radius-xl);
+    }
+
+    .comparison-table tbody tr:last-child td:last-child {
+      border-radius: 0 0 var(--radius-xl) 0;
+    }
+
+    .comparison-table tbody tr:hover td {
+      background: rgba(108, 92, 231, 0.04);
+    }
+
+    .comparison-table .col-platform {
+      font-weight: var(--fw-semibold);
+      color: var(--clr-neutral-50);
+      white-space: nowrap;
+      min-width: 140px;
+    }
+
+    .comparison-table .col-platform small {
+      display: block;
+      font-weight: var(--fw-regular);
+      color: var(--clr-neutral-500);
+      font-size: var(--fs-300);
+      margin-top: 2px;
+    }
+
+    .comparison-table .price-highlight {
+      color: var(--clr-accent-400);
+      font-weight: var(--fw-bold);
+    }
+
+    .comparison-table .price-free {
+      color: var(--clr-success);
+      font-weight: var(--fw-semibold);
+    }
+
+    .comparison-table .check-yes {
+      color: var(--clr-success);
+      font-weight: var(--fw-bold);
+    }
+
+    .comparison-table .check-limited {
+      color: var(--clr-warning);
+    }
+
+    .comparison-table .check-no {
+      color: var(--clr-neutral-600);
+    }
+
+    /* Feature cards for mobile */
+    .feature-cards {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .comparison-table-wrap {
+        display: none;
+      }
+      .feature-cards {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+      }
+    }
+
+    .platform-card {
+      background: var(--clr-neutral-850);
+      border: var(--border-card);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-6);
+    }
+
+    .platform-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid var(--clr-neutral-700);
+    }
+
+    .platform-card__name {
+      font-size: var(--fs-500);
+      font-weight: var(--fw-bold);
+      color: var(--clr-neutral-50);
+    }
+
+    .platform-card__website {
+      font-size: var(--fs-300);
+      color: var(--clr-primary-300);
+    }
+
+    .platform-card__price {
+      font-size: var(--fs-450);
+      font-weight: var(--fw-extrabold);
+      color: var(--clr-accent-400);
+    }
+
+    .platform-card__row {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--space-2) 0;
+      font-size: var(--fs-350);
+      color: var(--clr-neutral-400);
+    }
+
+    .platform-card__row span:first-child {
+      color: var(--clr-neutral-500);
+    }
+
+    .platform-card__row span:last-child {
+      color: var(--clr-neutral-200);
+      font-weight: var(--fw-medium);
+      text-align: right;
+    }
+
+    /* Stack choice */
+    .stack-choice {
+      background: var(--clr-neutral-850);
+      border: 1px solid rgba(0, 210, 211, 0.25);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      margin-top: var(--space-8);
+    }
+
+    .stack-choice__title {
+      font-size: var(--fs-600);
+      font-weight: var(--fw-bold);
+      color: var(--clr-accent-400);
+      margin-bottom: var(--space-4);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo">
+        <div class="header__logo-icon">V</div>
+        <div class="header__logo-text">Verimli<span>AI</span></div>
+      </a>
+      <nav class="header__nav">
+        <a href="index.html" class="header__nav-link">Ana Sayfa</a>
+        <a href="index.html#hizmetler" class="header__nav-link">Hizmetler</a>
+        <a href="index.html#paketler" class="header__nav-link">Paketler</a>
+        <a href="magaza.html" class="header__nav-link">Magaza</a>
+        <a href="blog.html" class="header__nav-link">Blog</a>
+        <a href="iletisim.html" class="header__nav-link">Iletisim</a>
+      </nav>
+      <a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+      <button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="mobile-menu__link">Ana Sayfa</a>
+    <a href="index.html#hizmetler" class="mobile-menu__link">Hizmetler</a>
+    <a href="index.html#paketler" class="mobile-menu__link">Paketler</a>
+    <a href="magaza.html" class="mobile-menu__link">Dijital Magaza</a>
+    <a href="blog.html" class="mobile-menu__link">Blog</a>
+    <a href="iletisim.html" class="mobile-menu__link">Iletisim</a>
+    <a href="randevu.html" class="mobile-menu__link">Randevu Al</a>
+  </div>
+
+  <main>
+
+    <section class="platform-hero">
+      <div class="container">
+        <span class="badge badge-primary">Teknik Altyapi</span>
+        <h1 class="heading-1" style="margin-top: 16px;">Kullandigimiz <span class="text-gradient">Platformlar</span></h1>
+        <p class="section-header__desc" style="margin-top: 12px;">
+          VerimliAI cozumlerinde kullanilan ana platformlarin guncel fiyatlandirma ve ozellik karsilastirmasi.
+          <br>Tum fiyatlar Mayis 2026 itibariyledir.
+        </p>
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section style="padding-bottom: 80px;">
+      <div class="container">
+
+        <div class="comparison-table-wrap">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Platform</th>
+                <th>Baslangic Fiyat</th>
+                <th>Onerilen Paket</th>
+                <th>Limitler</th>
+                <th>AI Ozelligi</th>
+                <th>Turkce Destegi</th>
+                <th>Entegrasyon</th>
+                <th>Kullanim Alani</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- ManyChat -->
+              <tr>
+                <td class="col-platform">
+                  ManyChat
+                  <small>manychat.com</small>
+                </td>
+                <td class="price-free">Ucretsiz (0 TL)</td>
+                <td class="price-highlight">Pro: $15/ay<br><small>(~550 TL)</small></td>
+                <td>
+                  Ucretsiz: 1.000 kontak<br>
+                  Pro: 10.000 kontak<br>
+                  <small>Uzeri icin Business plan</small>
+                </td>
+                <td class="check-yes">ChatGPT entegrasyonu var</td>
+                <td class="check-limited">Kismi (arayuz Turkce, AI Ingilizce agirlikli)</td>
+                <td class="check-yes">Instagram DM, WhatsApp, Facebook Messenger</td>
+                <td>Instagram/WhatsApp otomatik DM yanitlama</td>
+              </tr>
+
+              <!-- Make.com -->
+              <tr>
+                <td class="col-platform">
+                  Make.com
+                  <small>make.com</small>
+                </td>
+                <td class="price-free">Ucretsiz (0 TL)</td>
+                <td class="price-highlight">Core: $9/ay<br><small>(~330 TL)</small></td>
+                <td>
+                  Ucretsiz: 1.000 islem/ay<br>
+                  Core: 10.000 islem/ay<br>
+                  Pro: 40.000 islem/ay ($16)
+                </td>
+                <td class="check-yes">OpenAI, Claude, Gemini modulleri var</td>
+                <td class="check-limited">Arayuz Turkce degil</td>
+                <td class="check-yes">2.000+ uygulama<br>(Shopify, WooCommerce, Google Sheets, vb.)</td>
+                <td>Is akisi otomasyonu, veri tasima, API baglantilari</td>
+              </tr>
+
+              <!-- OpenAI API -->
+              <tr>
+                <td class="col-platform">
+                  OpenAI API
+                  <small>platform.openai.com</small>
+                </td>
+                <td class="price-free">Kullandigin kadar ode</td>
+                <td class="price-highlight">GPT-4o: ~$2.50/1M token (giris)<br><small>(~90 TL)</small></td>
+                <td>
+                  Rate limit: 500 istek/dk (Tier 1)<br>
+                  Token siniri: Model bazinda
+                </td>
+                <td class="check-yes">En gelismis AI modelleri</td>
+                <td class="check-limited">Turkce anlama cok iyi, ama promptlar Ingilizce daha optimize</td>
+                <td class="check-yes">API uzerinden tum platformlara</td>
+                <td>AI beyin: yanit uretme, icerik yazma, analiz</td>
+              </tr>
+
+              <!-- Chatbase -->
+              <tr>
+                <td class="col-platform">
+                  Chatbase
+                  <small>chatbase.co</small>
+                </td>
+                <td class="price-free">Ucretsiz (0 TL)</td>
+                <td class="price-highlight">Hobby: $19/ay<br><small>(~700 TL)</small></td>
+                <td>
+                  Ucretsiz: 30 mesaj/ay<br>
+                  Hobby: 2.000 mesaj/ay<br>
+                  Standard: 10.000/ay ($99)
+                </td>
+                <td class="check-yes">GPT-4, Claude, Gemini secenekleri</td>
+                <td class="check-limited">Bot yanitlari Turkce, arayuz Ingilizce</td>
+                <td class="check-yes">Web sitesi widget, API, Slack, WhatsApp</td>
+                <td>Web sitesi chatbot, dokumanla beslenen AI asistan</td>
+              </tr>
+
+              <!-- Voiceflow -->
+              <tr>
+                <td class="col-platform">
+                  Voiceflow
+                  <small>voiceflow.com</small>
+                </td>
+                <td class="price-free">Ucretsiz (0 TL)</td>
+                <td class="price-highlight">Pro: $50/ay<br><small>(~1.850 TL)</small></td>
+                <td>
+                  Ucretsiz: 2 proje<br>
+                  Pro: Sinirsiz proje<br>
+                  <small>AI token kullanimi ekstra</small>
+                </td>
+                <td class="check-yes">GPT, Claude entegrasyonu</td>
+                <td class="check-no">Yok</td>
+                <td class="check-yes">Web, WhatsApp, Alexa, Google Assistant</td>
+                <td>Karmasik chatbot akislari tasarlama</td>
+              </tr>
+
+              <!-- Zapier -->
+              <tr>
+                <td class="col-platform">
+                  Zapier
+                  <small>zapier.com</small>
+                </td>
+                <td class="price-free">Ucretsiz (0 TL)</td>
+                <td class="price-highlight">Starter: $19.99/ay<br><small>(~740 TL)</small></td>
+                <td>
+                  Ucretsiz: 100 islem/ay<br>
+                  Starter: 750 islem/ay
+                </td>
+                <td class="check-yes">ChatGPT, Claude ile calisir</td>
+                <td class="check-no">Yok</td>
+                <td class="check-yes">5.000+ uygulama</td>
+                <td>Make.com alternatifi, basit otomasyonlar</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile Cards -->
+        <div class="feature-cards">
+          <div class="platform-card">
+            <div class="platform-card__header">
+              <div>
+                <div class="platform-card__name">ManyChat</div>
+                <div class="platform-card__website">manychat.com</div>
+              </div>
+              <div class="platform-card__price">Ucretsiz - $15/ay</div>
+            </div>
+            <div class="platform-card__row"><span>Limit</span><span>1.000 - 10.000 kontak</span></div>
+            <div class="platform-card__row"><span>AI</span><span>ChatGPT entegrasyonu var</span></div>
+            <div class="platform-card__row"><span>Turkce</span><span>Kismi</span></div>
+            <div class="platform-card__row"><span>Kullanim</span><span>Instagram / WhatsApp DM</span></div>
+          </div>
+
+          <div class="platform-card">
+            <div class="platform-card__header">
+              <div>
+                <div class="platform-card__name">Make.com</div>
+                <div class="platform-card__website">make.com</div>
+              </div>
+              <div class="platform-card__price">Ucretsiz - $9/ay</div>
+            </div>
+            <div class="platform-card__row"><span>Limit</span><span>1.000 - 10.000 islem/ay</span></div>
+            <div class="platform-card__row"><span>AI</span><span>OpenAI, Claude, Gemini</span></div>
+            <div class="platform-card__row"><span>Turkce</span><span>Yok</span></div>
+            <div class="platform-card__row"><span>Kullanim</span><span>Is akisi otomasyonu</span></div>
+          </div>
+
+          <div class="platform-card">
+            <div class="platform-card__header">
+              <div>
+                <div class="platform-card__name">OpenAI API</div>
+                <div class="platform-card__website">platform.openai.com</div>
+              </div>
+              <div class="platform-card__price">Kullandikca ode</div>
+            </div>
+            <div class="platform-card__row"><span>Fiyat</span><span>~$2.50 / 1M token</span></div>
+            <div class="platform-card__row"><span>AI</span><span>En gelismis modeller</span></div>
+            <div class="platform-card__row"><span>Turkce</span><span>Anlama cok iyi</span></div>
+            <div class="platform-card__row"><span>Kullanim</span><span>AI beyin (yanit, icerik)</span></div>
+          </div>
+
+          <div class="platform-card">
+            <div class="platform-card__header">
+              <div>
+                <div class="platform-card__name">Chatbase</div>
+                <div class="platform-card__website">chatbase.co</div>
+              </div>
+              <div class="platform-card__price">Ucretsiz - $19/ay</div>
+            </div>
+            <div class="platform-card__row"><span>Limit</span><span>30 - 2.000 mesaj/ay</span></div>
+            <div class="platform-card__row"><span>AI</span><span>GPT-4, Claude, Gemini</span></div>
+            <div class="platform-card__row"><span>Turkce</span><span>Bot Turkce yanitlar</span></div>
+            <div class="platform-card__row"><span>Kullanim</span><span>Web sitesi chatbot</span></div>
+          </div>
+        </div>
+
+        <!-- Recommended Stack -->
+        <div class="stack-choice">
+          <div class="stack-choice__title">VerimliAI Onerilen Teknoloji Stack'i</div>
+          <p style="color: var(--clr-neutral-300); font-size: var(--fs-350); margin-bottom: 24px; line-height: var(--lh-relaxed);">
+            Her isletme icin farkli ihtiyaclara gore degismekle birlikte, standart cozumlerimizde su kombinasyonu kullaniyoruz:
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+            <div style="background: var(--clr-neutral-800); border-radius: var(--radius-xl); padding: 20px;">
+              <div style="font-size: var(--fs-300); color: var(--clr-neutral-500); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">DM Otomasyonu</div>
+              <div style="font-size: var(--fs-450); font-weight: var(--fw-bold); color: var(--clr-neutral-50);">ManyChat</div>
+              <div style="font-size: var(--fs-300); color: var(--clr-accent-400);">Pro: ~550 TL/ay</div>
+            </div>
+            <div style="background: var(--clr-neutral-800); border-radius: var(--radius-xl); padding: 20px;">
+              <div style="font-size: var(--fs-300); color: var(--clr-neutral-500); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Is Akisi</div>
+              <div style="font-size: var(--fs-450); font-weight: var(--fw-bold); color: var(--clr-neutral-50);">Make.com</div>
+              <div style="font-size: var(--fs-300); color: var(--clr-accent-400);">Core: ~330 TL/ay</div>
+            </div>
+            <div style="background: var(--clr-neutral-800); border-radius: var(--radius-xl); padding: 20px;">
+              <div style="font-size: var(--fs-300); color: var(--clr-neutral-500); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">AI Beyin</div>
+              <div style="font-size: var(--fs-450); font-weight: var(--fw-bold); color: var(--clr-neutral-50);">OpenAI API</div>
+              <div style="font-size: var(--fs-300); color: var(--clr-accent-400);">~100-500 TL/ay (kullanima gore)</div>
+            </div>
+            <div style="background: var(--clr-neutral-800); border-radius: var(--radius-xl); padding: 20px;">
+              <div style="font-size: var(--fs-300); color: var(--clr-neutral-500); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Web Chatbot</div>
+              <div style="font-size: var(--fs-450); font-weight: var(--fw-bold); color: var(--clr-neutral-50);">Chatbase</div>
+              <div style="font-size: var(--fs-300); color: var(--clr-accent-400);">Hobby: ~700 TL/ay</div>
+            </div>
+          </div>
+
+          <p style="color: var(--clr-neutral-500); font-size: var(--fs-300); margin-top: 20px;">
+            Toplam tahmini altyapi maliyeti: <strong style="color: var(--clr-neutral-200);">~1.700 - 2.100 TL/ay</strong> (musteri basina degil, toplam)
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" class="header__logo">
+            <div class="header__logo-icon">V</div>
+            <div class="header__logo-text">Verimli<span>AI</span></div>
+          </a>
+          <p class="footer__brand-desc">Isletmelerin tum dijital sureclerini yapay zeka ile otomatize eden yeni nesil hizmet ajansi.</p>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Hizmetler</h4>
+          <div class="footer__links">
+            <a href="#" class="footer__link">AI Satis Asistani</a>
+            <a href="#" class="footer__link">AI Icerik Asistani</a>
+            <a href="magaza.html" class="footer__link">Dijital Magaza</a>
+            <a href="altyapi.html" class="footer__link">Teknik Altyapi</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Kurumsal</h4>
+          <div class="footer__links">
+            <a href="randevu.html" class="footer__link">Randevu Al</a>
+            <a href="iletisim.html" class="footer__link">Iletisim</a>
+            <a href="blog.html" class="footer__link">Blog</a>
+            <a href="basari-hikayeleri.html" class="footer__link">Basari Hikayeleri</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Yasal</h4>
+          <div class="footer__links">
+            <a href="gizlilik-politikasi.html" class="footer__link">Gizlilik Politikasi</a>
+            <a href="kullanim-kosullari.html" class="footer__link">Kullanim Kosullari</a>
+            <a href="kvkk.html" class="footer__link">KVKK Aydinlatma</a>
+            <a href="veri-guvenligi.html" class="footer__link">Veri Guvenligi</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 VerimliAI. Tum haklari saklidir.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link">IG</a>
+          <a href="#" class="footer__social-link">TT</a>
+          <a href="#" class="footer__social-link">LI</a>
+          <a href="#" class="footer__social-link">WA</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

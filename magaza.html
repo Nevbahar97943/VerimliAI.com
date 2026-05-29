@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VerimliAI Dijital Magaza - Hazir yapay zeka prompt paketleri, AI destekli is sablonlari ve dijital urunler. Hemen satin al, aninda teslim.">
+  <title>Dijital Magaza - VerimliAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo">
+        <div class="header__logo-icon">V</div>
+        <div class="header__logo-text">Verimli<span>AI</span></div>
+      </a>
+      <nav class="header__nav">
+        <a href="index.html" class="header__nav-link">Ana Sayfa</a>
+        <a href="index.html#hizmetler" class="header__nav-link">Hizmetler</a>
+        <a href="index.html#paketler" class="header__nav-link">Paketler</a>
+        <a href="magaza.html" class="header__nav-link active">Dijital Magaza</a>
+        <a href="blog.html" class="header__nav-link">Blog</a>
+        <a href="iletisim.html" class="header__nav-link">Iletisim</a>
+      </nav>
+      <a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+      <button class="btn btn-secondary header__cta-desktop" id="cartToggle" style="margin-left: 8px;">
+        Sepet <span id="cartCount">(0)</span>
+      </button>
+      <button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========== MOBILE MENU ========== -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="mobile-menu__link">Ana Sayfa</a>
+    <a href="index.html#hizmetler" class="mobile-menu__link">Hizmetler</a>
+    <a href="index.html#paketler" class="mobile-menu__link">Paketler</a>
+    <a href="magaza.html" class="mobile-menu__link">Dijital Magaza</a>
+    <a href="blog.html" class="mobile-menu__link">Blog</a>
+    <a href="iletisim.html" class="mobile-menu__link">Iletisim</a>
+    <a href="randevu.html" class="mobile-menu__link">Randevu Al</a>
+  </div>
+
+  <!-- ========== CART OVERLAY & SIDEBAR ========== -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-sidebar" id="cartSidebar">
+    <div class="cart-sidebar__header">
+      <h3 class="cart-sidebar__title">Sepetim</h3>
+      <button class="cart-sidebar__close" id="cartClose">&times;</button>
+    </div>
+    <div class="cart-sidebar__items" id="cartItems">
+      <div class="cart-sidebar__empty">Sepetiniz bos.</div>
+    </div>
+    <div class="cart-sidebar__footer" id="cartFooter" style="display: none;">
+      <div class="cart-sidebar__total">
+        <span>Toplam</span>
+        <span id="cartTotal">0 TL</span>
+      </div>
+      <button class="btn btn-primary btn-full" id="checkoutBtn">Odeme Yap</button>
+    </div>
+  </aside>
+
+  <!-- ========== TOAST ========== -->
+  <div class="toast" id="toast">
+    <span class="toast__icon">&#x2714;</span>
+    <span class="toast__text" id="toastText">Urun sepete eklendi</span>
+  </div>
+
+  <main>
+
+    <!-- Store Hero -->
+    <section class="store-hero">
+      <div class="container">
+        <span class="badge badge-primary">Dijital Magaza</span>
+        <h1 class="heading-1" style="margin-top: 16px;">AI <span class="text-gradient">Urunleri</span> ve Sablonlari</h1>
+        <p class="section-header__desc" style="margin-top: 12px;">
+          Isletmenizi buyutmeniz icin ihtiyaciniz olan hazir yapay zeka prompt paketlerini, is sablonlarini ve dijital urunleri kesfedin. Satin al, aninda kullanmaya basla.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <div class="container" style="padding-bottom: 24px;">
+      <div class="store__filters">
+        <button class="store__filter-btn active" data-filter="all">Tum Urunler</button>
+        <button class="store__filter-btn" data-filter="e-ticaret">E-Ticaret</button>
+        <button class="store__filter-btn" data-filter="sosyal-medya">Sosyal Medya</button>
+        <button class="store__filter-btn" data-filter="icerik">Icerik Uretimi</button>
+        <button class="store__filter-btn" data-filter="musteeri">Musteri Iliskileri</button>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="store__grid" id="productsGrid">
+          <!-- Products rendered by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="cta__inner">
+          <h2 class="heading-2 cta__title">
+            Kendi Isletmene Ozel <span class="text-gradient">AI Cozumu</span> mu Istiyorsun?
+          </h2>
+          <p class="cta__desc">
+            Hazir urunler yetmez, bana ozel bir cozum lazim diyorsan seni dinleyelim.
+          </p>
+          <div class="cta__actions">
+            <a href="iletisim.html" class="btn btn-primary btn-lg">Bizimle Iletisime Gec</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" class="header__logo">
+            <div class="header__logo-icon">V</div>
+            <div class="header__logo-text">Verimli<span>AI</span></div>
+          </a>
+          <p class="footer__brand-desc">
+            Isletmelerin tum dijital sureclerini yapay zeka ile otomatize eden yeni nesil hizmet ajansi.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Hizmetler</h4>
+          <div class="footer__links">
+            <a href="#" class="footer__link">AI Satis Asistani</a>
+            <a href="#" class="footer__link">AI Icerik Asistani</a>
+            <a href="magaza.html" class="footer__link">Dijital Magaza</a>
+            <a href="#" class="footer__link">Kurumsal Cozumler</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Kurumsal</h4>
+          <div class="footer__links">
+            <a href="randevu.html" class="footer__link">Randevu Al</a>
+            <a href="iletisim.html" class="footer__link">Iletisim</a>
+            <a href="blog.html" class="footer__link">Blog</a>
+            <a href="basari-hikayeleri.html" class="footer__link">Basari Hikayeleri</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Yasal</h4>
+          <div class="footer__links">
+            <a href="gizlilik-politikasi.html" class="footer__link">Gizlilik Politikasi</a>
+            <a href="kullanim-kosullari.html" class="footer__link">Kullanim Kosullari</a>
+            <a href="kvkk.html" class="footer__link">KVKK Aydinlatma</a>
+            <a href="veri-guvenligi.html" class="footer__link">Veri Guvenligi</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Yasal</h4>
+          <div class="footer__links">
+            <a href="#" class="footer__link">Gizlilik Politikasi</a>
+            <a href="#" class="footer__link">Kullanim Sartlari</a>
+            <a href="#" class="footer__link">KVKK Aydinlatma</a>
+            <a href="#" class="footer__link">Mesafeli Satis Sozlesmesi</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 VerimliAI. Tum haklari saklidir.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="Instagram">IG</a>
+          <a href="#" class="footer__social-link" aria-label="TikTok">TT</a>
+          <a href="#" class="footer__social-link" aria-label="LinkedIn">LI</a>
+          <a href="#" class="footer__social-link" aria-label="WhatsApp">WA</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

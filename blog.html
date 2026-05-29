@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VerimliAI Blog - Yapay zeka, otomasyon, e-ticaret ve KOBİ'ler için dijital dönüşüm rehberleri. AI ile işletmenizi büyütün.">
+  <meta name="keywords" content="yapay zeka, otomasyon, chatbot, e-ticaret, KOBİ, Instagram DM, satış asistanı, AI, içerik üretimi">
+  <title>Blog - VerimliAI | Yapay Zeka ve Otomasyon Rehberleri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .blog-hero {
+      padding-top: calc(var(--header-height) + var(--space-12));
+      padding-bottom: var(--space-8);
+      text-align: center;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-8);
+      margin-bottom: var(--space-16);
+    }
+
+    .blog-card {
+      background: var(--clr-neutral-850);
+      border: var(--border-card);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      transition: all var(--transition-base);
+      cursor: pointer;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(108, 92, 231, 0.3);
+      box-shadow: var(--shadow-md);
+    }
+
+    .blog-card__image {
+      height: 180px;
+      background: var(--clr-neutral-800);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-card__image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-primary);
+      opacity: 0.06;
+    }
+
+    .blog-card__body {
+      padding: var(--space-6);
+    }
+
+    .blog-card__category {
+      font-size: var(--fs-300);
+      color: var(--clr-accent-500);
+      font-weight: var(--fw-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--space-2);
+    }
+
+    .blog-card__title {
+      font-size: var(--fs-450);
+      font-weight: var(--fw-bold);
+      color: var(--clr-neutral-50);
+      margin-bottom: var(--space-2);
+      line-height: var(--lh-normal);
+    }
+
+    .blog-card__excerpt {
+      font-size: var(--fs-350);
+      color: var(--clr-neutral-400);
+      line-height: var(--lh-relaxed);
+      margin-bottom: var(--space-4);
+    }
+
+    .blog-card__meta {
+      font-size: var(--fs-300);
+      color: var(--clr-neutral-600);
+    }
+
+    /* Article detail */
+    .article-full {
+      display: none;
+      max-width: 800px;
+      margin-inline: auto;
+      padding-bottom: var(--space-16);
+    }
+
+    .article-full.active {
+      display: block;
+    }
+
+    .article-back {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--fs-350);
+      color: var(--clr-primary-300);
+      margin-bottom: var(--space-6);
+      cursor: pointer;
+      transition: color var(--transition-fast);
+    }
+
+    .article-back:hover {
+      color: var(--clr-primary-200);
+    }
+
+    .article-content h2 {
+      font-size: var(--fs-700);
+      margin-top: var(--space-10);
+      margin-bottom: var(--space-4);
+      color: var(--clr-neutral-50);
+    }
+
+    .article-content h3 {
+      font-size: var(--fs-500);
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-3);
+      color: var(--clr-neutral-100);
+    }
+
+    .article-content p {
+      font-size: var(--fs-400);
+      color: var(--clr-neutral-300);
+      line-height: var(--lh-relaxed);
+      margin-bottom: var(--space-4);
+    }
+
+    .article-content ul, .article-content ol {
+      margin-bottom: var(--space-4);
+      padding-left: var(--space-6);
+    }
+
+    .article-content li {
+      font-size: var(--fs-400);
+      color: var(--clr-neutral-300);
+      line-height: var(--lh-relaxed);
+      margin-bottom: var(--space-2);
+    }
+
+    .article-content .highlight-box {
+      background: var(--clr-neutral-800);
+      border-left: 3px solid var(--clr-primary-500);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      padding: var(--space-5);
+      margin-bottom: var(--space-6);
+    }
+
+    .article-content .highlight-box p {
+      margin-bottom: 0;
+      font-weight: var(--fw-medium);
+      color: var(--clr-neutral-100);
+    }
+
+    .article-cta {
+      background: var(--clr-neutral-850);
+      border: 1px solid rgba(108, 92, 231, 0.25);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      text-align: center;
+      margin-top: var(--space-12);
+    }
+
+    .article-cta__title {
+      font-size: var(--fs-600);
+      font-weight: var(--fw-bold);
+      color: var(--clr-neutral-50);
+      margin-bottom: var(--space-3);
+    }
+
+    @media (max-width: 768px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin-inline: auto;
+        margin-bottom: var(--space-16);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo">
+        <div class="header__logo-icon">V</div>
+        <div class="header__logo-text">Verimli<span>AI</span></div>
+      </a>
+      <nav class="header__nav">
+        <a href="index.html" class="header__nav-link">Ana Sayfa</a>
+        <a href="index.html#hizmetler" class="header__nav-link">Hizmetler</a>
+        <a href="index.html#paketler" class="header__nav-link">Paketler</a>
+        <a href="magaza.html" class="header__nav-link">Magaza</a>
+        <a href="blog.html" class="header__nav-link active">Blog</a>
+        <a href="iletisim.html" class="header__nav-link">Iletisim</a>
+      </nav>
+      <a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+      <button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="mobile-menu__link">Ana Sayfa</a>
+    <a href="index.html#hizmetler" class="mobile-menu__link">Hizmetler</a>
+    <a href="index.html#paketler" class="mobile-menu__link">Paketler</a>
+    <a href="magaza.html" class="mobile-menu__link">Dijital Magaza</a>
+    <a href="blog.html" class="mobile-menu__link">Blog</a>
+    <a href="iletisim.html" class="mobile-menu__link">Iletisim</a>
+    <a href="randevu.html" class="mobile-menu__link">Randevu Al</a>
+  </div>
+
+  <main>
+
+    <!-- Blog Listing -->
+    <section id="blog-listing">
+      <div class="blog-hero">
+        <div class="container">
+          <span class="badge badge-accent">Blog</span>
+          <h1 class="heading-1" style="margin-top: 16px;">Yapay Zeka ve <span class="text-gradient">Otomasyon</span> Rehberleri</h1>
+          <p class="section-header__desc" style="margin-top: 12px;">
+            Isletmenizi buyutmek icin en guncel yapay zeka stratejileri, otomasyon ipuclari ve dijital donusum rehberleri.
+          </p>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="blog-grid">
+          <!-- Article 1 -->
+          <div class="blog-card reveal" onclick="showArticle(1)">
+            <div class="blog-card__image">&#x1F4F1;</div>
+            <div class="blog-card__body">
+              <div class="blog-card__category">E-Ticaret</div>
+              <h3 class="blog-card__title">Instagram Butikleri Icin Yapay Zeka ile DM Satislarini Otomatize Etme Rehberi</h3>
+              <p class="blog-card__excerpt">Instagram uzerinden satis yapan butiklerin en buyuk sorunu DM'lerde kacirilan satislar. AI botlariyla bu sorunu nasil cozeceginizi adim adim anlatiyoruz.</p>
+              <div class="blog-card__meta">12 dk okuma · 29 Mayis 2026</div>
+            </div>
+          </div>
+
+          <!-- Article 2 -->
+          <div class="blog-card reveal" onclick="showArticle(2)">
+            <div class="blog-card__image">&#x2699;&#xFE0F;</div>
+            <div class="blog-card__body">
+              <div class="blog-card__category">Otomasyon</div>
+              <h3 class="blog-card__title">KOBI'ler Icin Zaman ve Maliyet Tasarrufu Saglayan En Iyi 5 AI Otomasyonu</h3>
+              <p class="blog-card__excerpt">Kucuk ve orta olcekli isletmelerin hemen bugun uygulayabilecegi, maliyetleri dusuren ve zamandan tasarruf saglayan 5 AI otomasyon fikri.</p>
+              <div class="blog-card__meta">10 dk okuma · 28 Mayis 2026</div>
+            </div>
+          </div>
+
+          <!-- Article 3 -->
+          <div class="blog-card reveal" onclick="showArticle(3)">
+            <div class="blog-card__image">&#x1F4AC;</div>
+            <div class="blog-card__body">
+              <div class="blog-card__category">Musteri Iliskileri</div>
+              <h3 class="blog-card__title">Musteri Iliskilerinde Yapay Zeka Botu Kullanmanin Avantajlari</h3>
+              <p class="blog-card__excerpt">AI chatbot'lar sadece maliyet dusurmekle kalmaz; musteri memnuniyetini artirir, satislari yukseltir ve marka sadakati olusturur. Iste tum faydalari.</p>
+              <div class="blog-card__meta">8 dk okuma · 27 Mayis 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ARTICLE 1 ============ -->
+    <div class="article-full" id="article-1">
+      <div class="container">
+        <div class="article-back" onclick="showListing()">← Blog'a Don</div>
+
+        <span class="badge badge-accent">E-Ticaret</span>
+        <h1 class="heading-1" style="margin-top: 12px; margin-bottom: 8px;">Instagram Butikleri Icin Yapay Zeka ile DM Satislarini <span class="text-gradient">Otomatize Etme</span> Rehberi</h1>
+        <p style="color: var(--clr-neutral-500); margin-bottom: 24px;">12 dk okuma · 29 Mayis 2026 · VerimliAI Ekibi</p>
+
+        <div class="article-content">
+          <p>Instagram, Turkiye'de butiklerin ve kucuk isletmelerin en onemli satis kanali haline geldi. Ancak cogu isletme sahibi, DM uzerinden gelen musteri sorularina zamaninda cevap veremedigi icin ciddi satis kayiplari yasiyor. Yapilan arastirmalar, Instagram DM'lerine 1 saatten gec cevap verildiginde satis ihtimalinin %70 dustugunu gosteriyor.</p>
+
+          <div class="highlight-box">
+            <p>Gunde ortalama 20 DM alan bir butik, bunlarin sadece %40'ina zamaninda cevap verebiliyor. Geri kalan 12 potansiyel musterinin en az 5'i satin almaya hazir. Bu da ayda yaklasik 150 kacirilan satis demek.</p>
+          </div>
+
+          <h2>1. DM Kacaklari Nedir ve Neden Onemlidir?</h2>
+          <p>DM kacagi, Instagram uzerinden urunleriniz hakkinda soru soran ancak zamaninda cevap alamadigi icin baska bir saticiya yonelen potansiyel musteridir. Bu kaybi olcmek icin basit bir hesap yapalim:</p>
+          <ul>
+            <li><strong>Gunluk DM sayisi:</strong> 20</li>
+            <li><strong>Zamaninda yanitlanan:</strong> 8 (%40)</li>
+            <li><strong>Kacirilan:</strong> 12 (%60)</li>
+            <li><strong>Satin alma potansiyeli olan:</strong> 5 kisi</li>
+            <li><strong>Ortalama sepet tutari:</strong> 350 TL</li>
+            <li><strong>Aylik kayip:</strong> 5 x 350 TL x 30 = 52.500 TL</li>
+          </ul>
+          <p>Bu rakam cogu butik sahibi icin sok edici olabilir. Iste tam da bu noktada AI Satis Asistani devreye giriyor.</p>
+
+          <h2>2. AI Satis Asistani Nasil Calisir?</h2>
+          <p>VerimliAI'nin gelistirdigi sistem, Instagram DM'lerinizi 7/24 izleyen ve gelen her mesaja saniyeler icinde cevap veren bir yapay zeka botudur. Sistem su sekilde calisir:</p>
+          <ol>
+            <li><strong>Aninda Karsilama:</strong> Musteri mesaj gonderdigi an bot devreye girer. "Merhaba, nasil yardimci olabilirim?" ile baslayip dogal bir diyalog kurar.</li>
+            <li><strong>Urun Bilgisi:</strong> Stok, beden, renk, fiyat gibi sorulari urun katalogunuzdan aninda ceker ve dogru yanitlar.</li>
+            <li><strong>Kargo Takibi:</strong> Musteri siparis numarasini yazdiginda kargo durumunu sorgulayip bilgi verir.</li>
+            <li><strong>Satisa Yonlendirme:</strong> Urunle ilgilenen musteriye otomatik odeme linki gonderir ve satisi kapatir.</li>
+            <li><strong>Sikca Sorulan Sorular:</strong> Iade kosullari, kargo suresi gibi rutin sorulari ezbere yanitlar.</li>
+          </ol>
+
+          <h2>3. Kurulum Sureci (Adim Adim)</h2>
+          <h3>Adim 1: Kesif Gorusmesi (30 dakika)</h3>
+          <p>Ucretsiz online gorusmede isletmenizin ozel ihtiyaclarini analiz ediyoruz. Kac urununuz var? Hangi sorular sikca soruluyor? Hangi odeme yontemini kullaniyorsunuz?</p>
+
+          <h3>Adim 2: Botun Egitilmesi (2-3 is gunu)</h3>
+          <p>Urun kataloglarinizi sisteme yukluyoruz. Marka sesinize uygun diyalog akislari olusturuyoruz. Sik sorulan sorulari ve yanitlarini tanimliyoruz.</p>
+
+          <h3>Adim 3: Entegrasyon ve Test (1-2 is gunu)</h3>
+          <p>Instagram hesabiniza entegrasyonu tamamliyoruz. Test mesajlariyla sistemi kontrol ediyoruz. Gerekli duzeltmeleri yapiyoruz.</p>
+
+          <h3>Adim 4: Canliya Alma (1 is gunu)</h3>
+          <p>Sistem canliya alinir. Ilk hafta performansi yakindan takip edilir ve optimize edilir.</p>
+
+          <div class="highlight-box">
+            <p>Toplam kurulum suresi: 5-7 is gunu. Bu sure sonunda Instagram DM'leriniz 7/24 otomatik olarak yanitlanmaya baslar.</p>
+          </div>
+
+          <h2>4. Gercek Hayattan Beklenen Sonuclar</h2>
+          <p>AI Satis Asistanini kuran bir Instagram butiginden beklenen tipik sonuclar:</p>
+          <ul>
+            <li>DM yanit suresi: <strong>3 saatten 8 saniyeye</strong> duser</li>
+            <li>Kacirilan satislar: <strong>%60 azalir</strong></li>
+            <li>Aylik ek gelir: <strong>5.000 TL - 15.000 TL</strong></li>
+            <li>Musteri memnuniyeti: <strong>%40 artar</strong></li>
+            <li>Size kalan zaman: <strong>Gunde 3-4 saat</strong> geri kazanirsiniz</li>
+          </ul>
+
+          <h2>5. Maliyet Karsilastirmasi</h2>
+          <p>Bir karsilastirma yapalim:</p>
+          <ul>
+            <li><strong>1 part-time calisan:</strong> Aylik ~8.000 TL + SGK + yemek + yol</li>
+            <li><strong>AI Satis Asistani:</strong> Aylik 1.500 TL - 3.500 TL (kurulum dahil)</li>
+          </ul>
+          <p>AI asistan, bir calisandan en az 3 kat daha fazla mesaji, 7/24, hatasiz ve aninda yanitlar. Ve asla yorulmaz.</p>
+        </div>
+
+        <div class="article-cta">
+          <div class="article-cta__title">Isletmeniz Icin AI Satis Asistani Kurmaya Hazir misiniz?</div>
+          <a href="randevu.html" class="btn btn-primary btn-lg" style="margin-top: 16px;">Ucretsiz Kesif Gorusmesi Planla</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ ARTICLE 2 ============ -->
+    <div class="article-full" id="article-2">
+      <div class="container">
+        <div class="article-back" onclick="showListing()">← Blog'a Don</div>
+
+        <span class="badge badge-accent">Otomasyon</span>
+        <h1 class="heading-1" style="margin-top: 12px; margin-bottom: 8px;">KOBI'ler Icin Zaman ve Maliyet Tasarrufu Saglayan En Iyi <span class="text-gradient">5 AI Otomasyonu</span></h1>
+        <p style="color: var(--clr-neutral-500); margin-bottom: 24px;">10 dk okuma · 28 Mayis 2026 · VerimliAI Ekibi</p>
+
+        <div class="article-content">
+          <p>Kucuk ve orta olcekli isletmeler (KOBI'ler) icin en degerli kaynak zamandir. Sinirli ekiple cok is yapmak zorundasiniz. Iste tam da bu noktada yapay zeka otomasyonlari devreye giriyor. Bu yazida, KOBI'lerin hemen bugun uygulayabilecegi en etkili 5 AI otomasyonunu inceliyoruz.</p>
+
+          <div class="highlight-box">
+            <p>Arastirmalar gosteriyor ki AI otomasyonu kullanan KOBI'ler, kullanmayanlara gore ayda ortalama 40 saat zaman tasarrufu sagliyor ve operasyonel maliyetlerini %30 dusuruyor.</p>
+          </div>
+
+          <h2>1. Akilli Musteri Karsilama (Chatbot)</h2>
+          <p>Web sitenize veya Instagram hesabiniza entegre edeceginiz bir AI chatbot, en sik karsilasilan musteri sorularini aninda yanitlar. "Kac gun kargoda?", "Iade nasil yapilir?", "Su urunun bedeni kaldi mi?" gibi sorulara 7/24 cevap verir.</p>
+          <ul>
+            <li><strong>Zaman Tasarrufu:</strong> Gunde 2-3 saat</li>
+            <li><strong>Maliyet:</strong> Aylik 1.500 TL'den baslar</li>
+            <li><strong>Geri Donus Suresi:</strong> Ilk ayda kendini amorti eder</li>
+          </ul>
+
+          <h2>2. Otomatik Icerik Uretimi</h2>
+          <p>Sosyal medyada gorunur olmak icin duzenli icerik uretmek sart. Ama her gun Instagram gonderisi, Reels senaryosu, TikTok fikri uretmek saatler alir. AI Icerik Asistani ile aylik icerik takviminizi, caption metinlerinizi ve hatta reklam copy'lerinizi dakikalar icinde uretebilirsiniz.</p>
+          <ul>
+            <li><strong>Zaman Tasarrufu:</strong> Haftada 5-8 saat</li>
+            <li><strong>Maliyet:</strong> Pakete dahil veya ayri olarak 990 TL/ay</li>
+            <li><strong>Ek Fayda:</strong> Icerik kaliteniz ve tutarliliginiz artar</li>
+          </ul>
+
+          <h2>3. E-posta Otomasyonu</h2>
+          <p>Terk edilmis sepet mailleri, hos geldin serileri, dogum gunu kutlamalari... Tum bu e-postalar manuel gonderildiginde hem zaman alir hem de unutulur. AI destekli e-posta otomasyonu ile her musteriye dogru zamanda, kisisellestirilmis mesajlar gider.</p>
+          <ul>
+            <li><strong>Zaman Tasarrufu:</strong> Haftada 3-4 saat</li>
+            <li><strong>Maliyet:</strong> Bircok platformda ucretsiz baslangic paketi mevcut</li>
+            <li><strong>Ek Fayda:</strong> Terk edilmis sepet geri kazanim orani %15 artar</li>
+          </ul>
+
+          <h2>4. Veri Girisi ve Raporlama Otomasyonu</h2>
+          <p>Siparisleri e-faturaya islemek, stok takibi yapmak, haftalik satis raporu cikarmak... Bu tekrarlayan isler icin Make.com veya Zapier gibi otomasyon araclariyla API entegrasyonlari kurarak tum veri akisini otomatize edebilirsiniz.</p>
+          <ul>
+            <li><strong>Zaman Tasarrufu:</strong> Haftada 6-10 saat</li>
+            <li><strong>Maliyet:</strong> Aylik 330 TL'den baslar (Make.com Core)</li>
+            <li><strong>Ek Fayda:</strong> Insan hatasi sifira iner</li>
+          </ul>
+
+          <h2>5. Akilli Stok ve Fiyat Optimizasyonu</h2>
+          <p>AI, gecmis satis verilerinizi analiz ederek hangi urunden ne kadar stok tutmaniz gerektigini onerir. Sezonsal talep degisimlerini tahmin eder. Hatta rakip fiyatlarini takip edip sizin fiyatlandirmanizi optimize edebilir.</p>
+          <ul>
+            <li><strong>Zaman Tasarrufu:</strong> Haftada 2-3 saat</li>
+            <li><strong>Maliyet:</strong> Orta-ileri seviye cozum</li>
+            <li><strong>Ek Fayda:</strong> Stok maliyeti %20 azalir, kar marji %10 artar</li>
+          </ul>
+
+          <h2>Toplam Kazanc Tablosu</h2>
+          <p>5 otomasyonun toplam etkisi:</p>
+          <ul>
+            <li><strong>Aylik zaman tasarrufu:</strong> ~40 saat (1 tam zamanli calisana esdeger)</li>
+            <li><strong>Aylik maliyet:</strong> ~2.000 - 4.000 TL</li>
+            <li><strong>1 calisan maliyeti:</strong> ~8.000 - 12.000 TL</li>
+            <li><strong>Net fayda:</strong> ~6.000 TL/ay + 40 saat kazanc</li>
+          </ul>
+        </div>
+
+        <div class="article-cta">
+          <div class="article-cta__title">Hangi Otomasyon Isletmenize En Uygun?</div>
+          <a href="randevu.html" class="btn btn-primary btn-lg" style="margin-top: 16px;">Ucretsiz Analiz Icin Randevu Al</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ ARTICLE 3 ============ -->
+    <div class="article-full" id="article-3">
+      <div class="container">
+        <div class="article-back" onclick="showListing()">← Blog'a Don</div>
+
+        <span class="badge badge-accent">Musteri Iliskileri</span>
+        <h1 class="heading-1" style="margin-top: 12px; margin-bottom: 8px;">Musteri Iliskilerinde Yapay Zeka Botu Kullanmanin <span class="text-gradient">Avantajlari</span></h1>
+        <p style="color: var(--clr-neutral-500); margin-bottom: 24px;">8 dk okuma · 27 Mayis 2026 · VerimliAI Ekibi</p>
+
+        <div class="article-content">
+          <p>Musteri iliskileri yonetimi (CRM), her isletmenin bel kemigidir. Ancak geleneksel yontemlerle buyuyen bir musteri tabanini yonetmek giderek zorlasiyor. Yapay zeka destekli chatbot'lar ve asistanlar, bu alanda devrim yaratiyor. Iste AI botlarinin musteri iliskilerinde sagladigi en onemli 7 avantaj:</p>
+
+          <h2>1. 7/24 Kesintisiz Hizmet</h2>
+          <p>En buyuk avantaj, sinirsiz calisma suresidir. Bir insan ekibi gece 03:00'te gelen musteri sorusuna cevap veremez. AI bot verir. Tatil, haftasonu, bayram dinlemez. Musteriniz ne zaman yazarsa yazsin, aninda yanit alir.</p>
+
+          <div class="highlight-box">
+            <p>Arastirma sonucu: Musterilerin %64'u, bir markadan 7/24 destek alabilmeyi "onemli" veya "cok onemli" olarak degerlendiriyor.</p>
+          </div>
+
+          <h2>2. Tutarli ve Hatasiz Yanitlar</h2>
+          <p>Insanlar yorulur, dikkati dagilir, hata yapar. AI bot her seferinde ayni kalitede, tutarli ve dogru yanit verir. Iade politikaniz degistiginde tum yanitlari aninda guncelleyebilirsiniz.</p>
+
+          <h2>3. Coklu Musteriyle Es Zamanli Iletisim</h2>
+          <p>Bir insan ayni anda 1-2 musteriyle ilgilenebilirken, AI bot ayni anda yuzlerce musteriyle es zamanli olarak konusabilir. Yogun kampanya donemlerinde, tatil sezonlarinda veya yeni urun lansmaninda bu kapasite kritik onem tasir.</p>
+
+          <h2>4. Kisisellestirilmis Deneyim</h2>
+          <p>Modern AI botlari, musterinin gecmis alisverislerini, tercihlerini ve sordugu sorulari hatirlar. "Gecen ay aldigimiz mavi elbisenin yesili var mi?" gibi bir soruyu, musteriye "Hos geldiniz Ayse Hanim, evet yesili su an stokta" diye karsilik verebilir.</p>
+
+          <h2>5. Maliyet Avantaji</h2>
+          <p>Bir AI botun aylik maliyeti, bir musteri temsilcisinin maliyetinin yaklasik 1/5'i kadardir. Ustelik bir bot, 3-5 musteri temsilcisinin yapacagi isi tek basina yapabilir.</p>
+          <ul>
+            <li><strong>1 musteri temsilcisi:</strong> ~8.000 TL/ay (maas + SGK + yan haklar)</li>
+            <li><strong>AI bot:</strong> ~1.500 TL/ay (sinirsiz gorusme, 7/24)</li>
+            <li><strong>Yillik fark:</strong> ~78.000 TL tasarruf</li>
+          </ul>
+
+          <h2>6. Olculebilir Performans</h2>
+          <p>AI botun her konusmasi kayit altindadir. Hangi sorular sik soruluyor, hangi urunler daha cok merak ediliyor, musteriler nerede takiliyor gibi verileri anlik olarak raporlayabilirsiniz. Bu veriler isletme kararlariniz icin altin degerindedir.</p>
+
+          <h2>7. Olceklenebilirlik</h2>
+          <p>Isletmeniz buyudukce musteri hizmetleri ekibinizi de buyutmek zorunda kalmazsiniz. AI bot ayni performansla 100 musteriye de, 10.000 musteriye de hizmet verebilir. Bu, buyumeyi karliliktan odun vermeden yonetmenizi saglar.</p>
+
+          <div class="highlight-box">
+            <p>Dogru kurgulanmis bir AI bot, musteri memnuniyetini %40'a varan oranda artirirken, operasyonel maliyetleri %60'a varan oranda dusurebilir.</p>
+          </div>
+        </div>
+
+        <div class="article-cta">
+          <div class="article-cta__title">Isletmenize Ozel AI Asistan Cozumu Icin</div>
+          <a href="randevu.html" class="btn btn-primary btn-lg" style="margin-top: 16px;">Ucretsiz Danismanlik Randevusu Al</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" class="header__logo">
+            <div class="header__logo-icon">V</div>
+            <div class="header__logo-text">Verimli<span>AI</span></div>
+          </a>
+          <p class="footer__brand-desc">Isletmelerin tum dijital sureclerini yapay zeka ile otomatize eden yeni nesil hizmet ajansi.</p>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Hizmetler</h4>
+          <div class="footer__links">
+            <a href="#" class="footer__link">AI Satis Asistani</a>
+            <a href="#" class="footer__link">AI Icerik Asistani</a>
+            <a href="magaza.html" class="footer__link">Dijital Magaza</a>
+            <a href="altyapi.html" class="footer__link">Teknik Altyapi</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Kurumsal</h4>
+          <div class="footer__links">
+            <a href="randevu.html" class="footer__link">Randevu Al</a>
+            <a href="iletisim.html" class="footer__link">Iletisim</a>
+            <a href="blog.html" class="footer__link">Blog</a>
+            <a href="basari-hikayeleri.html" class="footer__link">Basari Hikayeleri</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Yasal</h4>
+          <div class="footer__links">
+            <a href="gizlilik-politikasi.html" class="footer__link">Gizlilik Politikasi</a>
+            <a href="kullanim-kosullari.html" class="footer__link">Kullanim Kosullari</a>
+            <a href="kvkk.html" class="footer__link">KVKK Aydinlatma</a>
+            <a href="veri-guvenligi.html" class="footer__link">Veri Guvenligi</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 VerimliAI. Tum haklari saklidir.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link">IG</a>
+          <a href="#" class="footer__social-link">TT</a>
+          <a href="#" class="footer__social-link">LI</a>
+          <a href="#" class="footer__social-link">WA</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script>
+    function showArticle(num) {
+      document.getElementById('blog-listing').style.display = 'none';
+      document.getElementById('article-' + num).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function showListing() {
+      document.getElementById('blog-listing').style.display = 'block';
+      document.querySelectorAll('.article-full').forEach(function(el) { el.classList.remove('active'); });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

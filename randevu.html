@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VerimliAI - Ucretsiz danismanlik randevusu olusturun. Isletmenize ozel AI cozumleri icin 30 dakikalik online gorusme.">
+  <title>Randevu Al - VerimliAI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .randevu-hero {
+      padding-top: calc(var(--header-height) + var(--space-16));
+      padding-bottom: var(--space-8);
+      text-align: center;
+    }
+
+    .calendly-wrapper {
+      background: var(--clr-neutral-850);
+      border: var(--border-card);
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      margin-bottom: var(--space-16);
+      min-height: 650px;
+      position: relative;
+    }
+
+    .calendly-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 600px;
+      padding: var(--space-8);
+      text-align: center;
+      background: var(--clr-neutral-850);
+    }
+
+    .calendly-placeholder__icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(108, 92, 231, 0.12);
+      border-radius: var(--radius-2xl);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      margin-bottom: var(--space-6);
+    }
+
+    .calendly-placeholder__title {
+      font-size: var(--fs-600);
+      font-weight: var(--fw-bold);
+      color: var(--clr-neutral-50);
+      margin-bottom: var(--space-3);
+    }
+
+    .calendly-placeholder__desc {
+      font-size: var(--fs-400);
+      color: var(--clr-neutral-400);
+      max-width: 400px;
+      margin-bottom: var(--space-8);
+      line-height: var(--lh-relaxed);
+    }
+
+    .calendly-placeholder__steps {
+      display: flex;
+      gap: var(--space-8);
+      margin-bottom: var(--space-8);
+      text-align: center;
+    }
+
+    .calendly-placeholder__step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .calendly-placeholder__step-num {
+      width: 36px;
+      height: 36px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--fs-400);
+      font-weight: var(--fw-bold);
+      color: #fff;
+    }
+
+    .calendly-placeholder__step-label {
+      font-size: var(--fs-300);
+      color: var(--clr-neutral-400);
+    }
+
+    /* When Calendly is active, hide placeholder */
+    .calendly-embed {
+      min-height: 650px;
+      width: 100%;
+    }
+
+    .calendly-embed iframe {
+      width: 100%;
+      min-height: 650px;
+      border: none;
+    }
+
+    .steps-section {
+      padding-bottom: var(--space-16);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      counter-reset: step;
+    }
+
+    .step-card {
+      background: var(--clr-neutral-850);
+      border: var(--border-card);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-8);
+      position: relative;
+      counter-increment: step;
+    }
+
+    .step-card::before {
+      content: counter(step);
+      position: absolute;
+      top: -16px;
+      left: var(--space-6);
+      width: 36px;
+      height: 36px;
+      background: var(--gradient-primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--fs-400);
+      font-weight: var(--fw-bold);
+      color: #fff;
+    }
+
+    .step-card__title {
+      font-size: var(--fs-450);
+      font-weight: var(--fw-bold);
+      color: var(--clr-neutral-50);
+      margin-top: var(--space-2);
+      margin-bottom: var(--space-2);
+    }
+
+    .step-card__desc {
+      font-size: var(--fs-350);
+      color: var(--clr-neutral-400);
+      line-height: var(--lh-relaxed);
+    }
+
+    @media (max-width: 768px) {
+      .steps-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin-inline: auto;
+      }
+      .calendly-placeholder__steps {
+        flex-direction: column;
+        gap: var(--space-4);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="index.html" class="header__logo">
+        <div class="header__logo-icon">V</div>
+        <div class="header__logo-text">Verimli<span>AI</span></div>
+      </a>
+      <nav class="header__nav">
+        <a href="index.html" class="header__nav-link">Ana Sayfa</a>
+        <a href="index.html#hizmetler" class="header__nav-link">Hizmetler</a>
+        <a href="index.html#paketler" class="header__nav-link">Paketler</a>
+        <a href="magaza.html" class="header__nav-link">Magaza</a>
+        <a href="blog.html" class="header__nav-link">Blog</a>
+        <a href="iletisim.html" class="header__nav-link">Iletisim</a>
+      </nav>
+      <a href="iletisim.html" class="btn btn-secondary header__cta-desktop">Iletisim</a>
+      <button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="mobile-menu__link">Ana Sayfa</a>
+    <a href="index.html#hizmetler" class="mobile-menu__link">Hizmetler</a>
+    <a href="index.html#paketler" class="mobile-menu__link">Paketler</a>
+    <a href="magaza.html" class="mobile-menu__link">Dijital Magaza</a>
+    <a href="blog.html" class="mobile-menu__link">Blog</a>
+    <a href="iletisim.html" class="mobile-menu__link">Iletisim</a>
+    <a href="randevu.html" class="mobile-menu__link">Randevu Al</a>
+  </div>
+
+  <main>
+
+    <section class="randevu-hero">
+      <div class="container">
+        <span class="badge badge-accent">Ucretsiz Danismanlik</span>
+        <h1 class="heading-1" style="margin-top: 16px;">Online <span class="text-gradient">Randevu</span> Olustur</h1>
+        <p class="section-header__desc" style="margin-top: 12px;">
+          30 dakikalik ucretsiz kesif gorusmesi. Isletmenizi analiz edelim, size ozel AI cozumunu birlikte planlayalim.
+        </p>
+      </div>
+    </section>
+
+    <!-- Calendly Embed -->
+    <section style="padding-bottom: 40px;">
+      <div class="container">
+        <div class="calendly-wrapper" id="calendlyWrapper">
+          <!--
+          ============================================================
+          CALENDLY ENTEGRASYONU
+          ============================================================
+
+          Bu bolum Calendly hesabiniz olusturulduktan sonra aktif edilecek.
+
+          YAPILACAKLAR:
+          1. calendly.com'da ucretsiz hesap olusturun
+          2. "Create Event Type" -> "30 Minute Meeting" secin
+          3. Event ayarlarindan "Share" -> "Add to Website" secin
+          4. "Inline Embed" kodunu kopyalayin
+          5. Asagidaki PLACEHOLDER_URL kismini kendi Calendly linkinizle degistirin
+          6. Asagidaki yorum blogunu kaldirip embed kodunu aktif edin
+
+          Alternatif platformlar:
+          - calendly.com (ucretsiz)
+          - calendesk.com (ucretsiz)
+          - tidycal.com (one-time $29)
+          - zcal.co (ucretsiz)
+          - Google Calendar Appointment Schedule (ucretsiz, Google Workspace ile)
+
+          Google Calendar alternatifi icin:
+          1. Google Calendar'da "Randevu takvimi" olusturun
+          2. Paylasim linkini alin
+          3. Asagida link olarak ekleyin
+          ============================================================
+          -->
+
+          <!-- CALENDLY PLACEHOLDER (aktif edilene kadar gorunur) -->
+          <div class="calendly-placeholder" id="calendlyPlaceholder">
+            <div class="calendly-placeholder__icon">&#x1F4C5;</div>
+            <h3 class="calendly-placeholder__title">Randevu Sistemi Hazirlaniyor</h3>
+            <p class="calendly-placeholder__desc">
+              Online randevu sistemimiz cok yakinda aktif olacak. Su an icin asagidaki adimlarla bize ulasabilirsiniz.
+            </p>
+            <div class="calendly-placeholder__steps">
+              <div class="calendly-placeholder__step">
+                <div class="calendly-placeholder__step-num">1</div>
+                <div class="calendly-placeholder__step-label">Formu Doldur</div>
+              </div>
+              <div class="calendly-placeholder__step">
+                <div class="calendly-placeholder__step-num">2</div>
+                <div class="calendly-placeholder__step-label">Size Donelim</div>
+              </div>
+              <div class="calendly-placeholder__step">
+                <div class="calendly-placeholder__step-num">3</div>
+                <div class="calendly-placeholder__step-label">Goruselim</div>
+              </div>
+            </div>
+            <a href="#randevu-form-section" class="btn btn-primary btn-lg">Randevu Formuna Git</a>
+          </div>
+
+          <!-- CALENDLY EMBED (aktif edilecek) -->
+          <!--
+          <div class="calendly-embed" id="calendlyEmbed" style="display: none;">
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <div class="calendly-inline-widget"
+                 data-url="PLACEHOLDER_URL"
+                 style="min-width:320px;height:650px;">
+            </div>
+          </div>
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom Randevu Formu (Calendly aktif olana kadar kullanilir) -->
+    <section style="padding-bottom: 40px;" id="randevu-form-section">
+      <div class="container container-narrow">
+        <div class="contact__form">
+          <h3 class="heading-3" style="margin-bottom: 8px;">Hizli Randevu Formu</h3>
+          <p style="color: var(--clr-neutral-400); font-size: var(--fs-350); margin-bottom: 32px;">
+            Asagidaki bilgileri doldurun, 24 saat icinde size donup ucretsiz kesif gorusmesi planlayalim.
+          </p>
+          <form id="randevuForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+            <input type="hidden" name="subject" value="VerimliAI - Yeni Randevu Talebi">
+            <input type="hidden" name="from_name" value="VerimliAI Randevu Formu">
+            <input type="hidden" name="redirect" value="false">
+            <input type="checkbox" name="botcheck" class="sr-only" tabindex="-1" autocomplete="off">
+
+            <div class="form-group">
+              <label class="form-label" for="randevu_name">Ad Soyad <span style="color: var(--clr-error);">*</span></label>
+              <input type="text" id="randevu_name" name="name" class="form-input" placeholder="Adiniz ve soyadiniz" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="randevu_email">E-Posta <span style="color: var(--clr-error);">*</span></label>
+              <input type="email" id="randevu_email" name="email" class="form-input" placeholder="ornek@firma.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="randevu_phone">Telefon</label>
+              <input type="tel" id="randevu_phone" name="phone" class="form-input" placeholder="05XX XXX XX XX">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="randevu_business">Isletmenizin Adi <span style="color: var(--clr-error);">*</span></label>
+              <input type="text" id="randevu_business" name="business_name" class="form-input" placeholder="Firmanizin veya magazanizin adi" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="randevu_instagram">Instagram Hesabiniz <span style="color: var(--clr-error);">*</span></label>
+              <input type="text" id="randevu_instagram" name="instagram" class="form-input" placeholder="@kullaniciadi veya Instagram linki" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="randevu_need">En Cok Hangi Alanda AI Otomasyonuna Ihtiyaciniz Var? <span style="color: var(--clr-error);">*</span></label>
+              <select id="randevu_need" name="ai_need" class="form-input" required>
+                <option value="">Seciniz...</option>
+                <option value="musteri-iliskileri">Musteri Iliskileri (DM/WhatsApp chatbot)</option>
+                <option value="sosyal-medya">Sosyal Medya (Icerik uretimi, planlama)</option>
+                <option value="satis">Satis (Odeme linki, siparis takibi)</option>
+                <option value="hepsi">Hepsi / Kapsamli Cozum</option>
+                <option value="diger">Diger / Kararsizim</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="randevu_message">Eklemek Istediginiz Bir Sey Var mi?</label>
+              <textarea id="randevu_message" name="message" class="form-input" placeholder="Isletmeniz ve beklentileriniz hakkinda kisaca bahsedin..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full btn-lg">Ucretsiz Randevu Talep Et</button>
+          </form>
+          <div class="form-success" id="randevuFormSuccess">
+            Randevu talebiniz basariyla alindi! En kisa surede size donus yapacagiz.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="steps-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-primary">Nasil Calisir?</span>
+          <h2 class="heading-2 section-header__title">3 Adimda <span class="text-gradient">AI Cozumunuze</span> Kavusun</h2>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card reveal">
+            <h3 class="step-card__title">Kesif Gorusmesi</h3>
+            <p class="step-card__desc">
+              30 dakikalik ucretsiz online gorusmede isletmenizi, mevcut sureclerinizi ve ihtiyaclarinizi analiz ediyoruz. Hangi AI cozumunun size en uygun oldugunu belirliyoruz.
+            </p>
+          </div>
+          <div class="step-card reveal">
+            <h3 class="step-card__title">Kurulum ve Entegrasyon</h3>
+            <p class="step-card__desc">
+              Sectiginiz pakete gore AI asistanlarinizi kuruyor, Instagram DM, WhatsApp ve web sitenize entegre ediyoruz. Tum urun bilgilerini sisteme tanimliyor, marka sesinize gore optimize ediyoruz.
+            </p>
+          </div>
+          <div class="step-card reveal">
+            <h3 class="step-card__title">Canliya Alma ve Egitim</h3>
+            <p class="step-card__desc">
+              Sisteminizi canliya aliyor, ekibinize 1 saatlik ucretsiz egitim veriyoruz. Ilk hafta performansi yakindan takip ediyor, gerekli optimizasyonlari yapiyoruz. Sonrasinda aylik raporlamayla devam.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="index.html" class="header__logo">
+            <div class="header__logo-icon">V</div>
+            <div class="header__logo-text">Verimli<span>AI</span></div>
+          </a>
+          <p class="footer__brand-desc">Isletmelerin tum dijital sureclerini yapay zeka ile otomatize eden yeni nesil hizmet ajansi.</p>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Hizmetler</h4>
+          <div class="footer__links">
+            <a href="#" class="footer__link">AI Satis Asistani</a>
+            <a href="#" class="footer__link">AI Icerik Asistani</a>
+            <a href="magaza.html" class="footer__link">Dijital Magaza</a>
+            <a href="altyapi.html" class="footer__link">Teknik Altyapi</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Kurumsal</h4>
+          <div class="footer__links">
+            <a href="randevu.html" class="footer__link">Randevu Al</a>
+            <a href="iletisim.html" class="footer__link">Iletisim</a>
+            <a href="blog.html" class="footer__link">Blog</a>
+            <a href="basari-hikayeleri.html" class="footer__link">Basari Hikayeleri</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__col-title">Yasal</h4>
+          <div class="footer__links">
+            <a href="gizlilik-politikasi.html" class="footer__link">Gizlilik Politikasi</a>
+            <a href="kullanim-kosullari.html" class="footer__link">Kullanim Kosullari</a>
+            <a href="kvkk.html" class="footer__link">KVKK Aydinlatma</a>
+            <a href="veri-guvenligi.html" class="footer__link">Veri Guvenligi</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 VerimliAI. Tum haklari saklidir.</p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link">IG</a>
+          <a href="#" class="footer__social-link">TT</a>
+          <a href="#" class="footer__social-link">LI</a>
+          <a href="#" class="footer__social-link">WA</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/chatbot.js"></script>
+</body>
+</html>

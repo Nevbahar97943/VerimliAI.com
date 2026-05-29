@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VerimliAI Client Dashboard Demo - AI asistaninizin canli metrikleri, cevaplanan mesajlar, kurtarilan ciro ve musteri memnuniyet skoru.">
+<title>Dashboard Demo - VerimliAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<header class="header" id="header"><div class="header__inner">
+<a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a>
+<nav class="header__nav"><a href="index.html" class="header__nav-link">Ana Sayfa</a><a href="magaza.html" class="header__nav-link">Magaza</a><a href="blog.html" class="header__nav-link">Blog</a><a href="iletisim.html" class="header__nav-link">Iletisim</a></nav>
+<a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+<button class="header__mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button></div></header>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-menu__link">Ana Sayfa</a><a href="randevu.html" class="mobile-menu__link">Randevu Al</a></div>
+
+<main>
+<section class="demo-hero"><div class="container">
+<span class="badge badge-accent">Canli Demo</span>
+<h1 class="heading-1" style="margin-top:16px;">Musteri <span class="text-gradient">Kontrol Paneli</span></h1>
+<p class="section-header__desc" style="margin-top:12px;">AI asistaninizi satin aldiktan sonra sahip olacaginiz yonetim panelinin canli onizlemesi. Tum metrikler gercek zamanli simule edilmistir.</p>
+</div></section>
+
+<section style="padding-bottom:80px;"><div class="container" style="max-width:900px;">
+<div class="dashboard-wrapper glass-card">
+
+<div class="dashboard-header">
+  <div class="dashboard-header__title">AI Asistan Paneli — Luna Butik</div>
+  <div class="dashboard-header__status"><span class="status-bar__dot status-bar__dot--green" style="display:inline-block;width:8px;height:8px;"></span> Bot Aktif · 7/24</div>
+</div>
+
+<div class="dashboard-metrics">
+  <div class="dashboard-metric"><div class="dashboard-metric__val" id="metricMsgs">1,247</div><div class="dashboard-metric__lbl">Bu Ay Cevaplanan Mesaj</div><div class="dashboard-metric__change">+12% gecen aya gore</div></div>
+  <div class="dashboard-metric"><div class="dashboard-metric__val" id="metricRevenue">18,450 TL</div><div class="dashboard-metric__lbl">Kurtarilan Ciro</div><div class="dashboard-metric__change">+8% gecen aya gore</div></div>
+  <div class="dashboard-metric"><div class="dashboard-metric__val">94%</div><div class="dashboard-metric__lbl">Musteri Memnuniyeti</div><div class="dashboard-metric__change">5 uzerinden 4.7</div></div>
+  <div class="dashboard-metric"><div class="dashboard-metric__val">8.2 sn</div><div class="dashboard-metric__lbl">Ort. Yanit Suresi</div><div class="dashboard-metric__change">Hedef: <10sn ✓</div></div>
+</div>
+
+<div class="dashboard-charts">
+  <div class="dashboard-chart"><div class="dashboard-chart__title">Gunluk Cevaplanan Mesaj (Son 7 Gun)</div><canvas id="chartMsgs"></canvas></div>
+  <div class="dashboard-chart"><div class="dashboard-chart__title">Kanallara Gore Mesaj Dagilimi</div><canvas id="chartChannels"></canvas></div>
+</div>
+
+<div class="dashboard-log"><div class="dashboard-log__title">Canli Gorusme Loglari — Son 5 Etkilesim</div>
+<div class="dashboard-log__item"><span class="dashboard-log__time">14:32</span><span>Instagram DM: "38 beden var mi?" → Bot yanitladi → Satis tamamlandi ✓</span></div>
+<div class="dashboard-log__item"><span class="dashboard-log__time">14:15</span><span>WhatsApp: "Kargom nerede?" → Kargo takip linki gonderildi ✓</span></div>
+<div class="dashboard-log__item"><span class="dashboard-log__time">13:48</span><span>Web Chat: "Iade politikasi nedir?" → Politika metni gonderildi ✓</span></div>
+<div class="dashboard-log__item"><span class="dashboard-log__time">13:22</span><span>Instagram DM: "Fiyat alabilir miyim?" → Fiyat + odeme linki gonderildi ✓</span></div>
+<div class="dashboard-log__item"><span class="dashboard-log__time">12:55</span><span>WhatsApp: "Haftasonu acik misiniz?" → Calisma saatleri gonderildi ✓</span></div>
+</div>
+
+</div>
+<div style="text-align:center;margin-top:24px;"><a href="randevu.html" class="btn btn-primary btn-lg">Kendi Panelinizi Ister misiniz? — Randevu Alin</a></div>
+</div></section>
+</main>
+
+<footer class="footer"><div class="container"><div class="footer__bottom"><p class="footer__copyright">&copy; 2026 VerimliAI.</p></div></div></footer>
+<script src="js/main.js"></script><script src="js/chatbot.js"></script>
+<script>
+(function(){
+  new Chart(document.getElementById('chartMsgs'), {
+    type: 'bar',
+    data: { labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], datasets: [{ data: [145,178,132,195,210,168,219], backgroundColor: '#6c5ce7', borderRadius: 6 }] },
+    options: { plugins: { legend: { display: false } }, scales: { y: { grid: { color: '#2e2e42' }, ticks: { color: '#7c7c9a' } }, x: { ticks: { color: '#7c7c9a' } } }, responsive: true, maintainAspectRatio: false }
+  });
+  new Chart(document.getElementById('chartChannels'), {
+    type: 'doughnut',
+    data: { labels: ['Instagram DM','WhatsApp','Web Chat','Facebook'], datasets: [{ data: [45,30,18,7], backgroundColor: ['#6c5ce7','#25D366','#00d2d3','#1877F2'], borderWidth: 0 }] },
+    options: { plugins: { legend: { labels: { color: '#7c7c9a' } } }, responsive: true, maintainAspectRatio: false }
+  });
+})();
+</script>
+</body>
+</html>

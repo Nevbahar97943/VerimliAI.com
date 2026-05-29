@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VerimliAI API Dokumantasyonu - REST API endpointleri, Python, JavaScript ve cURL ornekleri. Webhook entegrasyonlari.">
+<title>API Dokumantasyonu - VerimliAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="header" id="header"><div class="header__inner">
+<a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a>
+<nav class="header__nav"><a href="index.html" class="header__nav-link">Ana Sayfa</a><a href="magaza.html" class="header__nav-link">Magaza</a><a href="blog.html" class="header__nav-link">Blog</a></nav>
+<a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+<button class="header__mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></button></div></header>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-menu__link">Ana Sayfa</a><a href="randevu.html" class="mobile-menu__link">Randevu</a></div>
+
+<main>
+<section class="demo-hero"><div class="container">
+<span class="badge badge-accent">Developer Hub</span>
+<h1 class="heading-1" style="margin-top:16px;">API <span class="text-gradient">Dokumantasyonu</span></h1>
+<p class="section-header__desc" style="margin-top:12px;">VerimliAI API'leri ile kendi sistemlerinizi entegre edin. REST API, Webhook ve SDK dokumantasyonu.</p>
+</div></section>
+
+<section style="padding-bottom:80px;"><div class="container" style="max-width:800px;">
+
+<h2 style="font-size:var(--fs-700);color:var(--clr-neutral-50);margin-bottom:var(--space-6);">Baslarken</h2>
+<p style="color:var(--clr-neutral-300);line-height:var(--lh-relaxed);margin-bottom:var(--space-6);">VerimliAI API, RESTful mimariyle calisir. Tum istekler JSON formatinda yapilir ve yanitlar JSON olarak dondurulur. API anahtarinizi almak icin hesap olusturmaniz gerekmektedir.</p>
+
+<h3 style="font-size:var(--fs-500);color:var(--clr-neutral-100);margin-bottom:var(--space-3);">Kimlik Dogrulama</h3>
+<p style="color:var(--clr-neutral-300);margin-bottom:var(--space-4);">Tum API istekleri <code style="background:var(--clr-neutral-800);padding:2px 6px;border-radius:4px;color:var(--clr-accent-400);">Authorization: Bearer YOUR_API_KEY</code> header'i ile yetkilendirilir.</p>
+
+<div class="code-block">
+<span class="comment"># API Anahtari ile istek ornegi</span>
+<span class="keyword">curl</span> -X <span class="func">GET</span> <span class="url">"https://api.verimliai.com/v1/agent/status"</span> \
+  -H <span class="string">"Authorization: Bearer vlm_sk_xxxxxxxxxxxx"</span> \
+  -H <span class="string">"Content-Type: application/json"</span>
+</div>
+
+<h2 style="font-size:var(--fs-700);color:var(--clr-neutral-50);margin:var(--space-10)0 var(--space-6);">API Endpointleri</h2>
+
+<div style="margin-bottom:var(--space-8);">
+  <h3 style="font-size:var(--fs-500);color:var(--clr-neutral-100);margin-bottom:var(--space-2);"><span class="api-method api-method--get">GET</span> /v1/agent/status</h3>
+  <p style="color:var(--clr-neutral-400);margin-bottom:var(--space-4);">AI asistanin anlik durumunu, aktif kanallari ve son 24 saatlik metrikleri dondurur.</p>
+  <div class="code-block"><span class="comment">// JavaScript Fetch Ornegi</span>
+<span class="keyword">const</span> response = <span class="keyword">await</span> <span class="func">fetch</span>(<span class="string">'https://api.verimliai.com/v1/agent/status'</span>, {
+  headers: { <span class="string">'Authorization'</span>: <span class="string">'Bearer vlm_sk_xxxx'</span> }
+});
+<span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="func">json</span>();
+<span class="comment">// { status: "active", channels: ["instagram","whatsapp"], messages_24h: 247 }</span></div>
+</div>
+
+<div style="margin-bottom:var(--space-8);">
+  <h3 style="font-size:var(--fs-500);color:var(--clr-neutral-100);margin-bottom:var(--space-2);"><span class="api-method api-method--post">POST</span> /v1/messages/send</h3>
+  <p style="color:var(--clr-neutral-400);margin-bottom:var(--space-4);">Belirtilen kanaldan musteriye AI tarafindan olusturulmus veya manuel mesaj gonderir.</p>
+  <div class="code-block"><span class="comment"># Python Istek Ornegi</span>
+<span class="keyword">import</span> requests
+
+response = requests.<span class="func">post</span>(
+    <span class="string">"https://api.verimliai.com/v1/messages/send"</span>,
+    headers={<span class="string">"Authorization"</span>: <span class="string">"Bearer vlm_sk_xxxx"</span>},
+    json={
+        <span class="string">"channel"</span>: <span class="string">"instagram"</span>,
+        <span class="string">"customer_id"</span>: <span class="string">"cust_123"</span>,
+        <span class="string">"message"</span>: <span class="string">"Siparisiniz kargoya verildi!"</span>
+    }
+)</div>
+</div>
+
+<div style="margin-bottom:var(--space-8);">
+  <h3 style="font-size:var(--fs-500);color:var(--clr-neutral-100);margin-bottom:var(--space-2);"><span class="api-method api-method--post">POST</span> /v1/webhooks/register</h3>
+  <p style="color:var(--clr-neutral-400);margin-bottom:var(--space-4);">Webhook kaydi olusturur. Belirli olaylar gerceklestiginde (yeni mesaj, satis tamamlandi) sizin sunucunuza HTTP POST istegi gonderilir.</p>
+</div>
+
+<h2 style="font-size:var(--fs-700);color:var(--clr-neutral-50);margin:var(--space-10)0 var(--space-6);">Topluluk Sablonlari</h2>
+<p style="color:var(--clr-neutral-300);margin-bottom:var(--space-6);">Asagidaki Make.com JSON sablonlarini indirip kendi hesabiniza import edebilirsiniz:</p>
+<div class="code-block">
+<span class="comment">// Make.com - Gelen Instagram DM'ini Shopier siparisine cevirme senaryosu</span>
+{
+  <span class="string">"name"</span>: <span class="string">"Instagram DM → Shopier Order Automation"</span>,
+  <span class="string">"flow"</span>: [
+    { <span class="string">"module"</span>: <span class="string">"instagram:watchMessages"</span> },
+    { <span class="string">"module"</span>: <span class="string">"verimliai:processIntent"</span>, <span class="string">"config"</span>: { <span class="string">"model"</span>: <span class="string">"gpt-4o"</span> } },
+    { <span class="string">"module"</span>: <span class="string">"shopier:createPaymentLink"</span>, <span class="string">"config"</span>: { <span class="string">"auto_redirect"</span>: <span class="keyword">true</span> } },
+    { <span class="string">"module"</span>: <span class="string">"googleSheets:addRow"</span> }
+  ]
+}</div>
+
+</div></section></main>
+
+<footer class="footer"><div class="container"><div class="footer__bottom"><p class="footer__copyright">&copy; 2026 VerimliAI. All rights reserved. | <span style="color:var(--clr-success);">Secured by 256-bit SSL</span> | <span style="color:var(--clr-accent-400);">GDPR Compliant</span></p></div></div></footer>
+<script src="js/main.js"></script><script src="js/chatbot.js"></script>
+</body>
+</html>
