@@ -139,6 +139,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   min-height: 100vh;
+  -webkit-tap-highlight-color: transparent;
 }
 
 img,
@@ -1621,7 +1622,8 @@ textarea.form-input {
 .faq__answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height var(--transition-base);
+  transition: max-height 0.4s ease-in-out;
+  will-change: max-height;
 }
 
 .faq__answer-inner {

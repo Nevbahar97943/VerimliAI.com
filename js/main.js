@@ -122,12 +122,39 @@
     var form = document.getElementById('contactForm');
     if (!form) return;
 
+    // Add validation styles
+    var style = document.createElement('style');
+    style.textContent = '.form-input.error { border-color: var(--clr-error) !important; box-shadow: 0 0 0 3px rgba(239,68,68,.15) !important; } .form-input.valid { border-color: var(--clr-success) !important; } .form-error-msg { color: var(--clr-error); font-size: var(--fs-300); margin-top: 4px; display: none; } .form-error-msg.active { display: block; }';
+    document.head.appendChild(style);
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      var valid = true;
+
+      // Clear previous errors
+      form.querySelectorAll('.form-input').forEach(function (el) { el.classList.remove('error', 'valid'); });
+      form.querySelectorAll('.form-error-msg').forEach(function (el) { el.classList.remove('active'); });
+
       var name = document.getElementById('name');
       var email = document.getElementById('email');
-      if (!name || !email) return;
-      if (!name.value.trim() || !email.value.trim()) return;
+
+      if (name && !name.value.trim()) {
+        name.classList.add('error');
+        showFieldError(name, 'Ad soyad zorunludur.');
+        valid = false;
+      } else if (name) { name.classList.add('valid'); }
+
+      if (email && !email.value.trim()) {
+        email.classList.add('error');
+        showFieldError(email, 'E-posta zorunludur.');
+        valid = false;
+      } else if (email && email.value.indexOf('@') === -1) {
+        email.classList.add('error');
+        showFieldError(email, 'Gecerli bir e-posta adresi girin.');
+        valid = false;
+      } else if (email) { email.classList.add('valid'); }
+
+      if (!valid) return;
 
       var submitBtn = form.querySelector('button[type="submit"]');
       var originalText = submitBtn.textContent;
@@ -142,6 +169,15 @@
         })
         .catch(function () { form.style.display = 'none'; var s = document.getElementById('formSuccess'); if (s) s.classList.add('active'); });
     });
+
+    function showFieldError(field, msg) {
+      var existing = field.parentNode.querySelector('.form-error-msg');
+      if (existing) { existing.textContent = msg; existing.classList.add('active'); return; }
+      var err = document.createElement('div');
+      err.className = 'form-error-msg active';
+      err.textContent = msg;
+      field.parentNode.appendChild(err);
+    }
   }
 
   /* ============================================================
