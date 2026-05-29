@@ -22,6 +22,8 @@
     initAITerminal();
     initCookieBanner();
     initCurrencyDisplay();
+    initDynamicHero();
+    initLeadScoring();
   });
 
   /* ============================================================
@@ -439,6 +441,85 @@
 
     document.addEventListener('keydown', function (e) { if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); term.classList.contains('active') ? close() : open(); } });
     document.addEventListener('click', function (e) { if (term.classList.contains('active') && !term.contains(e.target) && e.target !== trig) close(); });
+  }
+
+  /* ============================================================
+     DYNAMIC HERO — AI-DRIVEN PERSONALIZATION
+     ============================================================ */
+  function initDynamicHero() {
+    if (window.location.pathname.indexOf('index.html') === -1 && window.location.pathname !== '/' && window.location.pathname.replace(/\/$/,'') !== '') {
+      // Track page visit
+      var path = window.location.pathname;
+      if (path.indexOf('/saglik') !== -1 || path.indexOf('saglik') !== -1) setCookie('verimliai_interest', 'saglik', 7);
+      else if (path.indexOf('/e-ticaret') !== -1 || path.indexOf('e-ticaret') !== -1) setCookie('verimliai_interest', 'eticaret', 7);
+      else if (path.indexOf('/emlak') !== -1) setCookie('verimliai_interest', 'emlak', 7);
+      else if (path.indexOf('/kurumsal') !== -1) setCookie('verimliai_interest', 'kurumsal', 7);
+      return;
+    }
+
+    // On index page: personalize hero
+    var interest = getCookie('verimliai_interest');
+    if (!interest) return;
+
+    var heroTitle = document.querySelector('.hero__title');
+    var heroDesc = document.querySelector('.hero__desc');
+    if (!heroTitle || !heroDesc) return;
+
+    var personalizations = {
+      'saglik': { title: 'Kliniginiz Icin<br><span class="text-gradient">7/24 Calisan</span><br>Yapay Zeka', desc: 'Hasta randevularindan KVKK uyumlu kayit sureclerine, otomatik hatirlatmalardan tedavi sonrasi takibe kadar tum saglik sureclerinizi AI ile otomatize ediyoruz.' },
+      'eticaret': { title: 'Butik Magazaniz Icin<br><span class="text-gradient">Gece Gunduz Satis</span><br>Yapay Zeka', desc: 'Instagram DM\'lerinizi 7/24 yanitlayan, stok kontrol eden, odeme linki gonderip satis kapatan AI asistan. Gece 3\'te bile siparis alir.' },
+      'emlak': { title: 'Emlak Portfoyunuz Icin<br><span class="text-gradient">Aninda Yanit Veren</span><br>Yapay Zeka', desc: 'Sahibinden, Hepsiemlak ve web sitenizden gelen tum talepleri 7/24 karsilayan, sicak alicilari filtreleyen AI asistan.' },
+      'kurumsal': { title: 'Sirketiniz Icin<br><span class="text-gradient">Kurumsal Olcekte</span><br>Yapay Zeka', desc: 'E-posta tasnifinden teklif hazirlamaya, departmanlar arasi veri akisindan IK sureclerine kadar tum kurumsal operasyonlarinizi AI ile otomatize ediyoruz.' }
+    };
+
+    var p = personalizations[interest];
+    if (p) {
+      heroTitle.innerHTML = p.title;
+      heroDesc.textContent = p.desc;
+    }
+  }
+
+  /* ============================================================
+     LEAD SCORING — RANDEVU FORMU ANALIZI
+     ============================================================ */
+  function initLeadScoring() {
+    var form = document.getElementById('randevuForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      var ig = (document.getElementById('randevu_instagram') || {}).value || '';
+      var biz = (document.getElementById('randevu_business') || {}).value || '';
+      var need = (document.getElementById('randevu_need') || {}).value || '';
+
+      // Lead scoring algorithm
+      var score = 50; // Base
+      if (ig.indexOf('@') !== -1) score += 15;
+      if (biz.length > 10) score += 10;
+      if (biz.length > 20) score += 5;
+      if (need === 'hepsi' || need === 'musteri-iliskileri') score += 10;
+      if (need === 'satis') score += 8;
+
+      var level = score >= 80 ? '🔥 Çok Sicak' : score >= 65 ? '⭐ Sicak' : '❄️ Ilimli';
+      var pkg = score >= 80 ? 'Premium Paket (20.000 TL + 3.500 TL/ay)' : score >= 65 ? 'Profesyonel Paket (12.500 TL + 2.500 TL/ay)' : 'Baslangic Paketi (7.500 TL + 1.500 TL/ay)';
+
+      // Store lead data
+      var lead = { business: biz, instagram: ig, need: need, score: score, level: level, pkg: pkg, time: new Date().toISOString() };
+      var leads = [];
+      try { leads = JSON.parse(localStorage.getItem('verimliai_leads') || '[]'); } catch(e) {}
+      leads.push(lead);
+      try { localStorage.setItem('verimliai_leads', JSON.stringify(leads)); } catch(e) {}
+
+      // Log to console (in production: send to Slack webhook)
+      console.log('🚨 YENI BASVURU:', lead.business, '| Skor:', lead.score + '/100', '|', lead.level, '|', lead.pkg);
+
+      // Webhook call (Slack/Telegram — set your webhook URL)
+      try {
+        var wh = 'YOUR_SLACK_WEBHOOK_URL';
+        if (wh !== 'YOUR_SLACK_WEBHOOK_URL') {
+          fetch(wh, { method: 'POST', body: JSON.stringify({ text: '🚨 *YENI BASVURU!*\nMarka: *' + lead.business + '*\nInstagram: ' + lead.instagram + '\nSkor: *' + lead.score + '/100* (' + lead.level + ')\nPaket: *' + lead.pkg + '*\nIhtiyac: ' + lead.need }) });
+        }
+      } catch(ex) {}
+    });
   }
 
 })();

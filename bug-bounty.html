@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VerimliAI Bug Bounty Programi - Beyaz sapkali hackerlara acik guvenlik acigi odul programi. SQL injection,XSS bulana odul.">
+<title>Bug Bounty - VerimliAI</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.prose{max-width:800px;margin-inline:auto;line-height:var(--lh-relaxed)}
+.prose h2{font-size:var(--fs-700);color:var(--clr-neutral-50);margin:var(--space-10)0 var(--space-6)}
+.prose h3{font-size:var(--fs-500);color:var(--clr-neutral-100);margin:var(--space-8)0 var(--space-4)}
+.prose p,.prose li{color:var(--clr-neutral-300);font-size:var(--fs-400);margin-bottom:var(--space-4)}
+.prose ul,.prose ol{padding-left:var(--space-6);margin-bottom:var(--space-6)}
+.bounty-table{width:100%;border-collapse:collapse;margin:var(--space-8)0}
+.bounty-table th{background:var(--clr-neutral-800);padding:var(--space-4);text-align:left;color:var(--clr-neutral-200);font-weight:var(--fw-bold)}
+.bounty-table td{padding:var(--space-4);border-bottom:1px solid var(--clr-neutral-800);color:var(--clr-neutral-300)}
+.bounty-table .reward{color:var(--clr-accent-400);font-weight:var(--fw-extrabold)}
+.bounty-table .severity--critical{color:var(--clr-error);font-weight:var(--fw-bold)}
+.challenge-box{background:var(--clr-neutral-850);border:2px solid rgba(239,68,68,.3);border-radius:var(--radius-2xl);padding:var(--space-8);text-align:center;margin:var(--space-10)0}
+.challenge-box h3{color:var(--clr-error);font-size:var(--fs-600)}
+.hall-of-fame{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3);margin:var(--space-8)0}
+.hof-card{background:var(--clr-neutral-850);border:var(--border-card);border-radius:var(--radius-lg);padding:var(--space-4);text-align:center;font-size:var(--fs-300)}
+.hof-card__name{color:var(--clr-neutral-100);font-weight:var(--fw-bold)}.hof-card__bug{color:var(--clr-accent-400)}
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
+.rule-card{background:var(--clr-neutral-850);border:1px solid var(--clr-neutral-700);border-radius:var(--radius-xl);padding:var(--space-5)}
+.rule-card h4{color:var(--clr-neutral-100);margin-bottom:var(--space-2);font-size:var(--fs-400)}
+.rule-card p{font-size:var(--fs-300);margin-bottom:0}
+@media(max-width:768px){.hall-of-fame{grid-template-columns:1fr}.rules-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="header" id="header"><div class="header__inner">
+<a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a>
+<nav class="header__nav"><a href="index.html" class="header__nav-link">Ana Sayfa</a><a href="magaza.html" class="header__nav-link">Magaza</a><a href="blog.html" class="header__nav-link">Blog</a></nav>
+<a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+<button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></header>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-menu__link">Ana Sayfa</a><a href="randevu.html" class="mobile-menu__link">Randevu</a></div>
+
+<main>
+<section class="demo-hero"><div class="container"><span class="badge badge-accent">Kuresel Program</span>
+<h1 class="heading-1" style="margin-top:16px;">Bug Bounty & <span class="text-gradient">White-Hat Hub</span></h1>
+<p class="section-header__desc" style="margin-top:12px;">Sistemlerimize o kadar guveniyoruz ki dunyaya meydan okuyoruz. Guvenlik acigi bulana dolar odulu.</p></div></section>
+
+<section style="padding-bottom:80px;"><div class="container"><div class="prose">
+
+<div class="challenge-box"><h3>Meydan Okuyoruz</h3><p style="color:var(--clr-neutral-300);margin-top:12px;">VerimliAI sistemlerinde veya web sitemizde herhangi bir guvenlik acigi, SQL enjeksiyonu, XSS acigi, yetkisiz erisim veya veri sizintisi bulup bize sorumlu bir sekilde raporlayan beyaz sapkali hacker'lara asagidaki odulleri veriyoruz. Sistemlerimiz dunyanin en iyi siber guvenlik uzmanlari tarafindan test edilmistir — ama biz her zaman daha iyisini arariz.</p></div>
+
+<h2>Odul Tablosu</h2>
+<table class="bounty-table">
+<tr><th>Guvenlik Acigi Seviyesi</th><th>Aciklama</th><th>Odul (USD)</th><th>Ornek</th></tr>
+<tr><td class="severity--critical">Kritik</td><td>Uzaktan kod calistirma (RCE), veritabani sizintisi, admin panel yetkisiz erisim</td><td class="reward">$5,000</td><td>SQL Injection ile tum kullanici verilerine erisim</td></tr>
+<tr><td style="color:var(--clr-warning);font-weight:var(--fw-bold);">Yuksek</td><td>Kimlik dogrulama atlatma, hassas veri ifsasi, CSRF</td><td class="reward">$2,500</td><td>JWT token manipulasyonu ile baska kullanici hesabina erisim</td></tr>
+<tr><td style="color:var(--clr-accent-400);font-weight:var(--fw-bold);">Orta</td><td>XSS (Stored/Reflected), IDOR, rate limiting atlatma</td><td class="reward">$1,000</td><td>Stored XSS ile admin panelinde kod calistirma</td></tr>
+<tr><td style="color:var(--clr-neutral-400);">Dusuk</td><td>Bilgi ifsasi (non-sensitive), eksik guvenlik header'lari</td><td class="reward">$250</td><td>Server versiyon bilgisi ifsasi</td></tr>
+</table>
+
+<h2>Program Kurallari</h2>
+<div class="rules-grid">
+<div class="rule-card"><h4>Yetkisiz Erisim Yok</h4><p>Buldugunuz acigi istismar ederek baska musterilerin verilerine erismeyin. Acigi gostermek icin kendi hesabiniz yeterlidir.</p></div>
+<div class="rule-card"><h4>Sorumlu Ifsa (Responsible Disclosure)</h4><p>Acigi once bize bildirin. Cozum icin 30 gun bekleyin. Bu sure dolmadan acigi kamuya aciklamayin.</p></div>
+<div class="rule-card"><h4>DoS/DDoS Yasak</h4><p>Hizmet kesintisine neden olacak testler yapmayin. Rate limiting ve load testing bu program kapsami disindadir.</p></div>
+<div class="rule-card"><h4>Sosyal Muhendislik Yasak</h4><p>Phishing, vishing veya calisanlarimizi hedef alan sosyal muhendislik saldirilari kapsam disidir.</p></div>
+</div>
+
+<h2>Kapsam Dahilindeki Sistemler</h2>
+<ul><li>verimliai.com ve tum alt sayfalari</li><li>VerimliAI API endpointleri</li><li>VerimliAI Chatbot Widget</li><li>Yonetim paneli ve dashboard</li></ul>
+
+<h2>Kapsam Disi</h2>
+<ul><li>Ucuncu taraf hizmetleri (Shopier, Web3Forms, Stripe)</li><li>DNS/SPF/DKIM yapilandirmasi</li><li>SSL/TLS sertifika konfigurasyonu (zaten A+)</li></ul>
+
+<h2>Seref Listesi (Hall of Fame)</h2>
+<div class="hall-of-fame">
+<div class="hof-card"><div class="hof-card__name">—</div><div class="hof-card__bug">Ilk bulan siz olun</div></div>
+<div class="hof-card"><div class="hof-card__name">—</div><div class="hof-card__bug">Bekleniyor</div></div>
+<div class="hof-card"><div class="hof-card__name">—</div><div class="hof-card__bug">Bekleniyor</div></div>
+</div>
+
+<h2>Basvuru</h2>
+<p>Guvenlik acigi bildirimi icin: <strong>security@verimliai.com</strong>. PGP anahtari talep uzerine verilir. Tum bildirimler 72 saat icinde yanitlanir. Kritik aciklar 24 saat icinde triage edilir.</p>
+
+<div style="text-align:center;margin-top:var(--space-10);"><a href="randevu.html" class="btn btn-primary btn-lg">Guvenlik Brifingi Talep Edin</a></div>
+</div></div></section></main>
+<footer class="footer"><div class="container"><div class="footer__bottom"><p class="footer__copyright">&copy; 2026 VerimliAI. | Bug Bounty Programi Aktif</p></div></div></footer>
+<script src="js/main.js"></script><script src="js/chatbot.js"></script>
+</body>
+</html>

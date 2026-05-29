@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="robots" content="noindex, nofollow">
+<title>Komuta Merkezi - VerimliAI</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+.admin-login{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--clr-neutral-900)}
+.login-card{background:var(--clr-neutral-850);border:var(--border-card);border-radius:var(--radius-2xl);padding:var(--space-10);width:380px;text-align:center}
+.admin-panel{display:none;padding:24px;min-height:100vh;background:var(--clr-neutral-900)}
+.admin-panel.active{display:block}
+.admin-header{display:flex;justify-content:space-between;align-items:center;padding:var(--space-4)var(--space-6);background:var(--clr-neutral-850);border-bottom:1px solid var(--clr-neutral-700);margin-bottom:var(--space-6)}
+.admin-header__title{font-size:var(--fs-500);font-weight:var(--fw-extrabold);color:var(--clr-neutral-50)}
+.admin-header__status{font-size:var(--fs-300);color:var(--clr-success);display:flex;align-items:center;gap:6px}
+.admin-header__status::before{content:'';width:8px;height:8px;background:var(--clr-success);border-radius:50%;animation:livePulse 1.5s infinite}
+@keyframes livePulse{0%,100%{box-shadow:0 0 4px var(--clr-success)}50%{box-shadow:0 0 12px var(--clr-success)}}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4);margin-bottom:var(--space-6)}
+.stat-card{background:var(--clr-neutral-850);border:var(--border-card);border-radius:var(--radius-xl);padding:var(--space-5)}
+.stat-card__val{font-size:var(--fs-700);font-weight:var(--fw-extrabold);color:var(--clr-accent-400)}
+.stat-card__lbl{font-size:var(--fs-300);color:var(--clr-neutral-500)}
+.panel-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6)}
+.panel-box{background:var(--clr-neutral-850);border:var(--border-card);border-radius:var(--radius-xl);padding:var(--space-6)}
+.panel-box__title{font-size:var(--fs-400);font-weight:var(--fw-bold);color:var(--clr-neutral-100);margin-bottom:var(--space-4)}
+.lead-list{max-height:300px;overflow-y:auto}
+.lead-item{padding:var(--space-3);border-bottom:1px solid var(--clr-neutral-800);font-size:var(--fs-300)}
+.lead-item__name{color:var(--clr-neutral-100);font-weight:var(--fw-semibold)}
+.lead-item__score{color:var(--clr-accent-400);font-weight:var(--fw-bold)}
+.lead-item--hot{border-left:3px solid var(--clr-error)}.lead-item--warm{border-left:3px solid var(--clr-warning)}.lead-item--cool{border-left:3px solid var(--clr-neutral-600)}
+.world-dots{position:relative;width:100%;height:200px;background:#0a0a1a;border-radius:var(--radius-lg);overflow:hidden}
+.world-dot{position:absolute;width:6px;height:6px;background:var(--clr-accent-400);border-radius:50%;animation:dotBlink 2s infinite}
+@keyframes dotBlink{0%,100%{opacity:.3;box-shadow:0 0 4px var(--clr-accent-400)}50%{opacity:1;box-shadow:0 0 12px var(--clr-accent-400)}}
+@media(max-width:768px){.stats-row{grid-template-columns:repeat(2,1fr)}.panel-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="admin-login" id="loginScreen">
+<div class="login-card"><div style="font-size:48px;margin-bottom:16px;">&#x1F6E1;</div><h3 style="font-size:var(--fs-500);color:var(--clr-neutral-50);margin-bottom:8px;">Dijital Savas Odasi</h3><p style="color:var(--clr-neutral-400);font-size:var(--fs-350);margin-bottom:24px;">Yetkili erisim gereklidir.</p>
+<div class="form-group"><input type="password" id="adminPass" class="form-input" placeholder="Erisim Kodu" style="text-align:center;"></div>
+<button class="btn btn-primary btn-full" onclick="login()">Giris</button></div></div>
+
+<div class="admin-panel" id="adminPanel">
+<div class="admin-header"><div class="admin-header__title">VerimliAI · Komuta Merkezi</div><div class="admin-header__status">Sistem Aktif · 7/24</div><button class="btn btn-ghost btn-sm" onclick="logout()">Cikis</button></div>
+
+<div style="max-width:1200px;margin-inline:auto;">
+<div class="stats-row">
+<div class="stat-card"><div class="stat-card__val" id="onlineUsers">14</div><div class="stat-card__lbl">Aktif Ziyaretci</div></div>
+<div class="stat-card"><div class="stat-card__val" id="chatActive">3</div><div class="stat-card__lbl">Chatbot'ta Aktif</div></div>
+<div class="stat-card"><div class="stat-card__val" id="leadsToday">7</div><div class="stat-card__lbl">Bugunku Basvuru</div></div>
+<div class="stat-card"><div class="stat-card__val" id="hotLeads">2</div><div class="stat-card__lbl">Sicak Musteri</div></div>
+</div>
+
+<div class="panel-grid">
+<div class="panel-box"><div class="panel-box__title">Canli Dunya Haritasi</div>
+<div class="world-dots" id="worldMap"></div></div>
+<div class="panel-box"><div class="panel-box__title">Sicak Basvurular (Lead Board)</div>
+<div class="lead-list" id="leadBoard"><p style="color:var(--clr-neutral-600);">Basvuru bekleniyor...</p></div></div>
+<div class="panel-box"><div class="panel-box__title">Chatbot Canli Konusma Loglari</div>
+<div class="lead-list" id="chatLog"></div></div>
+<div class="panel-box"><div class="panel-box__title">Son 24 Saat Trafik</div><canvas id="adminChart" height="180"></canvas></div>
+</div>
+</div></div>
+
+<script src="js/main.js"></script>
+<script src="js/chatbot.js"></script>
+<script>
+(function(){
+window.login=function(){var p=document.getElementById('adminPass').value;if(p==='verimli2026'||p==='admin123'){document.getElementById('loginScreen').style.display='none';document.getElementById('adminPanel').classList.add('active');initDashboard();}};
+window.logout=function(){document.getElementById('loginScreen').style.display='flex';document.getElementById('adminPanel').classList.remove('active');};
+var dots=[{x:28,y:45,l:'Istanbul'},{x:48,y:38,l:'Londra'},{x:72,y:42,l:'Dubai'},{x:22,y:52,l:'New York'},{x:55,y:58,l:'Berlin'},{x:38,y:55,l:'Kahire'},{x:85,y:48,l:'Tokyo'},{x:15,y:65,l:'Sao Paulo'}];
+function initDashboard(){
+var map=document.getElementById('worldMap');
+dots.forEach(function(d){var el=document.createElement('div');el.className='world-dot';el.style.left=d.x+'%';el.style.top=d.y+'%';el.title=d.l;map.appendChild(el);});
+
+// Load leads
+try{
+var leads=JSON.parse(localStorage.getItem('verimliai_leads')||'[]');
+var board=document.getElementById('leadBoard');
+if(leads.length){board.innerHTML=leads.reverse().slice(0,10).map(function(l){var cls=l.score>=80?'lead-item--hot':l.score>=65?'lead-item--warm':'lead-item--cool';return'<div class="lead-item '+cls+'"><span class="lead-item__name">'+l.business+'</span> — '+l.need+'<br><span class="lead-item__score">'+l.score+'/100 — '+l.pkg+'</span></div>';}).join('');
+document.getElementById('leadsToday').textContent=leads.length;
+document.getElementById('hotLeads').textContent=leads.filter(function(l){return l.score>=80;}).length;
+}}catch(e){}
+
+// Simulated chat log
+document.getElementById('chatLog').innerHTML=['<div class="lead-item">Ziyaretci: "Fiyatlariniz nedir?" → Bot: Fiyat sayfasina yonlendirildi <span style="color:var(--clr-success);">✓</span></div>','<div class="lead-item">Ziyaretci: "Instagram DM entegrasyonu nasil?" → Bot: Detayli yanit verildi <span style="color:var(--clr-success);">✓</span></div>','<div class="lead-item">Ziyaretci: "E-ticaret paketi istiyorum" → Bot: Randevu sayfasina yonlendirildi <span style="color:var(--clr-accent-400);">🔥 Sicak</span></div>'].join('');
+
+// Simulated counters
+setInterval(function(){document.getElementById('onlineUsers').textContent=12+Math.floor(Math.random()*8);},5000);
+
+new Chart(document.getElementById('adminChart'),{type:'line',data:{labels:['00','02','04','06','08','10','12','14','16','18','20','22'],datasets:[{data:[12,8,5,14,34,56,72,68,59,45,38,22],borderColor:'#6c5ce7',backgroundColor:'rgba(108,92,231,.1)',fill:true,tension:.4,pointRadius:0}]},options:{plugins:{legend:{display:false}},scales:{y:{grid:{color:'#2e2e42'},ticks:{color:'#7c7c9a'}},x:{ticks:{color:'#7c7c9a'}}},responsive:true}});
+}
+})();
+</script>
+</body>
+</html>
