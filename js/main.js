@@ -73,6 +73,7 @@
     initLeadScoring();
     initExitPopup();
     initVisibilityAPI();
+    secureExternalLinks();
   });
 
   /* ============================================================
@@ -313,14 +314,24 @@
     });
   }
 
+  /* ============================================================
+     SECURITY UTILITIES
+     ============================================================ */
+  function sanitizeInput(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;');
+  }
+
   function setCookie(name, value, days) {
+    var v = encodeURIComponent(value);
     var expires = '';
-    if (days) {
-      var d = new Date();
-      d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-      expires = '; expires=' + d.toUTCString();
-    }
-    document.cookie = name + '=' + value + expires + '; path=/; SameSite=Lax';
+    if (days) { var d = new Date(); d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000)); expires = '; expires=' + d.toUTCString(); }
+    document.cookie = name + '=' + v + expires + '; path=/; SameSite=Strict; Secure';
   }
 
   function getCookie(name) {
@@ -328,9 +339,16 @@
     var ca = document.cookie.split(';');
     for (var i = 0; i < ca.length; i++) {
       var c = ca[i].trim();
-      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
+      if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length));
     }
     return null;
+  }
+
+  function safeSetItem(key, value) {
+    try { localStorage.setItem(key, btoa(unescape(encodeURIComponent(value)))); } catch(e) {}
+  }
+  function safeGetItem(key) {
+    try { var v = localStorage.getItem(key); return v ? decodeURIComponent(escape(atob(v))) : null; } catch(e) { return null; }
   }
 
   /* ============================================================
@@ -457,8 +475,8 @@
 
   function openCart() { var s = document.getElementById('cartSidebar'); var o = document.getElementById('cartOverlay'); if (s) s.classList.add('active'); if (o) o.classList.add('active'); document.body.style.overflow = 'hidden'; }
   function closeCart() { var s = document.getElementById('cartSidebar'); var o = document.getElementById('cartOverlay'); if (s) s.classList.remove('active'); if (o) o.classList.remove('active'); document.body.style.overflow = ''; }
-  function saveCartToStorage() { try { localStorage.setItem('verimliai_cart', JSON.stringify(cart)); } catch (e) {} }
-  function loadCartFromStorage() { try { var s = localStorage.getItem('verimliai_cart'); if (s) cart = JSON.parse(s); } catch (e) { cart = []; } }
+  function saveCartToStorage() { try { safeSetItem('verimliai_cart', JSON.stringify(cart)); } catch (e) {} }
+  function loadCartFromStorage() { try { var s = safeGetItem('verimliai_cart'); if (s) cart = JSON.parse(s); } catch (e) { cart = []; } }
 
   /* ============================================================
      TOAST
@@ -696,6 +714,16 @@
         localStorage.setItem('verimliai_leads', JSON.stringify(leads));
       } catch(e) {}
       setTimeout(function () { overlay.classList.remove('active'); }, 2000);
+    });
+  }
+
+  /* ============================================================
+     AUTO-SECURE EXTERNAL LINKS
+     ============================================================ */
+  function secureExternalLinks() {
+    document.querySelectorAll('a[target="_blank"]').forEach(function (link) {
+      if (!link.rel) link.rel = 'noopener noreferrer';
+      else if (link.rel.indexOf('noopener') === -1) link.rel += ' noopener noreferrer';
     });
   }
 
