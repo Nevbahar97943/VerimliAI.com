@@ -3698,5 +3698,26 @@ textarea.form-input {
 }
 
 @media (max-width: 768px) {
+  .services__grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
+  .pricing__grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
+  .pricing-card--featured { transform: none; }
+  .marketing__grid { grid-template-columns: 1fr; }
+  .revenue__grid { grid-template-columns: 1fr; }
+  .footer__grid { grid-template-columns: 1fr; }
+  .footer__bottom { flex-direction: column; gap: var(--space-4); text-align: center; }
+  .store__grid { grid-template-columns: 1fr; max-width: 400px; margin-inline: auto; }
+  .cart-sidebar { width: 100%; }
+  .hero__grid { grid-template-columns: 1fr; text-align: center; }
+  .hero__desc { max-width: 100%; }
+  .hero__actions { justify-content: center; }
+  .hero__stats { justify-content: center; }
+  .hero__visual { max-width: 480px; margin-inline: auto; }
+  .blog-grid { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
+  .integration-matrix { grid-template-columns: repeat(2, 1fr); }
+  .values-grid { grid-template-columns: 1fr; }
+  .dashboard-metrics { grid-template-columns: repeat(2, 1fr); }
+  .dashboard-charts { grid-template-columns: 1fr; }
   .help-categories { grid-template-columns: 1fr; max-width: 400px; margin-inline: auto; }
+  /* Persona grid fix */
+  div[style*="repeat(4,1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
 }
