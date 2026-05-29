@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VerimliAI Acik Kaynak - Ucretsiz AI otomasyon kodlari, Make.com sablonlari, Instagram DM karsilama Python betigi.">
+<title>Acik Kaynak - VerimliAI</title>
+<link rel="stylesheet" href="css/style.css">
+<style>.code-card{background:var(--clr-neutral-850);border:var(--border-card);border-radius:var(--radius-2xl);overflow:hidden;margin-bottom:var(--space-6)}.code-card__header{padding:var(--space-5);border-bottom:1px solid var(--clr-neutral-700);display:flex;align-items:center;justify-content:space-between}.code-card__title{font-size:var(--fs-400);font-weight:var(--fw-bold);color:var(--clr-neutral-50)}.code-card__lang{font-size:var(--fs-300);color:var(--clr-accent-400)}.code-card__body{padding:var(--space-5);background:#0d0d1a;overflow-x:auto}.code-card__body pre{margin:0;font-family:'JetBrains Mono',monospace;font-size:12px;color:#a0a0b8;line-height:1.7}.code-card__footer{padding:var(--space-4)var(--space-5);display:flex;gap:var(--space-3)}</style>
+</head>
+<body>
+<header class="header" id="header"><div class="header__inner">
+<a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a>
+<nav class="header__nav"><a href="index.html" class="header__nav-link">Ana Sayfa</a><a href="magaza.html" class="header__nav-link">Magaza</a><a href="blog.html" class="header__nav-link">Blog</a></nav>
+<a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+<button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></header>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-menu__link">Ana Sayfa</a><a href="randevu.html" class="mobile-menu__link">Randevu</a></div>
+
+<main>
+<section class="demo-hero"><div class="container"><span class="badge badge-accent">Topluluk</span><h1 class="heading-1" style="margin-top:16px;">Acik Kaynak <span class="text-gradient">Kutuphanesi</span></h1><p class="section-header__desc" style="margin-top:12px;">VerimliAI tarafindan gelistirilen ucretsiz AI otomasyon araclari, kod sablonlari ve entegrasyon betikleri. GitHub'da yildizlayin.</p></div></section>
+
+<section style="padding-bottom:80px;"><div class="container" style="max-width:750px;">
+
+<div class="code-card"><div class="code-card__header"><div class="code-card__title">Instagram DM Karsilama Python Betigi</div><div class="code-card__lang">Python</div></div>
+<div class="code-card__body"><pre><span style="color:#546e7a"># VerimliAI - Temel Instagram DM Karsilama Botu</span>
+<span style="color:#546e7a"># Gereksinimler: pip install requests flask</span>
+
+<span style="color:#c792ea">from</span> flask <span style="color:#c792ea">import</span> Flask, request, jsonify
+<span style="color:#c792ea">import</span> requests, os
+
+app = Flask(<span style="color:#c3e88d">__name__</span>)
+OPENAI_KEY = os.getenv(<span style="color:#c3e88d">"OPENAI_API_KEY"</span>)
+
+<span style="color:#82aaff">def</span> <span style="color:#c3e88d">get_ai_response</span>(message):
+    r = requests.post(<span style="color:#c3e88d">"https://api.openai.com/v1/chat/completions"</span>,
+        headers={<span style="color:#c3e88d">"Authorization"</span>: <span style="color:#c3e88d">f"Bearer {OPENAI_KEY}"</span>},
+        json={<span style="color:#c3e88d">"model"</span>: <span style="color:#c3e88d">"gpt-4o"</span>, <span style="color:#c3e88d">"messages"</span>: [{<span style="color:#c3e88d">"role"</span>: <span style="color:#c3e88d">"user"</span>, <span style="color:#c3e88d">"content"</span>: message}]})
+    <span style="color:#c792ea">return</span> r.json()[<span style="color:#c3e88d">"choices"</span>][0][<span style="color:#c3e88d">"message"</span>][<span style="color:#c3e88d">"content"</span>]
+
+<span style="color:#82aaff">@app.route</span>(<span style="color:#c3e88d">"/webhook"</span>, methods=[<span style="color:#c3e88d">"POST"</span>])
+<span style="color:#c792ea">def</span> <span style="color:#c3e88d">webhook</span>():
+    msg = request.json.get(<span style="color:#c3e88d">"message"</span>)
+    reply = get_ai_response(msg)
+    <span style="color:#c792ea">return</span> jsonify({<span style="color:#c3e88d">"reply"</span>: reply})
+
+<span style="color:#c792ea">if</span> <span style="color:#c3e88d">__name__</span> == <span style="color:#c3e88d">"__main__"</span>: app.run(port=5000)</pre></div>
+<div class="code-card__footer"><a href="#" class="btn btn-secondary btn-sm">GitHub'da Gor</a><button class="btn btn-primary btn-sm">Kopyala</button></div></div>
+
+<div class="code-card"><div class="code-card__header"><div class="code-card__title">Make.com Esnaf Otomasyonu JSON Sablonu</div><div class="code-card__lang">JSON</div></div>
+<div class="code-card__body"><pre>{
+  <span style="color:#c3e88d">"name"</span>: <span style="color:#c3e88d">"E-Ticaret Tam Otomasyon Paketi"</span>,
+  <span style="color:#c3e88d">"modules"</span>: [
+    { <span style="color:#c3e88d">"id"</span>: 1, <span style="color:#c3e88d">"type"</span>: <span style="color:#c3e88d">"webhook"</span>, <span style="color:#c3e88d">"name"</span>: <span style="color:#c3e88d">"Instagram DM Gelen Mesaj"</span> },
+    { <span style="color:#c3e88d">"id"</span>: 2, <span style="color:#c3e88d">"type"</span>: <span style="color:#c3e88d">"openai"</span>, <span style="color:#c3e88d">"name"</span>: <span style="color:#c3e88d">"GPT-4o Yanit Uretimi"</span>, <span style="color:#c3e88d">"model"</span>: <span style="color:#c3e88d">"gpt-4o"</span> },
+    { <span style="color:#c3e88d">"id"</span>: 3, <span style="color:#c3e88d">"type"</span>: <span style="color:#c3e88d">"http"</span>, <span style="color:#c3e88d">"name"</span>: <span style="color:#c3e88d">"Shopier Odeme Linki"</span>, <span style="color:#c3e88d">"url"</span>: <span style="color:#c3e88d">"https://api.shopier.com/v1/payments"</span> },
+    { <span style="color:#c3e88d">"id"</span>: 4, <span style="color:#c3e88d">"type"</span>: <span style="color:#c3e88d">"googleSheets"</span>, <span style="color:#c3e88d">"name"</span>: <span style="color:#c3e88d">"Siparis Log Kaydi"</span> }
+  ]
+}</pre></div>
+<div class="code-card__footer"><a href="#" class="btn btn-secondary btn-sm">GitHub'da Gor</a><button class="btn btn-primary btn-sm">Kopyala</button></div></div>
+
+<div style="text-align:center;margin-top:var(--space-8);"><a href="randevu.html" class="btn btn-primary btn-lg">Profesyonel Cozum Icin Randevu Alin</a></div>
+</div></section></main>
+<footer class="footer"><div class="container"><div class="footer__bottom"><p class="footer__copyright">&copy; 2026 VerimliAI. Acik Kaynak Toplulugu.</p></div></div></footer>
+<script src="js/main.js"></script><script src="js/chatbot.js"></script>
+</body>
+</html>

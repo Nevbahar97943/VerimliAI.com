@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VerimliAI Canli Otonom Laboratuvar - AI ajanlarinin gercek zamanli is akisi terminali. Satis, Finans, Kargo AI paslasmasi.">
+<title>Canli Laboratuvar - VerimliAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.lab-hero{padding-top:calc(var(--header-height)+var(--space-12));padding-bottom:var(--space-8);text-align:center}
+.terminal-wrapper{max-width:800px;margin-inline:auto;background:#0a0a12;border:1px solid var(--clr-neutral-700);border-radius:var(--radius-xl);overflow:hidden;margin-bottom:var(--space-8)}
+.terminal-header{background:#111;padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #222}
+.terminal-dot{width:10px;height:10px;border-radius:50%}.terminal-dot--r{background:#ff5f56}.terminal-dot--y{background:#ffbd2e}.terminal-dot--g{background:#27c93f}
+.terminal-title{flex:1;text-align:center;font-size:12px;color:#666;font-family:'JetBrains Mono',monospace}
+.terminal-body{padding:16px;font-family:'JetBrains Mono',monospace;font-size:12px;min-height:400px;max-height:500px;overflow-y:auto;line-height:1.8;color:#a0a0b8}
+.terminal-body .agent{color:#c792ea;font-weight:700}.terminal-body .ts{color:#546e7a}.terminal-body .action{color:#c3e88d}.terminal-body .api{color:#f78c6c}.terminal-body .success{color:#10b981}.terminal-body .warn{color:#f59e0b}.terminal-line{opacity:0;animation:fadeLine .3s forwards}@keyframes fadeLine{to{opacity:1}}
+.agent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);margin-bottom:var(--space-8)}
+.agent-card{background:var(--clr-neutral-850);border:var(--border-card);border-radius:var(--radius-xl);padding:var(--space-5);text-align:center}
+.agent-card__status{display:inline-flex;align-items:center;gap:6px;font-size:var(--fs-300);color:var(--clr-success);margin-bottom:var(--space-2)}
+.agent-card__status::before{content:'';width:6px;height:6px;background:var(--clr-success);border-radius:50%;animation:livePulse 1.5s infinite}
+@keyframes livePulse{0%,100%{box-shadow:0 0 4px var(--clr-success)}50%{box-shadow:0 0 12px var(--clr-success)}}
+</style>
+</head>
+<body>
+<header class="header" id="header"><div class="header__inner">
+<a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a>
+<nav class="header__nav"><a href="index.html" class="header__nav-link">Ana Sayfa</a><a href="magaza.html" class="header__nav-link">Magaza</a><a href="blog.html" class="header__nav-link">Blog</a></nav>
+<a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+<button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></header>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-menu__link">Ana Sayfa</a><a href="randevu.html" class="mobile-menu__link">Randevu</a></div>
+
+<main>
+<section class="lab-hero"><div class="container">
+<span class="badge badge-accent">Canli Yayin</span><h1 class="heading-1" style="margin-top:16px;">Otonom <span class="text-gradient">AI Laboratuvari</span></h1>
+<p class="section-header__desc" style="margin-top:12px;">3 AI ajaninin (Satis, Finans, Kargo) gercek zamanli is paslasmasi. Her islem sifir insan mudahalesiyle tamamlanir.</p></div></section>
+
+<section style="padding-bottom:40px;"><div class="container">
+<div class="agent-grid">
+<div class="agent-card"><div class="agent-card__status">Canli</div><h4 style="font-size:var(--fs-400);color:var(--clr-neutral-50);">Satis Ajani</h4><p style="font-size:var(--fs-300);color:var(--clr-neutral-500);">DM Karsilama · Urun Onerisi · Odeme Yonlendirme</p></div>
+<div class="agent-card"><div class="agent-card__status">Canli</div><h4 style="font-size:var(--fs-400);color:var(--clr-neutral-50);">Finans Ajani</h4><p style="font-size:var(--fs-300);color:var(--clr-neutral-500);">Fatura Kesme · Stok Guncelleme · Raporlama</p></div>
+<div class="agent-card"><div class="agent-card__status">Canli</div><h4 style="font-size:var(--fs-400);color:var(--clr-neutral-50);">Kargo Ajani</h4><p style="font-size:var(--fs-300);color:var(--clr-neutral-500);">Barkod Olusturma · API Bildirim · Takip Linki</p></div>
+</div>
+
+<div class="terminal-wrapper"><div class="terminal-header"><div class="terminal-dot terminal-dot--r"></div><div class="terminal-dot terminal-dot--y"></div><div class="terminal-dot terminal-dot--g"></div><div class="terminal-title">VerimliAI Otonom Ajan Terminali · v2.4.1 · LIVE</div></div>
+<div class="terminal-body" id="terminalBody"></div></div>
+
+<div style="text-align:center;margin-top:24px;"><a href="randevu.html" class="btn btn-primary btn-lg">Kendi AI Ajanlarinizi Kurun</a></div>
+</div></section></main>
+<footer class="footer"><div class="container"><div class="footer__bottom"><p class="footer__copyright">&copy; 2026 VerimliAI. Otonom AI Laboratuvari</p></div></div></footer>
+<script src="js/main.js"></script><script src="js/chatbot.js"></script>
+<script>
+(function(){
+var scenarios=[
+['[14:32:0$] <span class="agent">SATIS_AJANI</span> <span class="ts">→</span> Instagram DM algilandi: "Siyah canta stokta var mi?" <span class="action">[MusteriID: #8472]</span>'],
+['[14:32:0$] <span class="agent">SATIS_AJANI</span> <span class="ts">→</span> OpenAI GPT-4o intent analizi: <span class="api">stock_inquiry (guven: 0.97)</span>'],
+['[14:32:0$] <span class="agent">SATIS_AJANI</span> <span class="ts">→</span> Shopier API sorgulaniyor... <span class="success">✓ Siyah canta stok: 12 adet</span>'],
+['[14:32:0$] <span class="agent">SATIS_AJANI</span> <span class="ts">→</span> Musteriye yanit gonderildi: "Evet, siyah canta stokta. 450 TL. Isterseniz hemen odeme linki gonderebilirim."'],
+['[14:32:1$] <span class="agent">SATIS_AJANI</span> <span class="ts">→</span> Musteri onayladi. <span class="action">Shopier odeme linki gonderiliyor...</span>'],
+['[14:33:0$] <span class="agent">FINANS_AJANI</span> <span class="ts">→</span> <span class="api">Shopier webhook</span>: Odeme onaylandi (450 TL). <span class="action">Fatura olusturuluyor...</span>'],
+['[14:33:0$] <span class="agent">FINANS_AJANI</span> <span class="ts">→</span> Fatura #INV-2847 olusturuldu. <span class="success">✓ Google Sheets\'e kaydedildi.</span>'],
+['[14:33:0$] <span class="agent">FINANS_AJANI</span> <span class="ts">→</span> Stok guncellendi: Siyah canta 12 → <span class="warn">11 adet</span>'],
+['[14:33:0$] <span class="agent">KARGO_AJANI</span> <span class="ts">→</span> Siparis #ORD-5921 barkodu olusturuldu: <span class="api">TRK202605291433001</span>'],
+['[14:33:0$] <span class="agent">KARGO_AJANI</span> <span class="ts">→</span> Kargo API\'sine gonderildi. <span class="success">✓ Takip linki: kargo.com.tr/TRK202605291433001</span>'],
+['[14:33:0$] <span class="agent">SATIS_AJANI</span> <span class="ts">→</span> Musteriye WhatsApp bildirimi: "Siparisiniz onaylandi! Takip linki: ..." <span class="success">✓ Gonderildi</span>'],
+['[14:33:0$] <span class="agent">FINANS_AJANI</span> <span class="ts">→</span> Slack #satis-kanali\'na bildirim: <span class="success">✓ "Yeni siparis #ORD-5921 — 450 TL"</span>'],
+];
+var terminal=document.getElementById('terminalBody'),idx=0;
+function addLine(){if(idx>=scenarios.length)idx=0;var n=Math.floor(Math.random()*40)+10;var ts='['+new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit',second:'2-digit'})+']';var l='<div class="terminal-line">'+ts+' '+scenarios[idx][0].replace(/\[14:3[0-3]:0\$\]/,'')+'</div>';terminal.innerHTML+=l;terminal.scrollTop=terminal.scrollHeight;idx++;setTimeout(addLine,800+Math.random()*1200);}
+addLine();
+})();
+</script>
+</body>
+</html>

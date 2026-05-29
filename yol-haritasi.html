@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VerimliAI Yol Haritasi - 5 yillik teknoloji vizyonu. Oylama sistemiyle gelecek ozelliklere yon verin.">
+<title>Yol Haritasi - VerimliAI</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.tl{max-width:700px;margin-inline:auto;position:relative;padding-left:40px}.tl::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:2px;background:var(--clr-neutral-700)}.tl-item{position:relative;margin-bottom:var(--space-8);background:var(--clr-neutral-850);border:var(--border-card);border-radius:var(--radius-xl);padding:var(--space-6)}.tl-item::before{content:'';position:absolute;left:-28px;top:24px;width:12px;height:12px;border-radius:50%;border:2px solid var(--clr-primary-500);background:var(--clr-neutral-900)}.tl-item--done::before{background:var(--clr-success);border-color:var(--clr-success)}.tl-item--progress::before{background:var(--clr-warning);border-color:var(--clr-warning);animation:pulse 2s infinite}.tl-item--planned::before{background:transparent;border-color:var(--clr-neutral-500)}@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,.4)}50%{box-shadow:0 0 0 8px rgba(245,158,11,0)}}.tl-badge{display:inline-block;padding:2px 10px;border-radius:var(--radius-full);font-size:var(--fs-300);font-weight:var(--fw-bold);margin-bottom:var(--space-3)}.tl-badge--done{background:rgba(16,185,129,.12);color:var(--clr-success)}.tl-badge--progress{background:rgba(245,158,11,.12);color:var(--clr-warning)}.tl-badge--planned{background:rgba(108,92,231,.1);color:var(--clr-primary-300)}.tl-item h3{font-size:var(--fs-450);color:var(--clr-neutral-50);margin-bottom:var(--space-2)}.tl-item p{font-size:var(--fs-350);color:var(--clr-neutral-400);line-height:var(--lh-relaxed)}.vote-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(108,92,231,.1);border:1px solid rgba(108,92,231,.2);color:var(--clr-primary-300);padding:6px 14px;border-radius:var(--radius-full);font-size:var(--fs-300);cursor:pointer;transition:all .2s;margin-top:var(--space-3)}.vote-btn:hover{background:rgba(108,92,231,.2)}.vote-btn.voted{background:var(--gradient-primary);color:#fff;border-color:transparent}.vote-count{font-weight:var(--fw-bold)}.cta-block{text-align:center;margin-top:var(--space-12)}
+</style>
+</head>
+<body>
+<header class="header" id="header"><div class="header__inner">
+<a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a>
+<nav class="header__nav"><a href="index.html" class="header__nav-link">Ana Sayfa</a><a href="magaza.html" class="header__nav-link">Magaza</a><a href="blog.html" class="header__nav-link">Blog</a></nav>
+<a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+<button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></header>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-menu__link">Ana Sayfa</a><a href="randevu.html" class="mobile-menu__link">Randevu</a></div>
+
+<main>
+<section class="demo-hero"><div class="container"><span class="badge badge-accent">Vizyon</span><h1 class="heading-1" style="margin-top:16px;">Teknoloji <span class="text-gradient">Yol Haritasi</span></h1><p class="section-header__desc" style="margin-top:12px;">VerimliAI'in 5 yillik Ar-Ge vizyonu. Planlanan ozelliklere oy vererek gelecegimize yon verin.</p></div></section>
+
+<section style="padding-bottom:80px;"><div class="container"><div class="tl">
+
+<div class="tl-item tl-item--done"><span class="tl-badge tl-badge--done">Tamamlandi · 2026 Q1</span><h3>AI Satis Asistani v1.0 — Instagram DM & WhatsApp</h3><p>7/24 musteri karsilama, stok sorgulama, odeme linki yonlendirme, kargo takip. 2.000+ entegrasyon destegi.</p></div>
+
+<div class="tl-item tl-item--done"><span class="tl-badge tl-badge--done">Tamamlandi · 2026 Q2</span><h3>AI Icerik Asistani — Otomatik Sosyal Medya Yonetimi</h3><p>Aylik icerik takvimi, Reels/TikTok senaryolari, reklam metni uretimi, trend analizi ve marka sesi kalibrasyonu.</p></div>
+
+<div class="tl-item tl-item--progress"><span class="tl-badge tl-badge--progress">Gelistiriliyor · 2026 Q3</span><h3>Sesli AI Ajan — Telefon ve Sesli Siparis Asistani</h3><p>ElevenLabs + Vapi entegrasyonuyla dogal sesli diyalog. Telefonla siparis alma, randevu olusturma, sesli musteri destegi.</p></div>
+
+<div class="tl-item tl-item--planned"><span class="tl-badge tl-badge--planned">Planlandi · 2026 Q4</span><h3>Coklu Modlu Fatura ve Belge Okuma (OCR + AI)</h3><p>Fatura, irsaliye, el yazisi notlari AI tarafindan okunup otomatik islenecek. Muhasebe entegrasyonu tam otomatik. <button class="vote-btn" data-id="1" onclick="vote(this)"><span class="vote-count">247</span> Oy</button></p></div>
+
+<div class="tl-item tl-item--planned"><span class="tl-badge tl-badge--planned">Planlandi · 2027 Q1</span><h3>Verimli-LLM: Kendi Dil Modelimiz</h3><p>Turk isletmelerinin ihtiyaclarina ozel egitilmis, Turkce'de GPT-4o seviyesinde performans sunan ozel LLM. Acik kaynak olarak yayinlanacak. <button class="vote-btn" data-id="2" onclick="vote(this)"><span class="vote-count">512</span> Oy</button></p></div>
+
+<div class="tl-item tl-item--planned"><span class="tl-badge tl-badge--planned">Planlandi · 2027 Q2</span><h3>AI Agent Swarm — Coklu Ajan Otonom Is Agi</h3><p>5+ AI ajanin birbiriyle paslasarak kompleks is sureclerini tamamen otonom yonetmesi. Insan sadece onaylayan rolunde. <button class="vote-btn" data-id="3" onclick="vote(this)"><span class="vote-count">389</span> Oy</button></p></div>
+
+<div class="tl-item tl-item--planned"><span class="tl-badge tl-badge--planned">Planlandi · 2027 Q3</span><h3>Global Partner Ağı — 50+ Ulkede Yerel Temsilcilik</h3><p>Dunya capinda sertifikali VerimliAI cozum ortaklari agi. Her kitada yerel dilde destek ve kurulum. <button class="vote-btn" data-id="4" onclick="vote(this)"><span class="vote-count">186</span> Oy</button></p></div>
+
+<div class="tl-item tl-item--planned"><span class="tl-badge tl-badge--planned">Planlandi · 2028</span><h3>On-Premise Kurumsal AI Sunucu Cozumu</h3><p>Buyuk holdingler icin kendi veri merkezlerinde calisan, tamamen izole AI altyapisi. NVIDIA H100 destekli. <button class="vote-btn" data-id="5" onclick="vote(this)"><span class="vote-count">134</span> Oy</button></p></div>
+
+</div>
+<div class="cta-block"><a href="randevu.html" class="btn btn-primary btn-lg">Gelecege Birlikte Yon Verin — Randevu Alin</a></div>
+</div></section></main>
+<footer class="footer"><div class="container"><div class="footer__bottom"><p class="footer__copyright">&copy; 2026 VerimliAI. Gelecek insa ediliyor.</p></div></div></footer>
+<script src="js/main.js"></script><script src="js/chatbot.js"></script>
+<script>function vote(btn){if(btn.classList.contains('voted'))return;btn.classList.add('voted');var c=btn.querySelector('.vote-count');c.textContent=parseInt(c.textContent)+1;}</script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AI Olgunluk Testi - Sirketinizin yapay zeka hazirlik seviyesini olcun. 10 soru, detayli rapor.">
+<title>AI Olgunluk Testi - VerimliAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.test-hero{padding-top:calc(var(--header-height)+var(--space-12));padding-bottom:var(--space-8);text-align:center}
+.test-card{max-width:650px;margin-inline:auto;background:var(--clr-neutral-850);border:var(--border-card);border-radius:var(--radius-2xl);padding:var(--space-8)}
+.test-progress{height:4px;background:var(--clr-neutral-700);border-radius:2px;margin-bottom:var(--space-6);overflow:hidden}
+.test-progress__bar{height:100%;background:var(--gradient-primary);border-radius:2px;transition:width .4s ease}
+.test-question{display:none;animation:fadeInUp .4s ease}
+.test-question.active{display:block}
+.test-question__num{font-size:var(--fs-300);color:var(--clr-neutral-600);margin-bottom:var(--space-4)}
+.test-question__text{font-size:var(--fs-500);font-weight:var(--fw-bold);color:var(--clr-neutral-50);margin-bottom:var(--space-6)}
+.test-options{display:flex;flex-direction:column;gap:var(--space-3)}
+.test-option{background:var(--clr-neutral-800);border:1px solid var(--clr-neutral-700);border-radius:var(--radius-xl);padding:var(--space-5);cursor:pointer;transition:all var(--transition-base);text-align:left;font-size:var(--fs-400);color:var(--clr-neutral-300)}
+.test-option:hover{border-color:var(--clr-primary-400);background:rgba(108,92,231,.08)}
+.test-option.selected{border-color:var(--clr-primary-500);background:rgba(108,92,231,.12);color:var(--clr-neutral-50)}
+.test-result{display:none;animation:fadeInUp .6s ease}
+.test-result.active{display:block;text-align:center}
+.result-gauge{width:160px;height:160px;border-radius:50%;margin:24px auto;display:flex;align-items:center;justify-content:center;font-size:var(--fs-1000);font-weight:var(--fw-extrabold);color:var(--clr-neutral-50);position:relative}
+.result-gauge--low{border:6px solid var(--clr-error);box-shadow:0 0 30px rgba(239,68,68,.2)}
+.result-gauge--mid{border:6px solid var(--clr-warning);box-shadow:0 0 30px rgba(245,158,11,.2)}
+.result-gauge--high{border:6px solid var(--clr-success);box-shadow:0 0 30px rgba(16,185,129,.2)}
+.result-breakdown{text-align:left;margin:var(--space-8)0}
+.result-breakdown__item{display:flex;justify-content:space-between;padding:var(--space-3)0;border-bottom:1px solid var(--clr-neutral-800);font-size:var(--fs-350)}
+.result-breakdown__item span:first-child{color:var(--clr-neutral-400)}
+.result-breakdown__item span:last-child{color:var(--clr-neutral-100);font-weight:var(--fw-semibold)}
+.loading-spinner{display:none;text-align:center;padding:var(--space-8)}
+.loading-spinner.active{display:block}
+.spinner{width:56px;height:56px;border:3px solid var(--clr-neutral-700);border-top-color:var(--clr-primary-500);border-radius:50%;margin-inline:auto;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+<header class="header" id="header"><div class="header__inner">
+<a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a>
+<nav class="header__nav"><a href="index.html" class="header__nav-link">Ana Sayfa</a><a href="magaza.html" class="header__nav-link">Magaza</a><a href="blog.html" class="header__nav-link">Blog</a></nav>
+<a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+<button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></header>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-menu__link">Ana Sayfa</a><a href="randevu.html" class="mobile-menu__link">Randevu</a></div>
+
+<main>
+<section class="test-hero"><div class="container"><span class="badge badge-accent">10 Dakika</span>
+<h1 class="heading-1" style="margin-top:16px;">Yapay Zeka <span class="text-gradient">Olgunluk Testi</span></h1>
+<p class="section-header__desc" style="margin-top:12px;">Sirketinizin AI hazirlik seviyesini olcun. 10 soru, aninda ozel rapor.</p></div></section>
+<section style="padding-bottom:80px;"><div class="container">
+<div class="test-card" id="testCard">
+<div class="test-progress"><div class="test-progress__bar" id="progressBar" style="width:0%"></div></div>
+<div id="questions"></div>
+<div class="loading-spinner" id="loading"><div class="spinner"></div><p style="color:var(--clr-neutral-400);margin-top:16px;">AI analiz yapiyor...</p></div>
+<div class="test-result" id="result"></div>
+</div></div></section></main>
+<footer class="footer"><div class="container"><div class="footer__bottom"><p class="footer__copyright">&copy; 2026 VerimliAI.</p></div></div></footer>
+<script src="js/main.js"></script><script src="js/chatbot.js"></script>
+<script>
+(function(){
+var questions=[
+{q:'Musteri mesajlarina (DM/WhatsApp) ortalama kac dakikada donuyorsunuz?',o:[{t:'1 dakikadan az',s:10},{t:'1-15 dakika',s:7},{t:'15-60 dakika',s:4},{t:'1 saatten fazla / gun sonra',s:1}]},
+{q:'Sosyal medya iceriklerinizi kim uretiyor?',o:[{t:'AI destekli otomatik sistem',s:10},{t:'Profesyonel sosyal medya ajansi',s:7},{t:'Kendim / ekip arkadaslarim',s:4},{t:'Duzenli icerik uretmiyoruz',s:1}]},
+{q:'Faturalandirma ve siparis takip surecleriniz nasil?',o:[{t:'Tamamen otomatik (API entegrasyonlu)',s:10},{t:'Yari otomatik (Excel + manuel)',s:5},{t:'Tamamen manuel',s:1}]},
+{q:'Musteri verilerinizi nasil sakliyorsunuz?',o:[{t:'Sifreli bulut veritabaninda',s:10},{t:'Excel / Google Sheets\'te',s:5},{t:'Defter / fiziksel kayit',s:1}]},
+{q:'E-ticaret / satis platformlarinizla entegrasyonunuz var mi?',o:[{t:'Tam API entegrasyonu (Shopier, Trendyol vb.)',s:10},{t:'Kismi entegrasyon',s:6},{t:'Entegrasyon yok, manuel aktarim',s:2}]},
+{q:'Terk edilmis sepetleri takip ediyor musunuz?',o:[{t:'Evet, otomatik geri kazanim sistemi var',s:10},{t:'Manuel olarak takip ediyorum',s:5},{t:'Takip etmiyorum',s:1}]},
+{q:'Calisanlariniz tekrar eden islere ne kadar vakit harciyor?',o:[{t:'%20\'den az — cogu is otomatize',s:10},{t:'%20-50 — kismen otomatize',s:6},{t:'%50\'den fazla — cogu manuel',s:2}]},
+{q:'AI / otomasyon araclarina aylik butce ayiriyor musunuz?',o:[{t:'Evet, duzenli butcemiz var',s:10},{t:'Ara sira, ihtiyaca gore',s:5},{t:'Henuz butce ayirmadik',s:1}]},
+{q:'Hangi kanallardan musteriyle iletisim kuruyorsunuz?',o:[{t:'Tum kanallar entegre (DM+WA+Web+E-posta)',s:10},{t:'2-3 kanal, ayri yonetiliyor',s:6},{t:'Tek kanal',s:2}]},
+{q:'Yapay zeka / otomasyon cozumu kullanmaya ne kadar yakinsiniz?',o:[{t:'Hemen baslayabilirim',s:10},{t:'1-3 ay icinde planliyorum',s:7},{t:'Arastirma asamasindayim',s:4},{t:'Henuz dusunmuyorum',s:1}]}
+];
+var answers=[],current=0;
+
+function renderQuestion(i){
+var q=questions[i];
+var html='<div class="test-question active" id="q'+i+'"><div class="test-question__num">Soru '+(i+1)+' / 10</div><div class="test-question__text">'+q.q+'</div><div class="test-options">';
+q.o.forEach(function(o,j){
+html+='<button class="test-option" data-score="'+o.s+'" data-q="'+i+'">'+o.t+'</button>';
+});
+html+='</div></div>';
+document.getElementById('questions').innerHTML=html;
+document.getElementById('progressBar').style.width=((i/10)*100)+'%';
+document.querySelectorAll('.test-option').forEach(function(btn){
+btn.addEventListener('click',function(){var s=parseInt(this.dataset.score);answers.push(s);current++;if(current>=10){showLoading()}else{renderQuestion(current);}});
+});
+}
+
+function showLoading(){
+document.getElementById('questions').innerHTML='';
+document.getElementById('loading').classList.add('active');
+document.getElementById('progressBar').style.width='100%';
+setTimeout(showResult,2000);
+}
+
+function showResult(){
+document.getElementById('loading').classList.remove('active');
+var total=answers.reduce(function(a,b){return a+b},0);
+var pct=Math.round((total/100)*100);
+var level=pct<35?'low':pct<70?'mid':'high';
+var cls='result-gauge--'+level;
+var desc=level==='low'?'AI hazirliginiz kritik seviyede. Hemen aksiyon alin!':level==='mid'?'Orta seviyedesiniz. Potansiyeliniz yuksek.':'Mukemmel! AI donusumune hazirsiniz.';
+document.getElementById('result').innerHTML='<div class="test-question__num">Analiz Tamamlandi</div><h3 style="font-size:var(--fs-500);color:var(--clr-neutral-50);margin-bottom:8px;">Sirketinizin AI Olgunluk Skoru</h3><div class="result-gauge '+cls+'">%'+pct+'</div><p style="color:var(--clr-neutral-400);margin-bottom:24px;">'+desc+'</p><div class="result-breakdown"><div class="result-breakdown__item"><span>Musteri Iletisimi</span><span>'+Math.round((answers[0]+answers[8])/2*10)+'/100</span></div><div class="result-breakdown__item"><span>Operasyonel Otomasyon</span><span>'+Math.round((answers[2]+answers[6])/2*10)+'/100</span></div><div class="result-breakdown__item"><span>Teknoloji Altyapisi</span><span>'+Math.round((answers[3]+answers[4]+answers[5])/3*10)+'/100</span></div><div class="result-breakdown__item"><span>AI Yatirim Hazirligi</span><span>'+Math.round((answers[7]+answers[9])/2*10)+'/100</span></div></div><a href="randevu.html" class="btn btn-primary btn-lg">Ucretsiz Strateji Gorusmesi Baslat</a><button class="btn btn-ghost btn-sm" style="margin-left:8px;" onclick="location.reload()">Tekrar Test Et</button>';
+document.getElementById('result').classList.add('active');
+}
+
+renderQuestion(0);
+})();
+</script>
+</body>
+</html>

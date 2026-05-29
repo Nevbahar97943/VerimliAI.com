@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VerimliAI Kariyer - Gelecegin yapay zeka ordusuna katilin. Prompt Engineer, AI Architect pozisyonlari.">
+<title>Kariyer - VerimliAI</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.job-card{background:var(--clr-neutral-850);border:var(--border-card);border-radius:var(--radius-2xl);padding:var(--space-6);margin-bottom:var(--space-4)}
+.job-card h3{font-size:var(--fs-500);color:var(--clr-neutral-50);margin-bottom:4px}
+.job-card .meta{display:flex;gap:var(--space-3);flex-wrap:wrap;margin-bottom:var(--space-3)}
+.job-card .meta span{padding:2px 10px;border-radius:var(--radius-full);font-size:var(--fs-300)}
+.job-card p{color:var(--clr-neutral-400);font-size:var(--fs-350);line-height:var(--lh-relaxed)}
+.job-card .skills{display:flex;gap:6px;flex-wrap:wrap;margin-top:var(--space-3)}
+.job-card .skills span{background:rgba(108,92,231,.1);color:var(--clr-primary-300);padding:2px 8px;border-radius:var(--radius-full);font-size:var(--fs-300)}
+</style>
+</head>
+<body>
+<header class="header" id="header"><div class="header__inner">
+<a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a>
+<nav class="header__nav"><a href="index.html" class="header__nav-link">Ana Sayfa</a><a href="magaza.html" class="header__nav-link">Magaza</a><a href="blog.html" class="header__nav-link">Blog</a></nav>
+<a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+<button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></header>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-menu__link">Ana Sayfa</a><a href="randevu.html" class="mobile-menu__link">Randevu</a></div>
+
+<main>
+<section class="demo-hero"><div class="container"><span class="badge badge-accent">Kariyer</span><h1 class="heading-1" style="margin-top:16px;">Gelecegin Yapay Zeka <span class="text-gradient">Ordusuna Katilin</span></h1><p class="section-header__desc" style="margin-top:12px;">Dunyanin her yerinden yetenekli AI muhendisleri, prompt uzmanlari ve otomasyon mimarlari ariyoruz.</p></div></section>
+
+<section style="padding-bottom:80px;"><div class="container" style="max-width:750px;">
+<h2 style="font-size:var(--fs-600);color:var(--clr-neutral-50);margin-bottom:var(--space-6);">Acik Pozisyonlar</h2>
+
+<div class="job-card"><h3>Prompt Engineer</h3><div class="meta"><span style="background:rgba(0,210,211,.12);color:var(--clr-accent-400);">Remote</span><span style="background:rgba(16,185,129,.08);color:var(--clr-success);">Tam Zamanli</span></div><p>Musterilerimizin AI asistanlari icin yuksek performansli prompt zincirleri tasarlayacak, test edecek ve optimize edecek Prompt Engineer ariyoruz. Chain-of-thought, few-shot ve RAG prompt tekniklerine hakimiyet sarttir.</p><div class="skills"><span>GPT-4o</span><span>Claude</span><span>Prompt Engineering</span><span>A/B Testing</span><span>JSON</span></div></div>
+
+<div class="job-card"><h3>AI Automation Architect</h3><div class="meta"><span style="background:rgba(0,210,211,.12);color:var(--clr-accent-400);">Remote</span><span style="background:rgba(16,185,129,.08);color:var(--clr-success);">Tam Zamanli</span></div><p>Make.com, Zapier ve ozel API entegrasyonlariyla karmasik is akisi otomasyonlari tasarlayacak AI Automation Architect. 2.000+ entegrasyon ekosisteminde cozum uretebilecek, REST API ve webhook konularinda uzman.</p><div class="skills"><span>Make.com</span><span>Zapier</span><span>Webhook</span><span>REST API</span><span>Node.js</span></div></div>
+
+<div class="job-card"><h3>LLM Integration Specialist</h3><div class="meta"><span style="background:rgba(0,210,211,.12);color:var(--clr-accent-400);">Remote / Istanbul</span><span style="background:rgba(16,185,129,.08);color:var(--clr-success);">Tam Zamanli</span></div><p>OpenAI, Anthropic ve acik kaynakli LLM'leri (Llama, Mistral) isletme sistemlerine entegre edecek, RAG mimarileri kuracak ve vector database yonetimi yapacak uzman.</p><div class="skills"><span>Python</span><span>LangChain</span><span>Pinecone</span><span>RAG</span><span>Vector DB</span></div></div>
+
+<div style="text-align:center;margin-top:var(--space-10);"><h3 style="font-size:var(--fs-500);color:var(--clr-neutral-50);margin-bottom:12px;">Basvuru Icin</h3><p style="color:var(--clr-neutral-400);">CV ve GitHub profilinizi info@verimliai.com adresine gonderin. Basvurunuz AI IK Asistanimiz tarafindan saniyeler icinde analiz edilecektir.</p><a href="randevu.html" class="btn btn-primary btn-lg" style="margin-top:16px;">Bilgi Al</a></div>
+</div></section></main>
+<footer class="footer"><div class="container"><div class="footer__bottom"><p class="footer__copyright">&copy; 2026 VerimliAI.</p></div></div></footer>
+<script src="js/main.js"></script><script src="js/chatbot.js"></script>
+</body>
+</html>
