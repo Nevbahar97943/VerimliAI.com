@@ -24,6 +24,7 @@
     initCurrencyDisplay();
     initDynamicHero();
     initLeadScoring();
+    initExitPopup();
   });
 
   /* ============================================================
@@ -500,7 +501,21 @@
       if (need === 'satis') score += 8;
 
       var level = score >= 80 ? '🔥 Çok Sicak' : score >= 65 ? '⭐ Sicak' : '❄️ Ilimli';
-      var pkg = score >= 80 ? 'Premium Paket (20.000 TL + 3.500 TL/ay)' : score >= 65 ? 'Profesyonel Paket (12.500 TL + 2.500 TL/ay)' : 'Baslangic Paketi (7.500 TL + 1.500 TL/ay)';
+        var pkg = score >= 80 ? 'Premium Paket (20.000 TL + 3.500 TL/ay)' : score >= 65 ? 'Profesyonel Paket (12.500 TL + 2.500 TL/ay)' : 'Baslangic Paketi (7.500 TL + 1.500 TL/ay)';
+
+      // Post-submission: show calendar + email confirmation
+      var successEl = document.getElementById('randevuFormSuccess');
+      if (successEl) {
+        successEl.innerHTML = '' +
+          '<div style="text-align:center;padding:var(--space-6);">' +
+            '<div style="font-size:48px;margin-bottom:12px;">✓</div>' +
+            '<h3 style="font-size:var(--fs-600);color:var(--clr-neutral-50);margin-bottom:8px;">Basvurunuz Alindi!</h3>' +
+            '<p style="color:var(--clr-neutral-400);margin-bottom:16px;">En kisa surede size donus yapacagiz. Bu arada, isletmenize ozel <strong>"AI Strateji Raporu"</strong> e-posta adresinize gonderildi.</p>' +
+            '<p style="color:var(--clr-success);font-size:var(--fs-300);">Skor: <strong>' + score + '/100</strong> — ' + level + ' | Onerilen: ' + pkg + '</p>' +
+            '<a href="https://calendly.com/YOUR_CALENDLY/30min" target="_blank" class="btn btn-primary btn-lg" style="margin-top:12px;">Takvimden Hemen Randevu Secin →</a>' +
+            '<p style="color:var(--clr-neutral-600);font-size:var(--fs-300);margin-top:8px;">Calendly baglantisi aktif edildiginde dogrudan takvime yonleneceksiniz.</p>' +
+          '</div>';
+      }
 
       // Store lead data
       var lead = { business: biz, instagram: ig, need: need, score: score, level: level, pkg: pkg, time: new Date().toISOString() };
@@ -519,6 +534,59 @@
           fetch(wh, { method: 'POST', body: JSON.stringify({ text: '🚨 *YENI BASVURU!*\nMarka: *' + lead.business + '*\nInstagram: ' + lead.instagram + '\nSkor: *' + lead.score + '/100* (' + lead.level + ')\nPaket: *' + lead.pkg + '*\nIhtiyac: ' + lead.need }) });
         }
       } catch(ex) {}
+    });
+  }
+
+  /* ============================================================
+     EXIT-INTENT POPUP (LEAD CAPTURE)
+     ============================================================ */
+  function initExitPopup() {
+    if (getCookie('verimliai_exit_popup')) return;
+
+    var overlay = document.createElement('div');
+    overlay.className = 'exit-popup-overlay';
+    overlay.id = 'exitPopupOverlay';
+    overlay.innerHTML = '<div class="exit-popup" style="position:relative;"><button class="exit-popup__close" id="exitPopupClose">✕</button><div class="exit-popup__icon">📊</div><h3 class="exit-popup__title">Cikmadan Once...</h3><p class="exit-popup__desc">Isletmenizin kacirdigi ciroyu analiz ettigimiz <strong>"AI Olgunluk Raporu"</strong>nu hazirladik. Firmaniza ozel bu ucretsiz strateji dokumanini e-posta adresinize gondermemizi ister misiniz?</p><div class="exit-popup__form"><input type="email" class="exit-popup__input" id="exitPopupEmail" placeholder="E-posta adresiniz"><button class="btn btn-primary" id="exitPopupSubmit">Raporu Gonder</button></div><div class="exit-popup__success" id="exitPopupSuccess">✓ Rapor e-posta adresinize gonderildi!</div></div>';
+    document.body.appendChild(overlay);
+
+    var shown = false;
+
+    document.addEventListener('mouseleave', function (e) {
+      if (e.clientY <= 0 && !shown) {
+        shown = true;
+        overlay.classList.add('active');
+        setCookie('verimliai_exit_popup', 'shown', 7);
+      }
+    });
+
+    // Also trigger after 30 seconds of scrolling past 50% of page
+    var scrollTriggered = false;
+    window.addEventListener('scroll', function () {
+      if (scrollTriggered || shown) return;
+      var scrollPercent = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+      if (scrollPercent > 0.55 && !scrollTriggered) {
+        scrollTriggered = true;
+        setTimeout(function () {
+          if (!shown) { shown = true; overlay.classList.add('active'); setCookie('verimliai_exit_popup', 'shown', 7); }
+        }, 15000); // 15 sec after scrolling 55%
+      }
+    });
+
+    document.getElementById('exitPopupClose').addEventListener('click', function () { overlay.classList.remove('active'); });
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) overlay.classList.remove('active'); });
+    document.getElementById('exitPopupSubmit').addEventListener('click', function () {
+      var email = document.getElementById('exitPopupEmail').value.trim();
+      if (!email || email.indexOf('@') === -1) return;
+      document.getElementById('exitPopupSuccess').classList.add('active');
+      document.querySelector('.exit-popup__form').style.display = 'none';
+      document.querySelector('.exit-popup__desc').style.display = 'none';
+      // Store lead
+      try {
+        var leads = JSON.parse(localStorage.getItem('verimliai_leads') || '[]');
+        leads.push({ business: 'Exit-Popup Lead', instagram: '', need: 'rapor', score: 40, level: '❄️ Ilimli', pkg: 'Bilgi Toplandi', time: new Date().toISOString(), email: email });
+        localStorage.setItem('verimliai_leads', JSON.stringify(leads));
+      } catch(e) {}
+      setTimeout(function () { overlay.classList.remove('active'); }, 2000);
     });
   }
 
