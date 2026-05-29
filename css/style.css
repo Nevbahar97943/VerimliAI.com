@@ -1725,6 +1725,12 @@ textarea.form-input {
   100% { background-position: -200% 0; }
 }
 
+/* Render optimization for long content */
+.prose, .legal-content, .tech-content, .about-content, .sektor-content {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
 /* ============================================================
    RESPONSIVE DESIGN
    ============================================================ */

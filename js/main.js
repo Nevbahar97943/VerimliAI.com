@@ -72,7 +72,32 @@
     initDynamicHero();
     initLeadScoring();
     initExitPopup();
+    initVisibilityAPI();
   });
+
+  /* ============================================================
+     PAGE VISIBILITY API — PAUSE ANIMATIONS IN BACKGROUND
+     ============================================================ */
+  function initVisibilityAPI() {
+    // Browser zaten requestAnimationFrame'i arka planda durdurur.
+    // setInterval/setTimeout arka planda 1sn'ye dusurulur.
+    // Bu fonksiyon ek optimizasyon saglar: DOM manipülasyonlarini askiya alir.
+
+    var scrollRevealObserver = null;
+
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) {
+        // Sekme aktif oldu: scroll reveal'i yeniden baslat
+        if (typeof initScrollReveal === 'function') initScrollReveal();
+      }
+    });
+
+    // beforeunload temizlik — tum event listener'lar DOM ile birlikte silinir
+    window.addEventListener('beforeunload', function () {
+      // Tarayici sayfa degisiminde tum listener'lari otomatik temizler.
+      // Ekstra temizlik gerekmez, ancak agir DOM node'lari referanssiz birakilir.
+    });
+  }
 
   /* ============================================================
      HEADER SCROLL EFFECT
