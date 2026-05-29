@@ -74,6 +74,25 @@
   <li><strong>Veri Sahipligi:</strong> Sisteme yuklenen tum veriler musterinin mulkiyetindedir. Sozlesme sonunda 30 gun icinde tum kopyalar silinir.</li>
 </ol>
 
+<h2>RAG Mimarisi: Bilgi Getirme ve Uretim Katmani</h2>
+<p>Retrieval-Augmented Generation (RAG), buyuk dil modellerinin (LLM) kendi egitim verileriyle sinirli kalmayip, disaridan beslenen ozel bilgi tabanlarina erisebilmesini saglayan bir mimaridir. Standart bir LLM yalnizca egitildigi verilerle yanit uretir; sizin isletmenize ozgu urun katalogunu, iade politikanizi veya kampanya detaylarinizi bilemez. RAG, bu siniri ortadan kaldirir.</p>
+
+<p>RAG mimarisi iki asamali calisir. (1) Retrieval (Getirme) Asamasi: Kullanicinin sordugu soru, bir embedding modeli (OpenAI text-embedding-3-large) tarafindan 3.072 boyutlu bir vektore donusturulur. Bu vektor, vektor veritabaninda (Pinecone, Chroma veya Weaviate) depolanan tum dokuman parcalarinin vektorleriyle karsilastirilir. Kosinus benzerligi (cosine similarity) metrigi kullanilarak en yakin 3-5 dokuman parcasi secilir. (2) Generation (Uretim) Asamasi: Secilen dokuman parcalari, orijinal soruyla birlikte bir prompt sablonunda birlestirilir ve LLM'e gonderilir. LLM, yalnizca bu dokuman parcalarina dayanarak yanit uretir; bu sayede halusinasyon riski minimize edilir ve yanitlar kaynak gosterilebilir hale gelir.</p>
+
+<h3>Vektor Veritabani ve Embedding Teknolojisi</h3>
+<p>Vektor veritabani, metinleri anlamsal olarak indeksleyen ozel bir veritabani turudur. Geleneksel veritabanlari anahtar kelime eslesmesiyle calisirken ("kargo" kelimesini arar), vektor veritabani anlamsal benzerlikle calisir ("kargo ne zaman gelir" ile "siparisim ne zaman ulasir" ayni vektor uzayinda birbirine yakin konumlanir). Bu, AI'in farkli ifade edilmis ayni anlamli sorulari dogru yanitlamasini saglar. Kullandigimiz embedding modelleri, metinleri 1.536 ile 3.072 boyut arasinda degisen yogun vektorlere (dense vectors) donusturur. Her boyut, metnin belirli bir anlamsal ozelligini temsil eder.</p>
+
+<h3>Dokuman Parcalama (Chunking) Stratejileri</h3>
+<p>RAG performansi, dokumanlarin nasil parcalandigina (chunking) dogrudan baglidir. Cok buyuk parcalar (10.000+ token), LLM'in baglam penceresini zorlar ve alakasiz bilgileri de yanita dahil etmesine sebep olur. Cok kucuk parcalar (100 token), yeterli baglami tasimaz ve anlamsiz yanitlara yol acar. VerimliAI olarak su chunking stratejilerini kullaniyoruz: (1) Anlamsal parcalama — paragraf ve baslik sinirlarina saygi gosteren akilli bolme, (2) Kayan pencere (sliding window) — her parcanin bir onceki ve bir sonrakiyle %20 oraninda ortusmesi, baglam surekliligini saglar, (3) Hiyerarsik indeksleme — dokuman once baslik seviyesinde, sonra paragraf seviyesinde indekslenir; soru once basliklarla, yeterli eslesme olmazsa paragraflarla karsilastirilir. Optimal chunk boyutu, kullanim senaryosuna bagli olarak 256-1024 token arasinda degisir. E-ticaret urun aciklamalari icin kucuk chunk'lar (256), hukuki metinler icin buyuk chunk'lar (1024) tercih edilir.</p>
+
+<h3>Multi-Model Stratejisi: GPT-4o, Claude ve Llama Karsilastirmasi</h3>
+<p>VerimliAI, tek bir LLM'e bagimli kalmaz; isletmenin ihtiyacina, butcesine ve guvenlik gereksinimlerine gore farkli modeller kullanir. Bu coklu model stratejisi (multi-model routing), her gorev icin en uygun modelin secilmesini saglar.</p>
+<ul>
+  <li><strong>OpenAI GPT-4o:</strong> Cok modlu (metin + gorsel + ses), 128K token baglam penceresi. Turkce anlama ve uretmede en yuksek performans. E-ticaret senaryolari, karmasik musteri diyaloglari ve cok adimli satis akislari icin birincil tercih.</li>
+  <li><strong>Anthropic Claude 3.5 Sonnet:</strong> 200K token baglam penceresiyle piyasadaki en genis baglama sahip modellerden biri. Ozellikle uzun hukuki metinler, detayli teknik dokumanlar ve karmasik talimat zincirlerinin takip edilmesinde ustundur. "Constitutional AI" yaklasimiyla daha guvenli ve etik yanitlar uretir.</li>
+  <li><strong>Meta Llama 3 (Acik Kaynak):</strong> Hassas verilerin sirket disina cikmamasi gereken kurumsal projelerde, modeli kendi sunucularimizda (on-premise) calistirarak tam veri izolasyonu saglariz. 70B parametreli versiyonu, kapali modellerle karsilastirilabilir performans sunar.</li>
+</ul>
+
 <div class="sektor-cta"><h3 style="font-size:var(--fs-600);font-weight:var(--fw-bold);color:var(--clr-neutral-50);margin-bottom:12px;">Teknolojimizi Yakindan Inceleyin</h3><p style="color:var(--clr-neutral-400);margin-bottom:20px;">Ucretsiz demo randevusu alin, sistem mimarisini size ozel anlatalim.</p><a href="randevu.html" class="btn btn-primary btn-lg">Ucretsiz Demo Randevusu Al</a></div>
 
 </div></div></section></main>
