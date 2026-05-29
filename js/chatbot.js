@@ -311,7 +311,7 @@
       return 'Harika! Hemen randevu sayfamıza giderek ücretsiz danışmanlık randevunuzu oluşturabilirsiniz. Sizi yönlendirmemi ister misiniz?\n\n<a href="randevu.html" target="_blank" style="color: #00d2d3;">👉 Randevu sayfasına git</a>';
     }
 
-    return randomFrom(knowledgeBase.fallback);
+    return randomFrom(knowledgeBase.fallback[getLang()] || knowledgeBase.fallback['tr']);
   }
 
   function handleQuickAction(query) {
