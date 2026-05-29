@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="VerimliAI Entegrasyon Metodolojisi - 6 asamali AI kurulum dongusu, SLA hizmet seviyesi garantisi, uptime taahhudu.">
+<title>Metodoloji ve SLA - VerimliAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.prose{max-width:800px;margin-inline:auto;line-height:var(--lh-relaxed)}
+.prose h2{font-size:var(--fs-700);color:var(--clr-neutral-50);margin:var(--space-12)0 var(--space-6)}
+.prose h3{font-size:var(--fs-500);color:var(--clr-neutral-100);margin:var(--space-8)0 var(--space-4)}
+.prose p{color:var(--clr-neutral-300);font-size:var(--fs-400);margin-bottom:var(--space-5)}
+.prose ul,.prose ol{padding-left:var(--space-8);margin-bottom:var(--space-6);color:var(--clr-neutral-300)}
+.prose li{font-size:var(--fs-400);margin-bottom:var(--space-2)}
+.phase-card{background:var(--clr-neutral-850);border:1px solid var(--clr-neutral-700);border-radius:var(--radius-2xl);padding:var(--space-8);margin-bottom:var(--space-6);position:relative;overflow:hidden}
+.phase-card::before{content:attr(data-num);position:absolute;top:-10px;right:var(--space-6);font-size:120px;font-weight:var(--fw-extrabold);color:rgba(108,92,231,0.04);line-height:1}
+.phase-card__num{font-size:var(--fs-300);color:var(--clr-accent-400);text-transform:uppercase;letter-spacing:.1em;margin-bottom:var(--space-2)}
+.phase-card__title{font-size:var(--fs-500);font-weight:var(--fw-bold);color:var(--clr-neutral-50);margin-bottom:var(--space-3)}
+.phase-card__desc{font-size:var(--fs-350);color:var(--clr-neutral-400);line-height:var(--lh-relaxed)}
+.phase-card__time{display:inline-block;margin-top:var(--space-3);background:rgba(108,92,231,.12);color:var(--clr-primary-300);padding:4px 12px;border-radius:var(--radius-full);font-size:var(--fs-300);font-weight:var(--fw-medium)}
+.sla-table{width:100%;border-collapse:collapse;margin:var(--space-8)0;font-size:var(--fs-350)}
+.sla-table th{background:var(--clr-neutral-800);padding:var(--space-4);text-align:left;color:var(--clr-neutral-200);font-weight:var(--fw-bold);border-bottom:2px solid var(--clr-neutral-700)}
+.sla-table td{padding:var(--space-4);border-bottom:1px solid var(--clr-neutral-800);color:var(--clr-neutral-300)}
+.sla-table tr:hover td{background:rgba(108,92,231,.03)}
+.cta-block{text-align:center;margin-top:var(--space-16)}
+</style>
+</head>
+<body>
+<header class="header" id="header"><div class="header__inner">
+<a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a>
+<nav class="header__nav"><a href="index.html" class="header__nav-link">Ana Sayfa</a><a href="sektorler.html" class="header__nav-link">Sektorler</a><a href="magaza.html" class="header__nav-link">Magaza</a></nav>
+<a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+<button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></header>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-menu__link">Ana Sayfa</a><a href="randevu.html" class="mobile-menu__link">Randevu</a></div>
+
+<main>
+<section class="demo-hero"><div class="container">
+<span class="badge badge-accent">Muhendislik</span>
+<h1 class="heading-1" style="margin-top:16px;">Entegrasyon <span class="text-gradient">Metodolojisi</span> ve SLA</h1>
+<p class="section-header__desc" style="margin-top:12px;">AI asistanlarinizi isletmenize entegre ederken izledigimiz 6 asamali muhendislik dongusu ve hizmet seviyesi garantilerimiz.</p>
+</div></section>
+
+<section style="padding-bottom:80px;"><div class="container"><div class="prose">
+
+<h2>6 Asamali VerimliAI Entegrasyon Dongusu</h2>
+<p>Her VerimliAI projesi, askeri hassasiyetle uygulanan 6 asamali bir muhendislik metodolojisinden gecer. Bu metodoloji, onlarca kurumsal entegrasyon projesinden edinilen deneyimle surekli olarak iyilestirilmektedir. Her asama, bir onceki asamanin basariyla tamamlanmasina bagli olarak tetiklenir; bu sayede hicbir kritik adim atlanmaz.</p>
+
+<div class="phase-card" data-num="01">
+<div class="phase-card__num">Asama 1</div>
+<h3 class="phase-card__title">Kesif ve Veri Analizi (Discovery & Data Audit)</h3>
+<p class="phase-card__desc">Entegrasyonun temel tasidir. Isletmenizin mevcut dijital ekosistemini (Instagram hesap yapisi, Shopier API konfigurasyonu, WhatsApp Business ayarlari, mevcut CRM/ERP sistemleri) en ince detayina kadar haritalandiriyoruz. Musteri diyalog gecmisinizi analiz ederek en sik sorulan 50 soruyu, en cok kacirilan satis senaryolarini ve mevcut yanit surelerinizi cikariyoruz. Bu asamada, entegrasyonun basari kriterlerini (KPI) birlikte belirliyoruz: hedef yanit suresi, hedef musteri memnuniyet skoru, hedef otomasyon orani. Cikti: 20-30 sayfalik Detayli Kesif Raporu.</p>
+<div class="phase-card__time">Sure: 2-3 is gunu</div>
+</div>
+
+<div class="phase-card" data-num="02">
+<div class="phase-card__num">Asama 2</div>
+<h3 class="phase-card__title">Mimari Tasarim (Architecture Design)</h3>
+<p class="phase-card__desc">Kesif raporuna dayanarak, isletmenize ozel entegrasyon mimarisini tasarliyoruz. Bu asama su teknik kararlari icerir: Hangi LLM modeli kullanilacak (GPT-4o / Claude / Llama-3)? RAG sistemi kurulacak mi? Vektor veritabani olarak Pinecone mu Chroma mi? Otomasyon akisi Make.com uzerinden mi yoksa ozel API endpointleriyle mi yurutulecek? Instagram DM'ler ManyChat uzerinden mi yoksa dogrudan Meta Graph API ile mi yakalanacak? Tum bu kararlar, isletmenizin olcegine, butcesine ve guvenlik gereksinimlerine gore optimize edilir. Cikti: Mimari Tasarim Dokumani (ATD) + Entegrasyon Semasi.</p>
+<div class="phase-card__time">Sure: 1-2 is gunu</div>
+</div>
+
+<div class="phase-card" data-num="03">
+<div class="phase-card__num">Asama 3</div>
+<h3 class="phase-card__title">Bilgi Tabani Olusturma (Knowledge Base Construction)</h3>
+<p class="phase-card__desc">AI asistanin "beynini" insa ettigimiz asamadir. Urun kataloglariniz, fiyat listeleriniz, iade politikaniz, kargo kosullariniz, sikca sorulan sorulariniz ve marka sesinizi tanimlayan stil rehberiniz; vektor veritabanina yuklenir. Her bir dokuman parcalanir (chunking), embedding vektorlerine donusturulur ve anlamsal olarak indekslenir. Bu asamada ayrica "guardrail" promptlari yazilir: AI'in hangi konularda konusup hangi konularda konusamayacagini, hangi durumlarda insan operatore yonlendirme yapacagini tanimlayan guvenlik katmani. Cikti: Vektor veritabani + Prompt kutuphanesi + Guardrail seti.</p>
+<div class="phase-card__time">Sure: 2-4 is gunu</div>
+</div>
+
+<div class="phase-card" data-num="04">
+<div class="phase-card__num">Asama 4</div>
+<h3 class="phase-card__title">Ince Ayar ve Egitim (Fine-Tuning & Training)</h3>
+<p class="phase-card__desc">Bilgi tabani olusturulduktan sonra, AI asistaninizi isletmenizin spesifik diline, jargonuna ve musteri profiline gore kalibre ediyoruz. Bu asamada: (1) RAG retrieval kalitesi test edilir — AI dogru dokumani dogru zamanda cagiriyor mu? (2) Yanit dogrulugu (accuracy) olculur — 100 test sorusunda AI'in verdigi yanitlar manuel olarak puanlanir. (3) Tonlama ve marka sesi kalibrasyonu yapilir — AI'in "fazla resmi" veya "fazla samimi" oldugu durumlar duzeltilir. (4) Bias taramasi — algoritmanin herhangi bir demografik gruba karsi onyargili davranmadigi dogrulanir. Cikti: Kalibrasyon raporu + Dogruluk skor tablosu.</p>
+<div class="phase-card__time">Sure: 2-3 is gunu</div>
+</div>
+
+<div class="phase-card" data-num="05">
+<div class="phase-card__num">Asama 5</div>
+<h3 class="phase-card__title">Canli Simulasyon Testleri (Staging & UAT)</h3>
+<p class="phase-card__desc">AI asistan, canli ortama alinmadan once izole bir test ortaminda (staging) kapsamli simülasyon testlerine tabi tutulur. Bu testler su senaryolari kapsar: (1) Yüksek trafik simulasyonu — es zamanli 50 musteri mesajina AI'in yanit suresi ve dogrulugu olculur. (2) Anomali senaryolari — bilerek yanlis veya eksik bilgiyle gelen sorulara AI'in tepkisi test edilir. (3) Platform spesifik testler — Instagram DM, WhatsApp ve web chat kanallarinda ayri ayri test yapilir. (4) Entegrasyon zinciri testi — "DM → AI yaniti → Shopier odeme linki → Google Sheets kaydi" zincirinin uc uca calistigi dogrulanir. Tum test sonuclari, musteriyle paylasilan UAT (Kullanici Kabul Testi) raporunda belgelenir.</p>
+<div class="phase-card__time">Sure: 2-3 is gunu</div>
+</div>
+
+<div class="phase-card" data-num="06">
+<div class="phase-card__num">Asama 6</div>
+<h3 class="phase-card__title">Surekli Optimizasyon (Continuous Optimization)</h3>
+<p class="phase-card__desc">Canliya alma, entegrasyonun sonu degil baslangicidir. AI asistaniniz canliya alindiktan sonra, 90 gunluk yogun izleme (hypercare) donemine geceriz. Bu donemde: (1) Her musteri etkilesimi loglanir ve haftalik olarak analiz edilir. (2) AI'in "bilmedigi" veya "yanlis yanitladigi" sorular tespit edilip bilgi tabanina eklenir. (3) Mevsimsel degisiklikler (yeni koleksiyon, kampanya donemi) bilgi tabanina yansitilir. (4) Aylik performans raporu ile KPI'lar (yanit suresi, musteri memnuniyeti, kurtarilan ciro) musteriyle paylasilir. 90 gun sonunda, AI asistan optimum performans seviyesine ulasmis olur ve standart aylik bakim dongusune gecer.</p>
+<div class="phase-card__time">Sure: Surekli (Ilk 90 gun hypercare, sonrasi aylik)</div>
+</div>
+
+<h2>Hizmet Seviyesi Garantisi (SLA)</h2>
+<p>VerimliAI olarak, kurumsal musterilerimize sundugumuz hizmetin kalitesini ve guvenilirligini rakamlarla taahhut ediyoruz. Asagidaki SLA (Service Level Agreement) tablosu, sistemlerimizin calisma kararliligini ve olasi aksakliklara mudahale surelerimizi belgelemektedir. Bu taahhutler, sozlesmeye bagli olarak yasal olarak baglayicidir.</p>
+
+<table class="sla-table">
+<tr><th>Hizmet Bileseni</th><th>Hedef Uptime</th><th>Maksimum Kesinti</th><th>Mudahale Suresi</th><th>Cozum Suresi</th></tr>
+<tr><td>AI Yanit Motoru (GPT-4o)</td><td>99.95%</td><td>Ayda 21 dk</td><td>5 dakika</td><td>30 dakika</td></tr>
+<tr><td>Instagram DM Entegrasyonu</td><td>99.90%</td><td>Ayda 43 dk</td><td>10 dakika</td><td>1 saat</td></tr>
+<tr><td>WhatsApp Business API</td><td>99.90%</td><td>Ayda 43 dk</td><td>10 dakika</td><td>1 saat</td></tr>
+<tr><td>Shopier Odeme Koprusu</td><td>99.95%</td><td>Ayda 21 dk</td><td>5 dakika</td><td>30 dakika</td></tr>
+<tr><td>Make.com Otomasyon Hatti</td><td>99.85%</td><td>Ayda 65 dk</td><td>15 dakika</td><td>2 saat</td></tr>
+<tr><td>Web Chatbot Widget</td><td>99.99%</td><td>Ayda 4 dk</td><td>5 dakika</td><td>15 dakika</td></tr>
+<tr><td>Vektor Veritabani (RAG)</td><td>99.95%</td><td>Ayda 21 dk</td><td>5 dakika</td><td>30 dakika</td></tr>
+<tr><td>Genel Sistem Uptime</td><td>99.90%</td><td>Ayda 43 dk</td><td>—</td><td>—</td></tr>
+</table>
+
+<p style="color:var(--clr-neutral-500);font-size:var(--fs-300);">* Uptime hedefleri, planli bakim pencereleri haric tutularak hesaplanmistir. Planli bakimlar, en az 48 saat onceden bildirilir ve her zaman TS 02:00-05:00 arasinda gerceklestirilir. SLA hedeflerine ulasilamadigi her ay icin, aylik abonelik ucretinizden %5 kredi olarak iade edilir.</p>
+
+<div class="cta-block">
+<h3 style="font-size:var(--fs-600);color:var(--clr-neutral-50);margin-bottom:12px;">Metodolojimizi Isletmenizde Deneyimleyin</h3>
+<a href="randevu.html" class="btn btn-primary btn-lg">Ucretsiz Kesif Gorusmesi Planlayin</a>
+</div>
+
+</div></div></section></main>
+
+<footer class="footer"><div class="container"><div class="footer__bottom"><p class="footer__copyright">&copy; 2026 VerimliAI. | SLA Guaranteed 99.9% Uptime</p></div></div></footer>
+<script src="js/main.js"></script><script src="js/chatbot.js"></script>
+</body>
+</html>

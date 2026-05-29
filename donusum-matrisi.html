@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sektorel Yapay Zeka Donusum Matrisi - Geleneksel isletme vs VerimliAI destekli isletme karsilastirmasi. E-Ticaret, Saglik, Lojistik, Finans.">
+<title>Donusum Matrisi - VerimliAI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.prose{max-width:900px;margin-inline:auto}
+.prose h2{font-size:var(--fs-700);color:var(--clr-neutral-50);margin:var(--space-12)0 var(--space-6)}
+.matrix-wrap{overflow-x:auto;margin:var(--space-8)0}
+.matrix-table{width:100%;min-width:900px;border-collapse:separate;border-spacing:0;font-size:var(--fs-350)}
+.matrix-table thead th{background:var(--gradient-dark);color:var(--clr-neutral-100);padding:var(--space-4)var(--space-5);font-weight:var(--fw-bold);text-align:left;position:sticky;top:0;z-index:1}
+.matrix-table thead th:first-child{border-radius:var(--radius-xl)0 0 0}
+.matrix-table thead th:last-child{border-radius:0 var(--radius-xl)0 0}
+.matrix-table tbody td{padding:var(--space-4)var(--space-5);border-bottom:1px solid var(--clr-neutral-800);color:var(--clr-neutral-300);vertical-align:top}
+.matrix-table tbody tr:hover td{background:rgba(108,92,231,.04)}
+.matrix-table .sector-name{font-weight:var(--fw-bold);color:var(--clr-neutral-50);white-space:nowrap}
+.matrix-table .before{color:var(--clr-error)}.matrix-table .after{color:var(--clr-success)}
+.matrix-table .improvement{color:var(--clr-accent-400);font-weight:var(--fw-bold)}
+.cta-block{text-align:center;margin-top:var(--space-16)}
+</style>
+</head>
+<body>
+<header class="header" id="header"><div class="header__inner">
+<a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a>
+<nav class="header__nav"><a href="index.html" class="header__nav-link">Ana Sayfa</a><a href="sektorler.html" class="header__nav-link">Sektorler</a><a href="magaza.html" class="header__nav-link">Magaza</a></nav>
+<a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+<button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button></div></header>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-menu__link">Ana Sayfa</a><a href="randevu.html" class="mobile-menu__link">Randevu</a></div>
+
+<main>
+<section class="demo-hero"><div class="container">
+<span class="badge badge-accent">Analiz</span>
+<h1 class="heading-1" style="margin-top:16px;">Sektorel <span class="text-gradient">Donusum Matrisi</span></h1>
+<p class="section-header__desc" style="margin-top:12px;">Geleneksel isletme ile VerimliAI destekli isletme arasindaki radikal farklar. Bes sektor, on kriter, veri odakli karsilastirma.</p>
+</div></section>
+
+<section style="padding-bottom:80px;"><div class="container"><div class="prose">
+
+<h2>Geleneksel Isletme ve VerimliAI Destekli Isletme</h2>
+<p style="color:var(--clr-neutral-400);margin-bottom:var(--space-8);">Asagidaki matris, VerimliAI entegrasyonu oncesi ve sonrasi arasindaki olculebilir farklari gostermektedir. Tum veriler, 100'den fazla entegrasyon projesinden elde edilen ortalama degerlere dayanmaktadir.</p>
+
+<div class="matrix-wrap"><table class="matrix-table">
+<thead><tr><th>Sektor</th><th>Musteri Yanit Suresi</th><th>Operasyonel Maliyet</th><th>Aylik Kayip Satis</th><th>Musteri Memnuniyeti</th><th>Calisan Memnuniyeti</th></tr></thead>
+<tbody>
+
+<tr><td class="sector-name" rowspan="2">E-Ticaret & Butik</td>
+<td class="before">Once: 3.2 saat (ort.)</td><td class="before">Once: 8.500 TL/ay (1 PT calisan)</td><td class="before">Once: ~52.500 TL/ay</td><td class="before">Once: 3.1/5.0</td><td class="before">Once: DM yanitlamak %40 mesai</td></tr>
+<tr><td class="after">Sonra: 8 saniye</td><td class="after">Sonra: 2.500 TL/ay (AI abonelik)</td><td class="after">Sonra: ~31.500 TL/ay</td><td class="after">Sonra: 4.7/5.0</td><td class="after">Sonra: DM yanitlamak %2 mesai</td></tr>
+<tr><td class="improvement" colspan="6">→ %99.9 yanit suresi iyilesmesi | Aylik 6.000 TL operasyonel tasarruf | 21.000 TL ek gelir | %52 memnuniyet artisi</td></tr>
+
+<tr style="border-top:2px solid var(--clr-neutral-700);"><td class="sector-name" rowspan="2">Saglik & Klinik</td>
+<td class="before">Once: 4.1 saat (randevu talebi)</td><td class="before">Once: 12.000 TL/ay (1 FT calisan)</td><td class="before">Once: %32 cevapsiz randevu</td><td class="before">Once: 3.4/5.0</td><td class="before">Once: Telefon trafigi %55 mesai</td></tr>
+<tr><td class="after">Sonra: 12 saniye</td><td class="after">Sonra: 3.500 TL/ay (AI abonelik)</td><td class="after">Sonra: %8 cevapsiz randevu</td><td class="after">Sonra: 4.8/5.0</td><td class="after">Sonra: Telefon trafigi %10 mesai</td></tr>
+<tr><td class="improvement" colspan="6">→ %99.9 yanit suresi iyilesmesi | Aylik 8.500 TL tasarruf | Cevapsiz randevuda %75 azalma | %41 memnuniyet artisi</td></tr>
+
+<tr style="border-top:2px solid var(--clr-neutral-700);"><td class="sector-name" rowspan="2">Gayrimenkul & Emlak</td>
+<td class="before">Once: 1.8 saat (ilan talebi)</td><td class="before">Once: 10.000 TL/ay (1 PT asistan)</td><td class="before">Once: %67 alici kaybi (15dk'da)</td><td class="before">Once: 2.9/5.0</td><td class="before">Once: Portfoy takibi %35 mesai</td></tr>
+<tr><td class="after">Sonra: 6 saniye</td><td class="after">Sonra: 2.500 TL/ay (AI abonelik)</td><td class="after">Sonra: %22 alici kaybi</td><td class="after">Sonra: 4.5/5.0</td><td class="after">Sonra: Portfoy takibi %5 mesai</td></tr>
+<tr><td class="improvement" colspan="6">→ Aninda ilan bilgisi donusu | Aylik 7.500 TL tasarruf | Alici kaybinda %67 azalma | %55 memnuniyet artisi</td></tr>
+
+<tr style="border-top:2px solid var(--clr-neutral-700);"><td class="sector-name" rowspan="2">B2B & Kurumsal</td>
+<td class="before">Once: 6.4 saat (e-posta yanit)</td><td class="before">Once: 28.000 TL/ay (2 FT calisan)</td><td class="before">Once: Teklif hazirlama: 4 saat/teklif</td><td class="before">Once: 3.6/5.0</td><td class="before">Once: E-posta trafigi %45 mesai</td></tr>
+<tr><td class="after">Sonra: 45 saniye</td><td class="after">Sonra: 5.000 TL/ay (AI abonelik)</td><td class="after">Sonra: Teklif hazirlama: 3 dk/teklif</td><td class="after">Sonra: 4.6/5.0</td><td class="after">Sonra: E-posta trafigi %8 mesai</td></tr>
+<tr><td class="improvement" colspan="6">→ %99.8 yanit suresi iyilesmesi | Aylik 23.000 TL tasarruf | Teklif hazirlamada %98.7 hizlanma | %28 memnuniyet artisi</td></tr>
+
+</tbody></table></div>
+
+<div class="cta-block">
+<h3 style="font-size:var(--fs-600);color:var(--clr-neutral-50);margin-bottom:12px;">Sektorunuze Ozel Donusum Raporu Icin</h3>
+<a href="randevu.html" class="btn btn-primary btn-lg">Ucretsiz Analiz Randevusu Alin</a>
+</div>
+
+</div></div></section></main>
+
+<footer class="footer"><div class="container"><div class="footer__bottom"><p class="footer__copyright">&copy; 2026 VerimliAI. Veri odakli donusum.</p></div></div></footer>
+<script src="js/main.js"></script><script src="js/chatbot.js"></script>
+</body>
+</html>
