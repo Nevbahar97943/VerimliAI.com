@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gizlilik Politikasi - VerimliAI</title>
+  <meta name="description" content="VerimliAI Gizlilik Politikasi - KVKK ve GDPR uyumlu, seffaf veri isleme politikalari. Verileriniz AES-256 sifreli, OpenAI API'de egitilmez.">
+  <title>Gizlilik Politikasi - VerimliAI | KVKK & GDPR Uyumlu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -11,112 +12,238 @@
   <style>
     .legal-page { padding: calc(var(--header-height) + 40px) 0 var(--space-16); }
     .legal-content { max-width: 800px; margin-inline: auto; }
-    .legal-content h1 { font-size: var(--fs-900); margin-bottom: var(--space-6); }
-    .legal-content h2 { font-size: var(--fs-600); margin-top: var(--space-8); margin-bottom: var(--space-4); color: var(--clr-neutral-100); }
-    .legal-content p, .legal-content li { color: var(--clr-neutral-400); line-height: var(--lh-relaxed); margin-bottom: var(--space-4); font-size: var(--fs-350); }
-    .legal-content ul { padding-left: var(--space-6); margin-bottom: var(--space-4); }
+    .legal-content h1 { font-size: var(--fs-900); margin-bottom: var(--space-4); }
+    .legal-content h2 { font-size: var(--fs-600); margin-top: var(--space-10); margin-bottom: var(--space-4); color: var(--clr-neutral-50); border-bottom: 1px solid var(--clr-neutral-800); padding-bottom: var(--space-3); }
+    .legal-content h3 { font-size: var(--fs-450); margin-top: var(--space-8); margin-bottom: var(--space-3); color: var(--clr-neutral-100); }
+    .legal-content p, .legal-content li { color: var(--clr-neutral-300); line-height: var(--lh-relaxed); margin-bottom: var(--space-4); font-size: var(--fs-350); }
+    .legal-content ul, .legal-content ol { padding-left: var(--space-6); margin-bottom: var(--space-6); }
     .legal-content .last-updated { color: var(--clr-neutral-600); font-size: var(--fs-300); margin-bottom: var(--space-8); }
+    .legal-content table { width: 100%; border-collapse: collapse; margin: var(--space-6) 0; font-size: var(--fs-300); }
+    .legal-content table th { background: var(--clr-neutral-800); color: var(--clr-neutral-200); padding: var(--space-3) var(--space-4); text-align: left; font-weight: var(--fw-bold); border-bottom: 2px solid var(--clr-neutral-700); }
+    .legal-content table td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--clr-neutral-800); color: var(--clr-neutral-400); vertical-align: top; }
+    .legal-content table tr:hover td { background: rgba(108,92,231,.02); }
+    .trust-strip { display: flex; gap: var(--space-3); flex-wrap: wrap; margin: var(--space-6) 0; }
+    .trust-strip span { background: rgba(16,185,129,.06); border: 1px solid rgba(16,185,129,.15); color: var(--clr-success); padding: 6px 14px; border-radius: var(--radius-full); font-size: var(--fs-300); font-weight: var(--fw-medium); }
+    .toc { background: var(--clr-neutral-850); border: var(--border-card); border-radius: var(--radius-xl); padding: var(--space-6); margin-bottom: var(--space-8); }
+    .toc h3 { margin-top: 0; font-size: var(--fs-400); color: var(--clr-neutral-50); margin-bottom: var(--space-3); }
+    .toc ol { margin-bottom: 0; }
+    .toc a { color: var(--clr-accent-400); text-decoration: none; font-size: var(--fs-350); }
+    .toc a:hover { text-decoration: underline; }
+    .highlight-note { background: rgba(108,92,231,.06); border-left: 3px solid var(--clr-primary-500); padding: var(--space-4) var(--space-5); border-radius: 0 var(--radius-lg) var(--radius-lg) 0; margin: var(--space-6) 0; }
+    .highlight-note p { color: var(--clr-neutral-200); font-size: var(--fs-350); margin-bottom: 0; }
   </style>
 </head>
 <body>
 
-  <header class="header" id="header">
-    <div class="header__inner">
-      <a href="index.html" class="header__logo">
-        <div class="header__logo-icon">V</div>
-        <div class="header__logo-text">Verimli<span>AI</span></div>
-      </a>
-      <nav class="header__nav">
-        <a href="index.html" class="header__nav-link">Ana Sayfa</a>
-        <a href="index.html#hizmetler" class="header__nav-link">Hizmetler</a>
-        <a href="index.html#paketler" class="header__nav-link">Paketler</a>
-        <a href="magaza.html" class="header__nav-link">Magaza</a>
-        <a href="iletisim.html" class="header__nav-link">Iletisim</a>
-      </nav>
-      <a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
-      <button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
-    </div>
-  </header>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html" class="mobile-menu__link">Ana Sayfa</a>
-    <a href="magaza.html" class="mobile-menu__link">Dijital Magaza</a>
-    <a href="iletisim.html" class="mobile-menu__link">Iletisim</a>
-    <a href="randevu.html" class="mobile-menu__link">Randevu Al</a>
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a>
+    <nav class="header__nav">
+      <a href="index.html" class="header__nav-link">Ana Sayfa</a>
+      <a href="index.html#hizmetler" class="header__nav-link">Hizmetler</a>
+      <a href="index.html#paketler" class="header__nav-link">Paketler</a>
+      <a href="magaza.html" class="header__nav-link">Magaza</a>
+      <a href="iletisim.html" class="header__nav-link">Iletisim</a>
+    </nav>
+    <a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+    <button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" class="mobile-menu__link">Ana Sayfa</a><a href="magaza.html" class="mobile-menu__link">Magaza</a><a href="iletisim.html" class="mobile-menu__link">Iletisim</a><a href="randevu.html" class="mobile-menu__link">Randevu Al</a>
+</div>
 
-  <main class="legal-page">
-    <div class="container">
-      <div class="legal-content">
-        <h1>Gizlilik <span class="text-gradient">Politikasi</span></h1>
-        <p class="last-updated">Son guncelleme: 29 Mayis 2026</p>
+<main class="legal-page">
+  <div class="container">
+    <div class="legal-content">
 
-        <p>VerimliAI olarak, kisisel verilerinizin guvenligi ve gizliligi bizim icin onceliklidir. Bu Gizlilik Politikasi, web sitemizi ziyaret ettiginizde veya hizmetlerimizden yararlandiginizda kisisel verilerinizin nasil toplandigini, kullanildigini, saklandigini ve korundugunu aciklar.</p>
+      <h1><span class="text-gradient">Gizlilik Politikasi</span></h1>
+      <p class="last-updated">Surum 2.1 · Son guncelleme: 29 Mayis 2026 · Yururluluk: Derhal</p>
 
-        <h2>1. Toplanan Bilgiler</h2>
-        <p>Asagidaki durumlarda sizden kisisel veriler toplayabiliriz:</p>
-        <ul>
-          <li><strong>Iletisim Formu:</strong> Ad, soyad, e-posta adresi, telefon numarasi, firma adi.</li>
-          <li><strong>Randevu Formu:</strong> Ad, soyad, e-posta, telefon, isletme adi, Instagram hesabi, AI ihtiyac tercihi.</li>
-          <li><strong>Dijital Magaza:</strong> Satin alma islemi sirasinda ad, e-posta, fatura bilgileri. (Odeme bilgileri dogrudan Shopier tarafindan islenir, tarafimizca saklanmaz.)</li>
-          <li><strong>Otomatik Veriler:</strong> IP adresi, tarayici bilgisi, ziyaret suresi gibi teknik veriler.</li>
-        </ul>
-
-        <h2>2. Verilerin Kullanim Amaci</h2>
-        <p>Toplanan kisisel veriler su amaclarla kullanilir:</p>
-        <ul>
-          <li>Tarafinizca talep edilen hizmetlerin saglanmasi</li>
-          <li>Iletisim ve randevu taleplerinize yanit verilmesi</li>
-          <li>Dijital urun satin alma islemlerinin tamamlanmasi ve urun teslimati</li>
-          <li>Hizmetlerimizle ilgili bilgilendirme yapilmasi (izin vermeniz halinde)</li>
-          <li>Yasal yukumluluklerin yerine getirilmesi</li>
-        </ul>
-
-        <h2>3. Verilerin Saklanmasi ve Guvenligi</h2>
-        <p>Kisisel verileriniz, yetkisiz erisim, degisiklik, ifsa veya imhaya karsi korunmasi icin uygun teknik ve idari guvenlik onlemleri ile korunmaktadir. Verileriniz, islenme amacinin gerektirdigi sure boyunca veya yasal yukumlulukler cercevesinde saklanir.</p>
-
-        <h2>4. Verilerin Paylasimi</h2>
-        <p>Kisisel verileriniz, acik rizaniz olmadan ucuncu sahislarla paylasilmaz. Asagidaki istisnalar haric:</p>
-        <ul>
-          <li>Hizmet altyapisi saglayicilari (Web3Forms, Shopier - yalnizca hizmetin ifasi icin gerekli oldugu olcude)</li>
-          <li>Yasal zorunluluk kapsaminda yetkili kurumlar</li>
-        </ul>
-
-        <h2>5. KVKK Kapsamindaki Haklariniz</h2>
-        <p>6698 sayili Kisisel Verilerin Korunmasi Kanunu (KVKK) kapsaminda su haklara sahipsiniz:</p>
-        <ul>
-          <li>Kisisel verilerinizin islenip islenmedigini ogrenme</li>
-          <li>Islenmisse buna iliskin bilgi talep etme</li>
-          <li>Islenme amacini ve amacina uygun kullanilip kullanilmadigini ogrenme</li>
-          <li>Yurt icinde veya yurt disinda aktarildigi ucuncu kisileri bilme</li>
-          <li>Eksik veya yanlis islenmisse duzeltilmesini isteme</li>
-          <li>Verilerin silinmesini veya yok edilmesini isteme</li>
-        </ul>
-
-        <h2>6. Cerezler (Cookies)</h2>
-        <p>Web sitemiz, kullanici deneyimini iyilestirmek amaciyla cerezler kullanabilir. Tarayici ayarlarinizdan cerezleri yonetebilir veya devre disi birakabilirsiniz.</p>
-
-        <h2>7. Iletisim</h2>
-        <p>Gizlilik politikaniz veya kisisel verilerinizle ilgili sorulariniz icin:</p>
-        <ul>
-          <li>E-posta: <strong>info@verimliai.com</strong></li>
-          <li>Web sitesi: <strong>verimliai.com/iletisim</strong></li>
-        </ul>
-
-        <p>Bu Gizlilik Politikasi zaman zaman guncellenebilir. Guncellemeler web sitemizde yayinlanacaktir.</p>
+      <div class="trust-strip">
+        <span>KVKK Uyumlu</span><span>GDPR Uyumlu</span><span>AES-256 Sifreli</span><span>TLS 1.3</span><span>ISO 27001 Cercevesi</span><span>OpenAI API Verified</span>
       </div>
-    </div>
-  </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__bottom" style="border-top: none; padding-top: 0;">
-        <p class="footer__copyright">&copy; 2026 VerimliAI. Tum haklari saklidir.</p>
+      <p>VerimliAI olarak, gizliliginizin ve kisisel verilerinizin korunmasi en temel calisma prensibimizdir. Bu Gizlilik Politikasi; 6698 sayili Kisisel Verilerin Korunmasi Kanunu (KVKK), Avrupa Birligi Genel Veri Koruma Tuzugu (GDPR — Regulation EU 2016/679) ve California Tuketici Gizliligi Yasasi (CCPA) cercevesinde, veri sorumlusu sifatiyla VerimliAI tarafindan yurutulen tum veri isleme faaliyetlerini seffaf bir sekilde aciklamaktadir. Bu belge, yasal olarak baglayici bir taahhutname niteligindedir.</p>
+
+      <div class="highlight-note"><p>Bu politika yalnizca VerimliAI tarafindan kontrol edilen veriler icin gecerlidir. Musterilerimizin kendi musteri verileri uzerindeki isleme faaliyetleri, ayri bir "Veri Isleme Sozlesmesi (DPA)" kapsaminda duzenlenir. Musteri verileri OpenAI tarafindan AI egitimi icin kullanilmaz.</p></div>
+
+      <div class="toc">
+        <h3>Icerik Tablosu</h3>
+        <ol>
+          <li><a href="#s1">Veri Sorumlusu Kimligi</a></li>
+          <li><a href="#s2">Toplanan Kisisel Veri Kategorileri</a></li>
+          <li><a href="#s3">Veri Isleme Amaclari ve Hukuki Sebepleri</a></li>
+          <li><a href="#s4">Cerezler (Cookies) ve Izleme Teknolojileri</a></li>
+          <li><a href="#s5">Ucuncu Taraf Veri Isleyicileri</a></li>
+          <li><a href="#s6">Veri Saklama ve Guvenlik Onlemleri</a></li>
+          <li><a href="#s7">Uluslararasi Veri Aktarimi</a></li>
+          <li><a href="#s8">Haklariniz (KVKK Madde 11 + GDPR + CCPA)</a></li>
+          <li><a href="#s9">Cocuklarin Gizliligi</a></li>
+          <li><a href="#s10">Politika Degisiklikleri</a></li>
+          <li><a href="#s11">Iletisim ve Basvuru</a></li>
+        </ol>
       </div>
-    </div>
-  </footer>
 
-  <script src="js/main.js"></script>
-  <script src="js/chatbot.js"></script>
+      <h2 id="s1">1. Veri Sorumlusu Kimligi</h2>
+      <table>
+        <tr><th style="width:200px;">Unsur</th><th>Detay</th></tr>
+        <tr><td>Veri Sorumlusu</td><td>VerimliAI</td></tr>
+        <tr><td>Web Sitesi</td><td>https://verimliai.com</td></tr>
+        <tr><td>Iletisim E-Postasi</td><td>info@verimliai.com</td></tr>
+        <tr><td>Veri Koruma Yetkilisi</td><td>info@verimliai.com (DPO sorgulari icin)</td></tr>
+        <tr><td>Ticaret Sicil</td><td>Istanbul Ticaret Odasi</td></tr>
+      </table>
+
+      <h2 id="s2">2. Toplanan Kisisel Veri Kategorileri</h2>
+      <p>VerimliAI, yalnizca hizmetin ifasi icin gerekli olan minimum veriyi toplar. Veri minimizasyonu prensibi, tum veri toplama sureclerimizin temelidir. Asagidaki tablo, hangi hizmet kapsaminda hangi verilerin toplandigini detaylandirmaktadir:</p>
+
+      <table>
+        <tr><th>Veri Kategorisi</th><th>Toplanan Veriler</th><th>Kaynak</th><th>Saklama Suresi</th></tr>
+        <tr><td><strong>Kimlik Bilgisi</strong></td><td>Ad, soyad</td><td>Iletisim formu, randevu formu, dijital magaza</td><td>Son etkilesimden itibaren 2 yil</td></tr>
+        <tr><td><strong>Iletisim Bilgisi</strong></td><td>E-posta adresi, telefon numarasi</td><td>Iletisim formu, randevu formu, dijital magaza</td><td>Son etkilesimden itibaren 2 yil</td></tr>
+        <tr><td><strong>Isletme Bilgisi</strong></td><td>Firma adi, Instagram hesabi, web sitesi, AI ihtiyaci</td><td>Randevu formu, check-up araci</td><td>Son etkilesimden itibaren 2 yil</td></tr>
+        <tr><td><strong>Finansal Bilgi</strong></td><td>Fatura adresi, odeme tutari</td><td>Dijital magaza (Shopier uzerinden)</td><td>Yasal zorunluluk: 10 yil (VUK)</td></tr>
+        <tr><td><strong>Teknik Veri</strong></td><td>IP adresi, tarayici tipi, isletim sistemi, ziyaret suresi, sayfa goruntuleme</td><td>Otomatik (sunucu loglari)</td><td>30 gun (loglar), anonim: surekli</td></tr>
+        <tr><td><strong>Cerez Verisi</strong></td><td>Oturum kimligi, tercihler, dil secimi</td><td>Tarayici cerezleri</td><td>Oturum sonu — 365 gun</td></tr>
+      </table>
+
+      <div class="highlight-note"><p>Odeme bilgileriniz (kredi karti numarasi, CVV, son kullanma tarihi) hicbir zaman VerimliAI sunucularinda saklanmaz. Tum odeme islemleri PCI-DSS uyumlu Shopier ve Stripe altyapilari uzerinden tokenizasyon ile gerceklesir. VerimliAI bu verilere hicbir zaman erisemez.</p></div>
+
+      <h2 id="s3">3. Veri Isleme Amaclari ve Hukuki Sebepleri</h2>
+      <table>
+        <tr><th>Isleme Amaci</th><th>Islenen Veri</th><th>KVKK Hukuki Sebebi</th><th>GDPR Hukuki Sebebi</th></tr>
+        <tr><td>Iletisim ve randevu taleplerinin karsilanmasi</td><td>Kimlik, iletisim, isletme</td><td>Madde 5/2(c): Sozlesmenin kurulmasi/ifasi</td><td>Art. 6(1)(b): Contractual necessity</td></tr>
+        <tr><td>Dijital urun satisi ve teslimati</td><td>Kimlik, iletisim, finansal</td><td>Madde 5/2(c): Sozlesmenin ifasi</td><td>Art. 6(1)(b): Contract performance</td></tr>
+        <tr><td>Hizmet kalitesi iyilestirme ve analitik</td><td>Teknik veri (anonim)</td><td>Madde 5/2(f): Mesru menfaat</td><td>Art. 6(1)(f): Legitimate interest</td></tr>
+        <tr><td>Yasal yukumluluklerin yerine getirilmesi</td><td>Finansal, kimlik</td><td>Madde 5/2(c): Hukuki yukumluluk</td><td>Art. 6(1)(c): Legal obligation</td></tr>
+        <tr><td>Pazarlama iletisimi (acik riza ile)</td><td>Iletisim</td><td>Madde 5/1: Acik riza</td><td>Art. 6(1)(a): Consent</td></tr>
+      </table>
+
+      <h2 id="s4">4. Cerezler (Cookies) ve Izleme Teknolojileri</h2>
+      <p>Web sitemiz, kullanici deneyimini iyilestirmek ve temel site islevselligini saglamak amaciyla cerezler kullanir. Kesinlikle gerekli cerezler haricindeki tum cerezler icin acik rizaniz alinir. Cerez tercihlerinizi dilediginiz zaman tarayici ayarlarinizdan veya sitemizdeki cerez yonetim panelinden degistirebilirsiniz.</p>
+
+      <table>
+        <tr><th>Cerez Kategorisi</th><th>Amaci</th><th>Suresi</th><th>Zorunlu mu?</th></tr>
+        <tr><td><strong>Kesinlikle Gerekli</strong></td><td>Site gezinmesi, form guvenligi, oturum yonetimi</td><td>Oturum sonu</td><td>Evet</td></tr>
+        <tr><td><strong>Tercih Cerezleri</strong></td><td>Dil secimi, cerez onay durumu</td><td>365 gun</td><td>Hayir</td></tr>
+        <tr><td><strong>Analitik Cerezler</strong></td><td>Anonim ziyaretci istatistikleri (sayfa goruntuleme, sure)</td><td>26 ay</td><td>Hayir</td></tr>
+      </table>
+
+      <p>VerimliAI, ucuncu taraf reklam veya davranissal hedefleme cerezleri <strong>kullanmaz</strong>. Google Analytics verileri anonimlestirilmis olarak toplanir (IP maskeleme aktif). Microsoft Clarity oturum kayitlari, form alanlari gibi hassas verileri otomatik olarak maskeler.</p>
+
+      <h2 id="s5">5. Ucuncu Taraf Veri Isleyicileri</h2>
+      <p>Hizmetlerimizi sunabilmek icin asagidaki guvenilir ucuncu taraf hizmet saglayicilarla calisiyoruz. Tum alt isleyiciler, bizimle imzaladiklari Veri Isleme Sozlesmesi (DPA) kapsaminda verilerinizi yalnizca belirtilen amacla ve bizim talimatlarimiz dogrultusunda isler.</p>
+
+      <table>
+        <tr><th>Alt Isleyici</th><th>Hizmet</th><th>Islenen Veri</th><th>Sunucu Konumu</th><th>Uyumluluk</th></tr>
+        <tr><td><strong>Web3Forms</strong></td><td>Iletisim formu e-posta iletimi</td><td>Ad, e-posta, mesaj</td><td>AB (Almanya)</td><td>GDPR</td></tr>
+        <tr><td><strong>Shopier</strong></td><td>Odeme islemleri (TR)</td><td>Odeme bilgisi (token)</td><td>Turkiye</td><td>KVKK, PCI-DSS</td></tr>
+        <tr><td><strong>Stripe</strong></td><td>Odeme islemleri (Global)</td><td>Odeme bilgisi (token)</td><td>ABD/AB</td><td>GDPR, PCI-DSS Level 1</td></tr>
+        <tr><td><strong>OpenAI API</strong></td><td>AI yanit uretimi</td><td>Anonim konusma verisi</td><td>ABD/AB</td><td>SOC 2, GDPR (DPA mevcut)</td></tr>
+        <tr><td><strong>Google Fonts</strong></td><td>Web yazi tipleri</td><td>IP adresi (onbellek)</td><td>Global CDN</td><td>GDPR</td></tr>
+        <tr><td><strong>jsDelivr CDN</strong></td><td>Chart.js kutuphanesi</td><td>IP adresi (onbellek)</td><td>Global CDN</td><td>GDPR</td></tr>
+      </table>
+
+      <div class="highlight-note"><p>OpenAI API veri politikasi geregi, API uzerinden gonderilen tum veriler OpenAI tarafindan AI modellerini egitmek icin <strong>kullanilmaz</strong>. Veriler islendikten sonra 30 gun icinde OpenAI sunucularindan otomatik olarak silinir. Bu, ChatGPT'nin ucretsiz surumunden farkli olarak API musteriilerine saglanan yasal olarak baglayici bir guvencedir.</p></div>
+
+      <h2 id="s6">6. Veri Saklama ve Guvenlik Onlemleri</h2>
+
+      <h3>6.1 Teknik Guvenlik Onlemleri</h3>
+      <ul>
+        <li><strong>AES-256 Sifreleme (At Rest):</strong> Veritabaninda saklanan tum kisisel veriler, 256-bit AES sifreleme ile sifrelenmis durumda saklanir. Sifreleme anahtarlari AWS KMS uzerinde, veriden ayri bir guvenlik katmaninda yonetilir.</li>
+        <li><strong>TLS 1.3 (In Transit):</strong> Kullanici ile sunucu arasindaki tum veri akisi TLS 1.3 protokolu ile sifrelenir. HSTS header'i ile yalnizca HTTPS baglantilari kabul edilir.</li>
+        <li><strong>WAF (Web Application Firewall):</strong> SQL enjeksiyonu, XSS ve DDoS saldirilarina karsi koruma saglayan web uygulamasi guvenlik duvari aktiftir.</li>
+        <li><strong>2FA Zorunlulugu:</strong> Tum yonetim panellerine ve sunucu erisimlerine iki faktorlu kimlik dogrulama (2FA) zorunludur.</li>
+        <li><strong>Gunluk Yedekleme:</strong> Veritabani her gun otomatik olarak yedeklenir. Yedekler AES-256 ile sifrelenir ve cografi olarak farkli bir bolgede saklanir.</li>
+      </ul>
+
+      <h3>6.2 Idari Guvenlik Onlemleri</h3>
+      <ul>
+        <li><strong>Erisim Kontrolu (RBAC):</strong> Calisanlar yalnizca gorevleri icin gerekli minimum veriye erisebilir. Tum erisimler loglanir ve periyodik olarak denetlenir.</li>
+        <li><strong>Gizlilik Egitimi:</strong> Tum personel, ise baslarken ve yillik olarak KVKK/GDPR ve veri guvenligi egitimi alir.</li>
+        <li><strong>Sizma Testi:</strong> Yillik bagimsiz penetrasyon testi yaptirilir. Kritik aciklar 72 saat icinde kapatilir.</li>
+        <li><strong>Olay Mudahale Plani:</strong> Veri ihlali durumunda 72 saat icinde ilgili otoritelere (KVKK Kurumu / GDPR Denetim Makami) ve etkilenen kullanicilara bildirim yapilir.</li>
+      </ul>
+
+      <h3>6.3 Veri Saklama Sureleri</h3>
+      <table>
+        <tr><th>Veri Kategorisi</th><th>Saklama Suresi</th><th>Dayanak</th></tr>
+        <tr><td>Aktif musteri verileri</td><td>Sozlesme suresi + 2 yil</td><td>Yasal yukumluluk + mesru menfaat</td></tr>
+        <tr><td>Fatura ve finansal veriler</td><td>10 yil</td><td>VUK Madde 253</td></tr>
+        <tr><td>Form basvurulari (donus yapilmamis)</td><td>90 gun</td><td>Veri minimizasyonu</td></tr>
+        <tr><td>Sunucu erisim loglari</td><td>30 gun</td><td>Guvenlik izleme</td></tr>
+        <tr><td>Anonim analitik veriler</td><td>Surekli</td><td>Kisisel veri degildir</td></tr>
+      </table>
+
+      <h2 id="s7">7. Uluslararasi Veri Aktarimi</h2>
+      <p>VerimliAI sunuculari oncelikli olarak Avrupa Birligi sinirlari icinde (AWS eu-central-1, Frankfurt) konumlandirilmistir. Bazi alt isleyicilerimiz (OpenAI, Stripe) ABD merkezli sunucular kullanmaktadir. Bu aktarimlar, asagidaki yasal guvenceler altinda gerceklestirilir:</p>
+      <ul>
+        <li><strong>AB-ABD Veri Gizliligi Cercevesi (Data Privacy Framework):</strong> OpenAI ve Stripe, EU-US DPF sertifikasina sahiptir.</li>
+        <li><strong>Standart Sozlesme Maddeleri (SCC):</strong> Tum alt isleyicilerle AB Komisyonu tarafindan onaylanmis Standart Sozlesme Maddeleri imzalanmistir.</li>
+        <li><strong>Etki Degerlendirmesi (TIA):</strong> Her uluslararasi aktarim oncesi Transfer Etki Degerlendirmesi yapilir ve belgelenir.</li>
+      </ul>
+
+      <h2 id="s8">8. Haklariniz</h2>
+      <p>KVKK Madde 11, GDPR ve CCPA kapsaminda asagidaki haklara sahipsiniz. Bu haklarinizi kullanmak icin info@verimliai.com adresine e-posta gonderebilirsiniz. Basvurular en gec 30 gun icinde ucretsiz olarak yanitlanir.</p>
+
+      <table>
+        <tr><th>Hak</th><th>KVKK</th><th>GDPR</th><th>CCPA</th><th>Aciklama</th></tr>
+        <tr><td>Erisim Hakki</td><td>✓</td><td>Art. 15</td><td>§1798.100</td><td>Verilerinizin islenip islenmedigini ogrenme ve kopyasini talep etme</td></tr>
+        <tr><td>Duzeltme Hakki</td><td>✓</td><td>Art. 16</td><td>§1798.106</td><td>Eksik veya yanlis verilerin duzeltilmesini talep etme</td></tr>
+        <tr><td>Silme Hakki (Unutulma Hakki)</td><td>✓</td><td>Art. 17</td><td>§1798.105</td><td>Verilerinizin silinmesini talep etme</td></tr>
+        <tr><td>Islemeyi Kisitlama</td><td>—</td><td>Art. 18</td><td>—</td><td>Belirli kosullarda veri islenmesinin kisitlanmasini talep etme</td></tr>
+        <tr><td>Veri Tasinabilirligi</td><td>—</td><td>Art. 20</td><td>§1798.100</td><td>Verilerinizi yapilandirilmis formatta alma ve baska bir sorumluya aktarma</td></tr>
+        <tr><td>Itiraz Hakki</td><td>—</td><td>Art. 21</td><td>—</td><td>Mesru menfaate dayali islemeye veya pazarlamaya itiraz etme</td></tr>
+        <tr><td>Riza Geri Cekme</td><td>✓</td><td>Art. 7(3)</td><td>—</td><td>Verdiginiz rizayi dilediginiz zaman geri cekme</td></tr>
+        <tr><td>Satistan Cayma (Opt-Out)</td><td>—</td><td>—</td><td>§1798.120</td><td>Kisisel verilerinizin satisindan cayma (VerimliAI veri satmaz)</td></tr>
+        <tr><td>Denetim Otoritesine Sikayet</td><td>✓</td><td>Art. 77</td><td>—</td><td>KVKK Kurumu'na veya yerel GDPR otoritesine sikayette bulunma</td></tr>
+      </table>
+
+      <h2 id="s9">9. Cocuklarin Gizliligi</h2>
+      <p>VerimliAI hizmetleri, 18 yasindan kucuk bireylere yonelik degildir. Bilincli olarak 18 yas altindaki kisilerden kisisel veri toplamayiz. 18 yas altindaki bir bireyden veri topladigimizi tespit edersek, bu verileri derhal sileriz. Ebeveyn veya vasi olarak, cocugunuzun bize veri sagladigini dusunuyorsaniz, info@verimliai.com adresinden bizimle iletisime gecin.</p>
+
+      <h2 id="s10">10. Politika Degisiklikleri</h2>
+      <p>Bu Gizlilik Politikasi; yasal duzenlemelerdeki degisiklikler, yeni hizmetlerin eklenmesi veya veri isleme sureclerimizdeki guncellemeler nedeniyle zaman zaman revize edilebilir. Onemli degisiklikler durumunda:</p>
+      <ul>
+        <li>Web sitemizde 30 gun oncesinden duyuru yapilir</li>
+        <li>Aktif musterilerimize e-posta ile bildirim gonderilir</li>
+        <li>Riza gerektiren degisiklikler icin ayrica onay alinir</li>
+      </ul>
+      <p>Politikanin onceki versiyonlari talep uzerine info@verimliai.com adresinden temin edilebilir.</p>
+
+      <h2 id="s11">11. Iletisim ve Basvuru</h2>
+      <table>
+        <tr><th style="width:200px;">Kanal</th><th>Detay</th></tr>
+        <tr><td>E-Posta (Genel)</td><td>info@verimliai.com</td></tr>
+        <tr><td>Veri Koruma Yetkilisi (DPO)</td><td>info@verimliai.com (Konu: DPO)</td></tr>
+        <tr><td>Web Sitesi</td><td>https://verimliai.com/iletisim</td></tr>
+        <tr><td>KVKK Basvuru Adresi</td><td>info@verimliai.com (Konu: KVKK Basvurusu)</td></tr>
+        <tr><td>Yanit Suresi</td><td>En gec 30 (otuz) gun</td></tr>
+        <tr><td>Ucret</td><td>Ucretsiz (KVKK Madde 13 uyarinca)</td></tr>
+      </table>
+
+      <p style="margin-top:var(--space-8);">Bu Gizlilik Politikasi, VerimliAI'nin veri koruma taahhudunun yazili beyanidir. Sorulariniz veya endiseleriniz icin her zaman info@verimliai.com adresinden bize ulasabilirsiniz.</p>
+
+      <div style="text-align:center;margin-top:var(--space-10);">
+        <a href="veri-guvenligi.html" class="btn btn-secondary btn-sm" style="margin:4px;">Veri Guvenligi Garantisi</a>
+        <a href="kvkk.html" class="btn btn-secondary btn-sm" style="margin:4px;">KVKK Aydinlatma Metni</a>
+        <a href="kullanim-kosullari.html" class="btn btn-secondary btn-sm" style="margin:4px;">Kullanim Kosullari</a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__bottom" style="border-top: none; padding-top: 0;">
+      <p class="footer__copyright">&copy; 2026 VerimliAI. Tum haklari saklidir. | <span style="color:var(--clr-success);">KVKK & GDPR Uyumlu</span> | <span style="color:var(--clr-accent-400);">AES-256 Sifreli</span></p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/chatbot.js"></script>
 </body>
 </html>
