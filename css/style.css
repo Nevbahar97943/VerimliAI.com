@@ -3397,6 +3397,44 @@ textarea.form-input {
 .exit-popup__success.active { display: block; }
 @media (max-width:480px) { .exit-popup__form { flex-direction: column; } }
 
+/* Button spinner */
+.btn-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: btnSpin .6s linear infinite;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+@keyframes btnSpin { to { transform: rotate(360deg); } }
+
+/* Network toast */
+.network-toast {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  z-index: 8000;
+  background: var(--clr-neutral-850);
+  border: 1px solid var(--clr-error);
+  color: var(--clr-neutral-100);
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  font-size: var(--fs-350);
+  font-weight: var(--fw-medium);
+  box-shadow: 0 8px 32px rgba(0,0,0,.5);
+  opacity: 0;
+  transition: all .3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.network-toast.active { opacity: 1; transform: translateX(-50%) translateY(0); }
+.network-toast--success { border-color: var(--clr-success); }
+.network-toast--error { border-color: var(--clr-error); }
+
 /* ============================================================
    LANGUAGE SWITCHER
    ============================================================ */

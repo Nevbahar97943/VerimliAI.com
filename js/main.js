@@ -6,6 +6,53 @@
   'use strict';
 
   /* ============================================================
+     ROBUST FETCH WRAPPER (Timeout + Retry + Abort)
+     ============================================================ */
+  function safeFetch(url, options, timeoutMs) {
+    timeoutMs = timeoutMs || 8000;
+    var controller = new AbortController();
+    var signal = controller.signal;
+    var fetchOptions = Object.assign({}, options, { signal: signal });
+
+    var timeoutId = setTimeout(function () { controller.abort(); }, timeoutMs);
+
+    return fetch(url, fetchOptions)
+      .then(function (response) {
+        clearTimeout(timeoutId);
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        return response.json();
+      })
+      .catch(function (err) {
+        clearTimeout(timeoutId);
+        if (err.name === 'AbortError') throw new Error('TIMEOUT');
+        throw err;
+      });
+  }
+
+  function showLoadingSpinner(btn) {
+    btn.disabled = true;
+    btn.setAttribute('data-original-text', btn.textContent);
+    btn.innerHTML = '<span class="btn-spinner"></span> Gonderiliyor...';
+  }
+
+  function hideLoadingSpinner(btn) {
+    btn.disabled = false;
+    var orig = btn.getAttribute('data-original-text') || 'Gonder';
+    btn.textContent = orig;
+  }
+
+  function showToastMsg(msg, type) {
+    var existing = document.querySelector('.network-toast');
+    if (existing) existing.remove();
+    var toast = document.createElement('div');
+    toast.className = 'network-toast network-toast--' + (type || 'error');
+    toast.textContent = msg;
+    document.body.appendChild(toast);
+    setTimeout(function () { toast.classList.add('active'); }, 10);
+    setTimeout(function () { toast.classList.remove('active'); setTimeout(function () { toast.remove(); }, 300); }, 4000);
+  }
+
+  /* ============================================================
      DOM READY
      ============================================================ */
   document.addEventListener('DOMContentLoaded', function () {
@@ -157,17 +204,18 @@
       if (!valid) return;
 
       var submitBtn = form.querySelector('button[type="submit"]');
-      var originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Gonderiliyor...';
-      submitBtn.disabled = true;
+      showLoadingSpinner(submitBtn);
 
-      fetch(form.action, { method: 'POST', body: new FormData(form) })
-        .then(function (r) { return r.json(); })
+      safeFetch(form.action, { method: 'POST', body: new FormData(form) })
         .then(function (d) {
           if (d.success) { form.style.display = 'none'; var s = document.getElementById('formSuccess'); if (s) s.classList.add('active'); }
-          else { submitBtn.textContent = originalText; submitBtn.disabled = false; }
+          else { hideLoadingSpinner(submitBtn); showToastMsg('Sunucu hatasi, lutfen tekrar deneyin.', 'error'); }
         })
-        .catch(function () { form.style.display = 'none'; var s = document.getElementById('formSuccess'); if (s) s.classList.add('active'); });
+        .catch(function (err) {
+          hideLoadingSpinner(submitBtn);
+          var msg = err.message === 'TIMEOUT' ? 'Sunucu yogun, lutfen bir kac saniye sonra tekrar deneyin.' : 'Baglanti hatasi olustu, internet baglantinizi kontrol edin.';
+          showToastMsg(msg, 'error');
+        });
     });
 
     function showFieldError(field, msg) {
@@ -195,17 +243,17 @@
       if (!name.value.trim() || !email.value.trim()) return;
 
       var submitBtn = form.querySelector('button[type="submit"]');
-      var originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Gonderiliyor...';
-      submitBtn.disabled = true;
+      showLoadingSpinner(submitBtn);
 
-      fetch(form.action, { method: 'POST', body: new FormData(form) })
-        .then(function (r) { return r.json(); })
+      safeFetch(form.action, { method: 'POST', body: new FormData(form) })
         .then(function (d) {
-          if (d.success) { form.style.display = 'none'; var s = document.getElementById('randevuFormSuccess'); if (s) s.classList.add('active'); }
-          else { submitBtn.textContent = originalText; submitBtn.disabled = false; }
+          if (d.success) { form.style.display = 'none'; var s = document.getElementById('randevuFormSuccess'); if (s) { s.classList.add('active'); s.innerHTML = '<div style="text-align:center;padding:var(--space-6);"><div style="font-size:48px;margin-bottom:12px;">✓</div><h3 style="font-size:var(--fs-600);color:var(--clr-neutral-50);margin-bottom:12px;">Basvurunuz Alindi!</h3><a href="https://calendly.com/YOUR_CALENDLY/30min" target="_blank" class="btn btn-primary btn-lg">Takvimden Randevu Secin →</a></div>'; } }
+          else { hideLoadingSpinner(submitBtn); showToastMsg('Sunucu hatasi.', 'error'); }
         })
-        .catch(function () { form.style.display = 'none'; var s = document.getElementById('randevuFormSuccess'); if (s) s.classList.add('active'); });
+        .catch(function (err) {
+          hideLoadingSpinner(submitBtn);
+          showToastMsg(err.message === 'TIMEOUT' ? 'Sunucu yogun, lutfen tekrar deneyin.' : 'Baglanti hatasi.', 'error');
+        });
     });
   }
 
