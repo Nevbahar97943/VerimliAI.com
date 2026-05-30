@@ -443,9 +443,16 @@
     if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
     if (checkoutBtn) checkoutBtn.addEventListener('click', function () {
       if (cart.length === 0) return;
-      showToast('Odeme sayfasina yonlendiriliyorsunuz. Toplam: ' + getCartTotal() + ' TL');
-      setTimeout(function () { window.location.href = 'odeme-basarili.html'; }, 1500);
-      cart = []; saveCartToStorage(); renderCart(); closeCart();
+      var total = getCartTotal();
+      // iyzico odeme sayfasina yonlendir
+      // Panelden aldiginiz odeme linkini buraya yapistirin:
+      // window.location.href = 'https://iyzi.link/...';
+      
+      // Manuel odeme icin referans numarasi goster
+      showToast('Odeme sayfasina yonlendiriliyorsunuz. Referans: 22463481 - Toplam: ' + total + ' TL');
+      setTimeout(function () {
+        window.location.href = 'odeme-basarili.html';
+      }, 2000);
     });
     renderCart();
   }
