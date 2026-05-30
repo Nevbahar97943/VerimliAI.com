@@ -73,6 +73,7 @@
     initLeadScoring();
     initExitPopup();
     initVisibilityAPI();
+    initNewsletter();
     secureExternalLinks();
   });
 
@@ -726,6 +727,37 @@
     document.querySelectorAll('a[target="_blank"]').forEach(function (link) {
       if (!link.rel) link.rel = 'noopener noreferrer';
       else if (link.rel.indexOf('noopener') === -1) link.rel += ' noopener noreferrer';
+    });
+  }
+
+  /* ============================================================
+     NEWSLETTER SIGNUP
+     ============================================================ */
+  function initNewsletter() {
+    var form = document.getElementById('newsletterForm');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.querySelector('input[type="email"]').value.trim();
+      if (!email || email.indexOf('@') === -1) return;
+
+      var btn = form.querySelector('button');
+      var origText = btn.textContent;
+      btn.textContent = 'Kaydediliyor...';
+      btn.disabled = true;
+
+      // Store in localStorage + show success
+      try {
+        var subs = JSON.parse(localStorage.getItem('verimliai_subscribers') || '[]');
+        subs.push({ email: email, date: new Date().toISOString() });
+        localStorage.setItem('verimliai_subscribers', JSON.stringify(subs));
+      } catch(e) {}
+
+      setTimeout(function () {
+        form.style.display = 'none';
+        document.getElementById('newsletterSuccess').style.display = 'block';
+      }, 800);
     });
   }
 
