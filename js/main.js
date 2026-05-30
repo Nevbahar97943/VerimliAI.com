@@ -649,7 +649,7 @@
             '<h3 style="font-size:var(--fs-600);color:var(--clr-neutral-50);margin-bottom:8px;">Basvurunuz Alindi!</h3>' +
             '<p style="color:var(--clr-neutral-400);margin-bottom:16px;">En kisa surede size donus yapacagiz. Bu arada, isletmenize ozel <strong>"AI Strateji Raporu"</strong> e-posta adresinize gonderildi.</p>' +
             '<p style="color:var(--clr-success);font-size:var(--fs-300);">Skor: <strong>' + score + '/100</strong> — ' + level + ' | Onerilen: ' + pkg + '</p>' +
-            '<a href="https://calendly.com/YOUR_CALENDLY/30min" target="_blank" class="btn btn-primary btn-lg" style="margin-top:12px;">Takvimden Hemen Randevu Secin →</a>' +
+            '<a href="https://calendly.com/baharcpn/30min" target="_blank" class="btn btn-primary btn-lg" style="margin-top:12px;">Takvimden Hemen Randevu Secin →</a>' +
             '<p style="color:var(--clr-neutral-600);font-size:var(--fs-300);margin-top:8px;">Calendly baglantisi aktif edildiginde dogrudan takvime yonleneceksiniz.</p>' +
           '</div>';
       }
