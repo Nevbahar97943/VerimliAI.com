@@ -285,6 +285,8 @@
 
   /* ============================================================
      COOKIE CONSENT BANNER (GDPR)
+     ============================================================ */
+  function initCookieBanner() {
     if (getCookie('verimliai_cookie_consent')) return;
 
     var banner = document.createElement('div');
