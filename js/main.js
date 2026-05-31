@@ -274,7 +274,7 @@
 
       safeFetch(form.action, { method: 'POST', body: new FormData(form) })
         .then(function (d) {
-          if (d.success) { form.style.display = 'none'; var s = document.getElementById('randevuFormSuccess'); if (s) { s.classList.add('active'); s.innerHTML = '<div style="text-align:center;padding:var(--space-6);"><div style="font-size:48px;margin-bottom:12px;">✓</div><h3 style="font-size:var(--fs-600);color:var(--clr-neutral-50);margin-bottom:12px;">Basvurunuz Alindi!</h3><a href="https://calendly.com/YOUR_CALENDLY/30min" target="_blank" class="btn btn-primary btn-lg">Takvimden Randevu Secin →</a></div>'; } }
+          if (d.success) { form.style.display = 'none'; var s = document.getElementById('randevuFormSuccess'); if (s) { s.classList.add('active'); s.innerHTML = '<div style="text-align:center;padding:var(--space-6);"><div style="font-size:48px;margin-bottom:12px;">✓</div><h3 style="font-size:var(--fs-600);color:var(--clr-neutral-50);margin-bottom:12px;">Basvurunuz Alindi!</h3><a href="https://calendly.com/baharcpn/30min" target="_blank" class="btn btn-primary btn-lg">Takvimden Randevu Secin →</a></div>'; } }
           else { hideLoadingSpinner(submitBtn); showToastMsg('Sunucu hatasi.', 'error'); }
         })
         .catch(function (err) {
