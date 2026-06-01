@@ -7,9 +7,18 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         .voice-demo { max-width: 600px; margin-inline: auto; }
-        .voice-avatar { width: 120px; height: 120px; border-radius: 50%; background: var(--gradient-primary); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 50px; }
-        .voice-avatar.speaking { animation: voicePulse 1.2s infinite; }
-        @keyframes voicePulse { 0%,100% { transform: scale(1); box-shadow: 0 0 20px rgba(108,92,231,.4); } 50% { transform: scale(1.08); box-shadow: 0 0 40px rgba(108,92,231,.7); } }
+        .avatar-container { width: 180px; height: 180px; margin: 0 auto 25px; position: relative; background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%); display: flex; align-items: center; justify-content: center; }
+        .robot-head { width: 120px; height: 110px; background: linear-gradient(135deg, #374151, #1f2937); border: 3px solid var(--clr-primary-500); border-radius: 30px; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(108,92,231,0.3); transition: all .3s ease; }
+        .robot-head::before, .robot-head::after { content: ''; position: absolute; width: 10px; height: 25px; background: var(--clr-primary-500); top: 42px; border-radius: 5px; }
+        .robot-head::before { left: -12px; } .robot-head::after { right: -12px; }
+        .eyes-container { display: flex; gap: 25px; margin-bottom: 15px; }
+        .eye { width: 20px; height: 20px; background-color: var(--clr-accent-500); border-radius: 50%; box-shadow: 0 0 12px var(--clr-accent-500); animation: eyeBlink 4s infinite; }
+        @keyframes eyeBlink { 0%,96%,100% { transform: scaleY(1); } 98% { transform: scaleY(0.1); } }
+        .mouth { width: 45px; height: 8px; background-color: var(--clr-accent-500); border-radius: 10px; box-shadow: 0 0 8px var(--clr-accent-500); transition: all .1s ease; }
+        .robot-head.speaking .mouth { animation: talking 0.15s infinite alternate; }
+        @keyframes talking { 0% { height: 4px; width: 40px; border-radius: 10px; } 100% { height: 24px; width: 30px; border-radius: 50%; } }
+        .robot-head.speaking { animation: headFloat 2s infinite alternate; box-shadow: 0 0 35px rgba(0,210,211,.6); border-color: var(--clr-accent-500); }
+        @keyframes headFloat { 0% { transform: translateY(0px); } 100% { transform: translateY(-5px); } }
         .voice-status { font-size: var(--fs-300); color: var(--clr-accent-400); min-height: 20px; }
         .voice-controls { display: flex; gap: var(--space-3); margin-top: var(--space-4); }
         .quick-phrases { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
@@ -36,7 +45,12 @@
 </div></section>
 
 <section style="padding-bottom:80px;"><div class="container"><div class="voice-demo glass-card" style="padding:var(--space-10);text-align:center;">
-<div class="voice-avatar" id="voiceAvatar">🎙️</div>
+<div class="avatar-container">
+    <div class="robot-head" id="robotHead">
+        <div class="eyes-container"><div class="eye"></div><div class="eye"></div></div>
+        <div class="mouth"></div>
+    </div>
+</div>
 <div class="voice-status" id="voiceStatus">Dinlemeye hazir</div>
 
 <textarea id="voiceText" class="form-input" style="min-height:80px;margin-top:var(--space-4);" placeholder="AI'in okumasini istediginiz Turkce metni yazin...">Merhaba! Ben VerimliAI'nin sesli asistanıyım. İşletmeniz için yapay zeka çözümlerimiz hakkında bilgi almak ister misiniz? Ücretsiz danışmanlık randevusu oluşturabiliriz.</textarea>
@@ -66,7 +80,7 @@ function speak() {
     var text = document.getElementById('voiceText').value.trim();
     if (!text) return;
     stopSpeaking();
-    var avatar = document.getElementById('voiceAvatar');
+    var avatar = document.getElementById('robotHead');
     var status = document.getElementById('voiceStatus');
     
     utterance = new SpeechSynthesisUtterance(text);
@@ -89,7 +103,7 @@ function speak() {
 
 function stopSpeaking() {
     if (synth.speaking) synth.cancel();
-    document.getElementById('voiceAvatar').classList.remove('speaking');
+    document.getElementById('robotHead').classList.remove('speaking');
     document.getElementById('voiceStatus').textContent = 'Dinlemeye hazir';
 }
 
