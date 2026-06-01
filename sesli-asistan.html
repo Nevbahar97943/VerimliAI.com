@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesli AI Asistan - VerimliAI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .voice-demo { max-width: 600px; margin-inline: auto; }
+        .voice-avatar { width: 120px; height: 120px; border-radius: 50%; background: var(--gradient-primary); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 50px; }
+        .voice-avatar.speaking { animation: voicePulse 1.2s infinite; }
+        @keyframes voicePulse { 0%,100% { transform: scale(1); box-shadow: 0 0 20px rgba(108,92,231,.4); } 50% { transform: scale(1.08); box-shadow: 0 0 40px rgba(108,92,231,.7); } }
+        .voice-status { font-size: var(--fs-300); color: var(--clr-accent-400); min-height: 20px; }
+        .voice-controls { display: flex; gap: var(--space-3); margin-top: var(--space-4); }
+        .quick-phrases { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
+        .quick-phrase { padding: 6px 14px; background: rgba(108,92,231,.1); border: 1px solid rgba(108,92,231,.2); color: var(--clr-primary-300); border-radius: var(--radius-full); font-size: var(--fs-300); cursor: pointer; transition: all .2s; }
+        .quick-phrase:hover { background: rgba(108,92,231,.2); }
+    </style>
+</head>
+<body>
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="index.html" class="header__logo"><div class="header__logo-icon">V</div><div class="header__logo-text">Verimli<span>AI</span></div></a>
+    <nav class="header__nav"><a href="index.html" class="header__nav-link">Ana Sayfa</a><a href="magaza.html" class="header__nav-link">Magaza</a><a href="blog.html" class="header__nav-link">Blog</a></nav>
+    <a href="randevu.html" class="btn btn-primary header__cta-desktop">Randevu Al</a>
+    <button class="header__mobile-toggle" id="mobileToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-menu__link">Ana Sayfa</a><a href="randevu.html" class="mobile-menu__link">Randevu</a></div>
+
+<main>
+<section class="demo-hero"><div class="container">
+<span class="badge badge-accent">Canli Demo</span>
+<h1 class="heading-1" style="margin-top:16px;">Sesli <span class="text-gradient">AI Asistan</span> Demosu</h1>
+<p class="section-header__desc" style="margin-top:12px;">Yapay zeka asistanimizin sesli versiyonunu deneyimleyin. Metin yazin veya hazir cumleleri secin, AI sizinle Turkce konussun.</p>
+</div></section>
+
+<section style="padding-bottom:80px;"><div class="container"><div class="voice-demo glass-card" style="padding:var(--space-10);text-align:center;">
+<div class="voice-avatar" id="voiceAvatar">🎙️</div>
+<div class="voice-status" id="voiceStatus">Dinlemeye hazir</div>
+
+<textarea id="voiceText" class="form-input" style="min-height:80px;margin-top:var(--space-4);" placeholder="AI'in okumasini istediginiz Turkce metni yazin...">Merhaba! Ben VerimliAI'nin sesli asistanıyım. İşletmeniz için yapay zeka çözümlerimiz hakkında bilgi almak ister misiniz? Ücretsiz danışmanlık randevusu oluşturabiliriz.</textarea>
+
+<div class="voice-controls">
+    <button class="btn btn-primary" onclick="speak()" id="speakBtn">🔊 Konustur</button>
+    <button class="btn btn-secondary" onclick="stopSpeaking()">⏹ Durdur</button>
+</div>
+
+<div class="quick-phrases">
+    <span class="quick-phrase" onclick="setPhrase('Merhaba! Ben VerimliAI. Size nasıl yardımcı olabilirim?')">Karşılama</span>
+    <span class="quick-phrase" onclick="setPhrase('Yapay zeka asistanlarımız Instagram DM, WhatsApp ve web sitenizde 7/24 çalışır. Müşteri sorularını saniyeler içinde yanıtlar.')">Hizmet</span>
+    <span class="quick-phrase" onclick="setPhrase('Paket fiyatlarımız 7.500 TL kurulum ve aylık 1.500 TLden başlar. Ücretsiz danışmanlık için randevu alabilirsiniz.')">Fiyat</span>
+    <span class="quick-phrase" onclick="setPhrase('Verileriniz AES 256 bit şifreleme ile korunur. KVKK ve GDPR uyumluyuz.')">Guvenlik</span>
+</div>
+<p style="color:var(--clr-neutral-600);font-size:var(--fs-300);margin-top:var(--space-4);">Mikrofon izni gerekmez. Tarayici tabanli seslendirme kullanir.</p>
+</div></div></section></main>
+
+<footer class="footer"><div class="container"><div class="footer__bottom"><p class="footer__copyright">&copy; 2026 VerimliAI.</p></div></div></footer>
+<script src="js/main.js"></script>
+<script src="js/chatbot.js"></script>
+<script>
+var synth = window.speechSynthesis;
+var utterance = null;
+
+function speak() {
+    var text = document.getElementById('voiceText').value.trim();
+    if (!text) return;
+    stopSpeaking();
+    var avatar = document.getElementById('voiceAvatar');
+    var status = document.getElementById('voiceStatus');
+    
+    utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'tr-TR';
+    utterance.rate = 0.95;
+    utterance.pitch = 1.0;
+    
+    // Try to get best Turkish voice
+    var voices = synth.getVoices();
+    var trVoice = voices.find(function(v) { return v.lang === 'tr-TR' && v.name.indexOf('Microsoft') !== -1; });
+    if (!trVoice) trVoice = voices.find(function(v) { return v.lang === 'tr-TR'; });
+    if (trVoice) utterance.voice = trVoice;
+    
+    utterance.onstart = function() { avatar.classList.add('speaking'); status.textContent = 'Konusuyor...'; };
+    utterance.onend = function() { avatar.classList.remove('speaking'); status.textContent = 'Dinlemeye hazir'; };
+    utterance.onerror = function() { avatar.classList.remove('speaking'); status.textContent = 'Hata olustu'; };
+    
+    synth.speak(utterance);
+}
+
+function stopSpeaking() {
+    if (synth.speaking) synth.cancel();
+    document.getElementById('voiceAvatar').classList.remove('speaking');
+    document.getElementById('voiceStatus').textContent = 'Dinlemeye hazir';
+}
+
+function setPhrase(text) {
+    document.getElementById('voiceText').value = text;
+    speak();
+}
+
+// Load voices
+if (synth.getVoices().length === 0) {
+    synth.addEventListener('voiceschanged', function() {});
+}
+</script>
+</body>
+</html>
