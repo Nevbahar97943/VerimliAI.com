@@ -73,9 +73,28 @@
     <span class="quick-phrase" onclick="setPhrase('Verileriniz AES 256 bit şifreleme ile korunur. KVKK ve GDPR uyumluyuz.')">Guvenlik</span>
 </div>
 <p style="color:var(--clr-neutral-600);font-size:var(--fs-300);margin-top:var(--space-4);">Mikrofon izni gerekmez. Tarayici tabanli seslendirme kullanir.</p>
-</div></div></section></main>
+</div></div></section>
 
-<footer class="footer"><div class="container"><div class="footer__bottom"><p class="footer__copyright">&copy; 2026 VerimliAI.</p></div></div></footer>
+<!-- KVKK Banner -->
+<div id="kvkk-banner" style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);width:90%;max-width:650px;background:var(--clr-neutral-850);border:1px solid var(--clr-primary-500);padding:20px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.5);z-index:9999;display:none;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;color:var(--clr-neutral-200);">
+  <div style="flex:1;min-width:250px;font-size:13px;line-height:1.5;">VerimliAI olarak, yasal yukumluluklerimiz ve kullanici deneyiminizi gelistirmek amaciyla <strong>cerezler</strong> kullaniyoruz. Sitemizi kullanarak <a href="gizlilik-politikasi.html" style="color:var(--clr-accent-400);">KVKK ve Gizlilik Politikamizi</a> kabul etmis olursunuz.</div>
+  <div style="display:flex;gap:10px;">
+    <button onclick="kvkkReddet()" style="background:transparent;color:var(--clr-neutral-400);border:1px solid var(--clr-neutral-600);padding:8px 16px;border-radius:8px;cursor:pointer;font-size:13px;">Reddet</button>
+    <button onclick="kvkkKabul()" style="background:var(--gradient-primary);color:#fff;border:none;padding:8px 20px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:bold;">Kabul Et</button>
+  </div>
+</div></main>
+
+<footer class="footer"><div class="container">
+<div class="footer__bottom" style="flex-direction:column;gap:8px;">
+<div style="display:flex;gap:var(--space-4);flex-wrap:wrap;justify-content:center;">
+  <a href="gizlilik-politikasi.html" style="color:var(--clr-accent-400);font-size:var(--fs-300);">Gizlilik ve Cerez Politikasi (KVKK)</a>
+  <span style="color:var(--clr-neutral-600);">|</span>
+  <a href="kullanim-kosullari.html" style="color:var(--clr-accent-400);font-size:var(--fs-300);">Kullanim Sartlari</a>
+  <span style="color:var(--clr-neutral-600);">|</span>
+  <a href="kvkk.html" style="color:var(--clr-accent-400);font-size:var(--fs-300);">KVKK Aydinlatma</a>
+</div>
+<p class="footer__copyright" style="font-size:var(--fs-300);">&copy; 2026 VerimliAI. Tum Haklari Saklidir. 5651 Sayili Kanun uyarinca Yer Saglayici olarak hizmet vermekteyiz.</p>
+</div></div></footer>
 <script src="js/main.js"></script>
 <script src="js/chatbot.js"></script>
 <script>
@@ -174,6 +193,15 @@ function setPhrase(text) {
 if (synth.getVoices().length === 0) {
     synth.addEventListener('voiceschanged', function() { updatePhrases(); });
 }
+
+// KVKK Banner
+document.addEventListener('DOMContentLoaded', function() {
+    if (!localStorage.getItem('kvkk_onayli_mi')) {
+        document.getElementById('kvkk-banner').style.display = 'flex';
+    }
+});
+function kvkkKabul() { localStorage.setItem('kvkk_onayli_mi','evet'); document.getElementById('kvkk-banner').style.display='none'; }
+function kvkkReddet() { localStorage.setItem('kvkk_onayli_mi','hayir'); document.getElementById('kvkk-banner').style.display='none'; }
 </script>
 </body>
 </html>
