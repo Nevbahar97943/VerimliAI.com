@@ -41,7 +41,7 @@
 <section class="demo-hero"><div class="container">
 <span class="badge badge-accent">Canli Demo</span>
 <h1 class="heading-1" style="margin-top:16px;">Sesli <span class="text-gradient">AI Asistan</span> Demosu</h1>
-<p class="section-header__desc" style="margin-top:12px;">Yapay zeka asistanimizin sesli versiyonunu deneyimleyin. Metin yazin veya hazir cumleleri secin, AI sizinle Turkce konussun.</p>
+<p class="section-header__desc" style="margin-top:12px;">Yapay zeka asistanimizin sesli versiyonunu deneyimleyin. 3 dilde konusur: Turkce, Ingilizce, Arapca.</p>
 </div></section>
 
 <section style="padding-bottom:80px;"><div class="container"><div class="voice-demo glass-card" style="padding:var(--space-10);text-align:center;">
@@ -60,10 +60,16 @@
     <button class="btn btn-secondary" onclick="stopSpeaking()">⏹ Durdur</button>
 </div>
 
-<div class="quick-phrases">
+<div style="display:flex;gap:var(--space-2);justify-content:center;margin-top:var(--space-3);">
+    <button class="btn btn-sm" style="background:var(--clr-primary-500);color:#fff;" onclick="setLang('tr-TR')">🇹🇷 Turkce</button>
+    <button class="btn btn-sm btn-secondary" onclick="setLang('en-US')">🇬🇧 English</button>
+    <button class="btn btn-sm btn-secondary" onclick="setLang('ar-SA')">🇸🇦 العربية</button>
+</div>
+
+<div class="quick-phrases" id="quickPhrases">
     <span class="quick-phrase" onclick="setPhrase('Merhaba! Ben VerimliAI. Size nasıl yardımcı olabilirim?')">Karşılama</span>
-    <span class="quick-phrase" onclick="setPhrase('Yapay zeka asistanlarımız Instagram DM, WhatsApp ve web sitenizde 7/24 çalışır. Müşteri sorularını saniyeler içinde yanıtlar.')">Hizmet</span>
-    <span class="quick-phrase" onclick="setPhrase('Paket fiyatlarımız 7.500 TL kurulum ve aylık 1.500 TLden başlar. Ücretsiz danışmanlık için randevu alabilirsiniz.')">Fiyat</span>
+    <span class="quick-phrase" onclick="setPhrase('Yapay zeka asistanlarımız Instagram DM, WhatsApp ve web sitenizde 7/24 çalışır.')">Hizmet</span>
+    <span class="quick-phrase" onclick="setPhrase('Paket fiyatlarımız 7.500 TL kurulum ve aylık 1.500 TLden başlar.')">Fiyat</span>
     <span class="quick-phrase" onclick="setPhrase('Verileriniz AES 256 bit şifreleme ile korunur. KVKK ve GDPR uyumluyuz.')">Guvenlik</span>
 </div>
 <p style="color:var(--clr-neutral-600);font-size:var(--fs-300);margin-top:var(--space-4);">Mikrofon izni gerekmez. Tarayici tabanli seslendirme kullanir.</p>
@@ -75,6 +81,53 @@
 <script>
 var synth = window.speechSynthesis;
 var utterance = null;
+var currentLang = 'tr-TR';
+
+var phrases = {
+    'tr-TR': ['Karşılama', 'Hizmet', 'Fiyat', 'Guvenlik'],
+    'en-US': ['Welcome', 'Service', 'Pricing', 'Security'],
+    'ar-SA': ['ترحيب', 'خدمات', 'اسعار', 'أمان']
+};
+
+var phraseTexts = {
+    'tr-TR': [
+        'Merhaba! Ben VerimliAI. Size nasıl yardımcı olabilirim?',
+        'Yapay zeka asistanlarımız Instagram DM, WhatsApp ve web sitenizde 7/24 çalışır.',
+        'Paket fiyatlarımız 7.500 TL kurulum ve aylık 1.500 TLden başlar.',
+        'Verileriniz AES 256 bit şifreleme ile korunur. KVKK ve GDPR uyumluyuz.'
+    ],
+    'en-US': [
+        'Hello! I am VerimliAI. How can I help your business today?',
+        'Our AI assistants work 24/7 on Instagram DM, WhatsApp and your website.',
+        'Our pricing starts at 7,500 TL setup and 1,500 TL monthly subscription.',
+        'Your data is protected with AES 256 bit encryption. GDPR and KVKK compliant.'
+    ],
+    'ar-SA': [
+        'مرحباً! أنا VerimliAI. كيف يمكنني مساعدة عملك اليوم؟',
+        'مساعدونا الذكيون يعملون 24/7 على Instagram و WhatsApp وموقعك الإلكتروني.',
+        'تبدأ أسعارنا من 7,500 ليرة تركية للتركيب و 1,500 ليرة شهرياً.',
+        'بياناتك محمية بتشفير AES 256 بت. متوافقة مع KVKK و GDPR.'
+    ]
+};
+
+function setLang(lang) {
+    currentLang = lang;
+    var btns = document.querySelectorAll('[onclick^="setLang"]');
+    btns.forEach(function(b) { b.className = 'btn btn-sm btn-secondary'; });
+    event.target.className = 'btn btn-sm';
+    event.target.style.background = 'var(--clr-primary-500)';
+    event.target.style.color = '#fff';
+    updatePhrases();
+}
+
+function updatePhrases() {
+    var container = document.getElementById('quickPhrases');
+    var texts = phraseTexts[currentLang];
+    var labels = phrases[currentLang];
+    container.innerHTML = labels.map(function(l, i) {
+        return '<span class="quick-phrase" onclick="setPhrase(\'' + texts[i].replace(/'/g, "\\'") + '\')">' + l + '</span>';
+    }).join('');
+}
 
 function speak() {
     var text = document.getElementById('voiceText').value.trim();
@@ -84,15 +137,14 @@ function speak() {
     var status = document.getElementById('voiceStatus');
     
     utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'tr-TR';
+    utterance.lang = currentLang;
     utterance.rate = 0.95;
     utterance.pitch = 1.0;
     
-    // Try to get best Turkish voice
     var voices = synth.getVoices();
-    var trVoice = voices.find(function(v) { return v.lang === 'tr-TR' && v.name.indexOf('Microsoft') !== -1; });
-    if (!trVoice) trVoice = voices.find(function(v) { return v.lang === 'tr-TR'; });
-    if (trVoice) utterance.voice = trVoice;
+    var voice = voices.find(function(v) { return v.lang === currentLang && v.name.indexOf('Microsoft') !== -1; });
+    if (!voice) voice = voices.find(function(v) { return v.lang === currentLang; });
+    if (voice) utterance.voice = voice;
     
     utterance.onstart = function() { avatar.classList.add('speaking'); status.textContent = 'Konusuyor...'; };
     utterance.onend = function() { avatar.classList.remove('speaking'); status.textContent = 'Dinlemeye hazir'; };
@@ -112,9 +164,8 @@ function setPhrase(text) {
     speak();
 }
 
-// Load voices
 if (synth.getVoices().length === 0) {
-    synth.addEventListener('voiceschanged', function() {});
+    synth.addEventListener('voiceschanged', function() { updatePhrases(); });
 }
 </script>
 </body>
