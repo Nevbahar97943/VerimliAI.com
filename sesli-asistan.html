@@ -133,23 +133,17 @@ function speak() {
     var text = document.getElementById('voiceText').value.trim();
     if (!text) return;
     stopSpeaking();
-    var avatar = document.getElementById('robotHead');
-    var status = document.getElementById('voiceStatus');
-    
     utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = currentLang;
     utterance.rate = 0.95;
-    utterance.pitch = 1.0;
-    
     var voices = synth.getVoices();
     var voice = voices.find(function(v) { return v.lang === currentLang && v.name.indexOf('Microsoft') !== -1; });
     if (!voice) voice = voices.find(function(v) { return v.lang === currentLang; });
     if (voice) utterance.voice = voice;
-    
+    var avatar = document.getElementById('robotHead');
+    var status = document.getElementById('voiceStatus');
     utterance.onstart = function() { avatar.classList.add('speaking'); status.textContent = 'Konusuyor...'; };
     utterance.onend = function() { avatar.classList.remove('speaking'); status.textContent = 'Dinlemeye hazir'; };
-    utterance.onerror = function() { avatar.classList.remove('speaking'); status.textContent = 'Hata olustu'; };
-    
     synth.speak(utterance);
 }
 
@@ -161,7 +155,20 @@ function stopSpeaking() {
 
 function setPhrase(text) {
     document.getElementById('voiceText').value = text;
-    speak();
+    stopSpeaking();
+    // Aninda konus — bekleme yok
+    utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = currentLang;
+    utterance.rate = 0.95;
+    var voices = synth.getVoices();
+    var voice = voices.find(function(v) { return v.lang === currentLang && v.name.indexOf('Microsoft') !== -1; });
+    if (!voice) voice = voices.find(function(v) { return v.lang === currentLang; });
+    if (voice) utterance.voice = voice;
+    var avatar = document.getElementById('robotHead');
+    var status = document.getElementById('voiceStatus');
+    utterance.onstart = function() { avatar.classList.add('speaking'); status.textContent = 'Konusuyor...'; };
+    utterance.onend = function() { avatar.classList.remove('speaking'); status.textContent = 'Dinlemeye hazir'; };
+    synth.speak(utterance);
 }
 
 if (synth.getVoices().length === 0) {
